@@ -1,0 +1,18 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local env / secrets — never commit credentials to the registry
+.env
+.env.*
+*.key
+*.pem
