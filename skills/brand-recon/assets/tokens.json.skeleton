@@ -1,0 +1,74 @@
+{
+  "$schema": "https://design-tokens.dev/schema",
+  "brand": "{ENTITY_NAME}",
+  "version": "1.0.0",
+  "extracted": "{DATE}",
+  "source": "{primary_url} (Firecrawl branding analysis)",
+  "color": {
+    "primary": {
+      "primary":    { "value": "{hex}", "role": "{role}" },
+      "secondary":  { "value": "{hex}", "role": "{role}" },
+      "accent":     { "value": "{hex}", "role": "{role}" },
+      "background": { "value": "{hex}", "role": "{role}" }
+    },
+    "support": {
+      "tone-1":  { "value": "{hex}" },
+      "tone-2":  { "value": "{hex}" },
+      "tone-3":  { "value": "{hex}" },
+      "tone-4":  { "value": "{hex}" },
+      "white":   { "value": "#FFFFFF", "role": "Interior surfaces only" }
+    },
+    "text": {
+      "primary":  { "value": "{hex}" },
+      "inverse":  { "value": "{hex}" },
+      "muted":    { "value": "{hex}" }
+    },
+    "functional": {
+      "success": { "value": "{hex}" },
+      "warn":    { "value": "{hex}" },
+      "danger":  { "value": "{hex}" }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary":   "{Primary Font}",
+      "secondary": "{Secondary Font}",
+      "stack":     "{Primary Font}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "scale": {
+      "display":  { "size": "{N}px", "lineHeight": "{N}px", "weight": 700, "letterSpacing": "-0.02em" },
+      "h1":       { "size": "{N}px", "lineHeight": "{N}px", "weight": 700, "letterSpacing": "-0.01em" },
+      "h2":       { "size": "{N}px", "lineHeight": "{N}px", "weight": 600, "letterSpacing": "-0.01em" },
+      "h3":       { "size": "{N}px", "lineHeight": "{N}px", "weight": 600 },
+      "body":     { "size": "{N}px", "lineHeight": "{N}px", "weight": 400 },
+      "small":    { "size": "{N}px", "lineHeight": "{N}px", "weight": 400 },
+      "eyebrow":  { "size": "{N}px", "lineHeight": "{N}px", "weight": 600, "letterSpacing": "0.08em", "transform": "uppercase" }
+    }
+  },
+  "spacing": {
+    "base": 4,
+    "scale": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 48, "8": 64, "9": 96 }
+  },
+  "radii": {
+    "sharp":  "0px",
+    "subtle": "{value}",
+    "card":   "8px",
+    "pill":   "50px"
+  },
+  "shadows": {
+    "card":  "0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04)",
+    "hover": "0 4px 12px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08)"
+  },
+  "layout": {
+    "maxWidth":     "1200px",
+    "contentWidth": "800px"
+  },
+  "logo": {
+    "url":   "{logo_url}",
+    "style": "{wordmark / lockup / icon-mark}",
+    "color": {
+      "onLight": "{hex}",
+      "onDark":  "{hex}"
+    }
+  }
+}

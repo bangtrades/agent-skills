@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBEF Email — Surf-Report-Style Layout</title>
+<!--
+  HBEF Standalone Email Template
+  Mirrors Surf Report layout patterns (left-text + right-image articles,
+  section dividers, hyperlinked CTAs) but uses HBEF brand colors and typography.
+
+  Use case: HBEF-only urgent emails outside the weekly Surf Report cycle.
+  E.g., Annual Giving last-call, Hearts tickets-on-sale alarm, Strand Classic registration push.
+
+  Platform: Constant Contact or Givebutter. Both render HTML tables for email clients.
+  Width: 600px desktop, fluid on mobile.
+
+  All articles in this template are placeholders — replace text, links, and images.
+-->
+<style>
+  /* Email-safe styles. Use inline styles below for max compatibility — these <style>
+     rules are mostly for the preview render in the browser. */
+  body { margin: 0; padding: 0; background: #E7E7E7; font-family: 'Montserrat', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; }
+  table { border-collapse: collapse; }
+  a { color: #F79B32; text-decoration: underline; }
+</style>
+</head>
+<body style="margin: 0; padding: 0; background: #E7E7E7; font-family: 'Montserrat', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;">
+
+<!-- Outer wrapper -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #E7E7E7; padding: 24px 0;">
+<tr><td align="center">
+
+  <!-- Main email container — 600px width -->
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="background: #FFFFFF; max-width: 600px;">
+
+    <!-- ====== HBEF NAVY BANNER ====== -->
+    <tr>
+      <td style="background: #0B4261; padding: 32px 24px 24px; text-align: center;">
+        <!-- Replace src with hosted HBEF logo URL on the email service's CDN -->
+        <img src="https://hbef.org/wp-content/uploads/2025/04/HBEF-Secondary_Lockup-Dark_Mode-RGB@2x.png"
+             alt="Hermosa Beach Education Foundation"
+             width="240"
+             style="display: block; margin: 0 auto; width: 240px; height: auto;">
+      </td>
+    </tr>
+
+    <!-- ====== EYEBROW + DATE LINE ====== -->
+    <tr>
+      <td style="background: #FFFFFF; padding: 20px 32px 8px;">
+        <p style="margin: 0; font-size: 10px; font-weight: 700; letter-spacing: 1.6px;
+                  text-transform: uppercase; color: #5C5C5C; text-align: center;">
+          Hermosa Beach Education Foundation · {Email Topic}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 32px 16px;">
+        <p style="margin: 0; font-size: 12px; color: #5C5C5C; font-style: italic; text-align: right;">
+          {Month Day}, {Year}
+        </p>
+      </td>
+    </tr>
+
+    <!-- ====== SECTION DIVIDER ====== -->
+    <tr>
+      <td style="padding: 16px 32px 4px;">
+        <p style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 2px;
+                  text-transform: uppercase; color: #F79B32; text-align: center;">
+          HBEF
+        </p>
+      </td>
+    </tr>
+
+    <!-- ====== ARTICLE 1 — LEFT TEXT + RIGHT IMAGE ====== -->
+    <tr>
+      <td style="padding: 16px 32px;">
+        <h2 style="margin: 0 0 12px; font-size: 18px; font-weight: 700; color: #0B4261;
+                   line-height: 1.25; font-family: 'Montserrat', 'Avenir Next', sans-serif;">
+          {Article 1 Headline — e.g., Help Bring School Counselors to 100%}
+        </h2>
+
+        <!-- Two-column layout: text left, image right -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <!-- Text column -->
+            <td valign="top" style="padding-right: 16px; width: 68%; font-size: 14px;
+                                     line-height: 1.55; color: #1A1A1A;">
+              <p style="margin: 0 0 12px;">
+                {First sentence — frame the whole article. Bold the key fact:
+                <strong>part-time (80%) to 100% full-time</strong> for the 2026–2027 school year.}
+              </p>
+              <p style="margin: 0 0 12px;">
+                {Sentence 2: Why it matters. Scale and impact —
+                <strong>3 full-time counselors on-site daily</strong> for 1,450 students.}
+              </p>
+              <p style="margin: 0 0 12px;">
+                <em>Counselor Spotlight: {Name}</em> — {Brief spotlight on a specific person,
+                what they do, why they matter.}
+              </p>
+              <p style="margin: 0;">
+                <strong><a href="https://hbef.org/donate-now" style="color: #F79B32;">
+                  Donate HERE by {date} to help us get to 100%!
+                </a></strong>
+              </p>
+            </td>
+            <!-- Image column -->
+            <td valign="top" align="right" style="width: 32%;">
+              <img src="https://hbef.org/wp-content/uploads/PLACEHOLDER-IMAGE.jpg"
+                   alt="{Description}"
+                   width="160"
+                   style="display: block; width: 160px; height: auto; border: 0;">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Spacer -->
+    <tr><td style="padding: 12px 32px;"><div style="height: 1px; background: #E7E7E7;"></div></td></tr>
+
+    <!-- ====== ARTICLE 2 — same pattern ====== -->
+    <tr>
+      <td style="padding: 16px 32px;">
+        <h2 style="margin: 0 0 12px; font-size: 18px; font-weight: 700; color: #0B4261;
+                   line-height: 1.25; font-family: 'Montserrat', 'Avenir Next', sans-serif;">
+          {Article 2 Headline}
+        </h2>
+
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td valign="top" style="padding-right: 16px; width: 68%; font-size: 14px;
+                                     line-height: 1.55; color: #1A1A1A;">
+              <p style="margin: 0 0 12px;">
+                {First sentence with bold key facts.}
+              </p>
+              <p style="margin: 0;">
+                <a href="{url}" style="color: #F79B32;">{CTA link text}</a>
+              </p>
+            </td>
+            <td valign="top" align="right" style="width: 32%;">
+              <img src="{IMAGE_URL}" alt="{description}" width="160"
+                   style="display: block; width: 160px; height: auto; border: 0;">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Spacer -->
+    <tr><td style="padding: 12px 32px;"><div style="height: 1px; background: #E7E7E7;"></div></td></tr>
+
+    <!-- ====== ARTICLE 3 — without image (text-only fallback) ====== -->
+    <tr>
+      <td style="padding: 16px 32px;">
+        <h2 style="margin: 0 0 12px; font-size: 18px; font-weight: 700; color: #0B4261;
+                   line-height: 1.25; font-family: 'Montserrat', 'Avenir Next', sans-serif;">
+          {Article 3 Headline — no image variant}
+        </h2>
+        <p style="margin: 0 0 12px; font-size: 14px; line-height: 1.55; color: #1A1A1A;">
+          {Article body — same voice rules. 80–150 words. Bold key facts.}
+        </p>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #1A1A1A;">
+          <a href="{url}" style="color: #F79B32;">{CTA link text}</a>
+        </p>
+      </td>
+    </tr>
+
+    <!-- ====== CTA ROW (orange button — optional for hero CTA) ====== -->
+    <tr>
+      <td align="center" style="padding: 24px 32px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="background: #F79B32; padding: 14px 28px;">
+              <a href="https://hbef.org/donate-now"
+                 style="color: #FFFFFF; text-decoration: none; font-weight: 700;
+                        font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+                        font-family: 'Montserrat', 'Avenir Next', sans-serif;">
+                Donate Now
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ====== HBEF TAGLINE FOOTER ====== -->
+    <tr>
+      <td style="background: #F2F2F2; padding: 32px 32px 24px; text-align: center;">
+        <p style="margin: 0 0 8px; font-size: 16px; font-style: italic; color: #0B4261;
+                  font-family: 'Montserrat', 'Avenir Next', sans-serif;">
+          Funding matters. Your donation, their future.
+        </p>
+        <p style="margin: 0 0 16px; font-size: 11px; font-weight: 700; letter-spacing: 2px;
+                  text-transform: uppercase; color: #417987;">
+          100% Volunteers  |  100% Parents
+        </p>
+        <p style="margin: 0 0 4px; font-size: 11px; color: #5C5C5C;">
+          1645 Valley Drive  ·  Hermosa Beach, CA 90254
+        </p>
+        <p style="margin: 0 0 4px; font-size: 11px; color: #5C5C5C;">
+          admin@hbef.org  ·  hbef.org  ·  @hbef90254
+        </p>
+        <p style="margin: 12px 0 0; font-size: 10px; font-style: italic; color: #5C5C5C;">
+          HBEF is a registered 501(c)(3) non-profit organization. EIN: 33-0522270.
+        </p>
+      </td>
+    </tr>
+
+    <!-- ====== HBEF TEAL BAND ====== -->
+    <tr><td style="background: #75C4B9; height: 12px;">&nbsp;</td></tr>
+
+    <!-- ====== UNSUBSCRIBE / CCB FOOTER (added by Constant Contact automatically — placeholder here) ====== -->
+    <tr>
+      <td style="padding: 16px 32px; text-align: center; font-size: 10px; color: #999999;">
+        Hermosa Beach Education Foundation  |  1645 Valley Drive  |  Hermosa Beach, CA 90254 US<br>
+        Unsubscribe  |  Update Profile  |  Constant Contact Data Notice
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+
+</body>
+</html>

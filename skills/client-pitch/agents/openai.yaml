@@ -1,0 +1,4 @@
+interface:
+  display_name: "Client Pitch"
+  short_description: "Create branded AI pitch deck packages"
+  default_prompt: "Use $client-pitch to create a concise branded AI transformation pitch deck with PPTX and PDF outputs."

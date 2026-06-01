@@ -1,0 +1,246 @@
+{
+  "$schema": "https://schemas.hbef.org/surf-report-tokens/v1",
+  "name": "HBEF Surf Report Voice Tokens",
+  "version": "1.0.0",
+  "source": "HVS Surf Report archive (May 17–24, 2026 issues) + HVPTO Surf Report Extra (May 20, 2026)",
+  "extracted": "2026-05-28",
+  "phrases": {
+    "headlines": {
+      "campaign_push": [
+        "Help Bring School Counselors to 100%",
+        "Fund a Full-Time Librarian for {school}",
+        "Help Us Hit Our {dollar} Goal",
+        "{Number} More to {goal}"
+      ],
+      "sponsor_partnership": [
+        "Summer Plans = Support HBEF",
+        "Shop {Partner} = Fund HBEF",
+        "{Partner} Match: Double Your Impact"
+      ],
+      "survey": [
+        "{Event} Feedback",
+        "Help HBEF Make Next Year's {Event} Even Better",
+        "Tell Us How We Did"
+      ],
+      "recruitment": [
+        "Get Involved with HBEF",
+        "Join the HBEF Team for {year}",
+        "We're Looking for {role}"
+      ],
+      "vote": [
+        "{Partner} {Program} — Vote for HBEF",
+        "Vote for HBEF Today",
+        "Help Us Stay in the {Program}"
+      ],
+      "event_promo": [
+        "Swing Hard. Support Schools. Repeat.",
+        "Mark Your Calendar: {Event}",
+        "{Event} Is Almost Here",
+        "Don't Miss {Event}"
+      ],
+      "recap": [
+        "{Event} Thanks",
+        "{Event}: The Check Is In",
+        "We Did It, Hermosa!",
+        "{Event} Raised ${X} for Our Schools"
+      ],
+      "spotlight": [
+        "{Role} Spotlight: {Name}",
+        "Meet {Name}, Our {Role}"
+      ]
+    },
+    "first_sentence_openers": {
+      "campaign": [
+        "HBEF is bridging the gap to {action}…",
+        "We're raising ${X} for {program}…",
+        "Help us get to {goal}…"
+      ],
+      "sponsor": [
+        "Finalizing your {plans}? Use our exclusive code…",
+        "{Partner} has joined HBEF for an exclusive offer…",
+        "Shop at {Partner} this month and {match mechanic}…"
+      ],
+      "survey": [
+        "Help HBEF make next year's {event} even better…",
+        "We'd love your feedback on {event}…",
+        "Quick survey, big impact…"
+      ],
+      "recruitment": [
+        "Join the Team for {year}!",
+        "We're recruiting for {role(s)}…",
+        "Do you have a talent for {skills}?"
+      ],
+      "vote": [
+        "There's still time to vote for HBEF!",
+        "Our generous Community Partner, {Partner}, is selecting…"
+      ],
+      "event_promo": [
+        "{Event} is almost here…",
+        "Mark your calendar — {Event} on {Date}…",
+        "Do you {activity}?"
+      ],
+      "recap": [
+        "Thank you to everyone who {verbs} at this year's {event}!",
+        "We did it! {Event} raised ${X}…"
+      ]
+    },
+    "cta_patterns": {
+      "donate": [
+        "Donate HERE by {date} to help us get to {goal}!",
+        "Make your gift here.",
+        "Support HBEF today!"
+      ],
+      "survey": [
+        "Take the survey here.",
+        "{Event} Survey",
+        "Share your feedback here."
+      ],
+      "vote": [
+        "VOTE for HBEF today!",
+        "Voting closes {date}.",
+        "Cast your vote here."
+      ],
+      "register": [
+        "Secure your spot here!",
+        "Register today!",
+        "Sign up here — spots are filling fast!"
+      ],
+      "shop": [
+        "Use code {CODE} at {url}!",
+        "Shop with code {CODE} at {url}."
+      ],
+      "email": [
+        "Email {role}@hbef.org to learn more.",
+        "Reach out to {email} — we'd love to connect!",
+        "Interested? We'd love to hear from you!"
+      ]
+    },
+    "transition_phrases": [
+      "The best part?",
+      "Because of this incredible community…",
+      "Together, we can…",
+      "Inspired by {event} and looking for a way to get more involved?",
+      "Whether you {option 1}, {option 2}, or {option 3}…",
+      "Please spread the word…",
+      "We'd love your feedback…"
+    ],
+    "signature_closes": [
+      "Together, we can make Hermosa schools stronger!",
+      "We'd love to hear from you!",
+      "Spread the word!",
+      "Thanks for being part of the HBEF community."
+    ],
+    "mission_anchors": [
+      "Funding matters. Your donation, their future.",
+      "100% Volunteers | 100% Parents",
+      "Together, we can make Hermosa schools stronger.",
+      "Every role directly supports Hermosa schools and students.",
+      "Make a direct impact on every student in Hermosa Schools."
+    ]
+  },
+  "format_targets": {
+    "article": {
+      "min_words": 80,
+      "max_words": 150,
+      "headline_words_min": 4,
+      "headline_words_max": 8,
+      "first_sentence_words_min": 20,
+      "first_sentence_words_max": 35,
+      "bold_phrases_target": [2, 4],
+      "hyperlinks_max": 2,
+      "emojis_max": 1,
+      "hashtags_in_body": 0,
+      "image_suggestions_required": true
+    },
+    "surf_report_extra": {
+      "min_words": 100,
+      "max_words": 250,
+      "single_topic_only": true
+    }
+  },
+  "emoji_palette_surf_report": {
+    "approved": ["📚", "❤️", "⛳", "☀️", "🎉"],
+    "use_cap_per_article": 1,
+    "use_strict": true,
+    "comment": "Surf Report is text-forward. Emoji is signaling, not decoration. Use significantly less than the Facebook palette."
+  },
+  "bold_emphasis_targets": [
+    "dates and deadlines",
+    "dollar amounts and percentages",
+    "discount codes",
+    "school names on first mention",
+    "time windows",
+    "key reader actions",
+    "the primary number/goal in the article"
+  ],
+  "submission_workflow": {
+    "submit_to": "communications@hvpto.com",
+    "cc_default": "Rob Chong (HBEF Surf Report owner)",
+    "deadline": "Friday morning for Sunday issue",
+    "preferred_deadline": "Thursday end of day",
+    "subject_line_format": "HBEF submission for {Issue Date} Surf Report",
+    "urgent_extra_subject": "URGENT: Surf Report Extra — {topic}",
+    "platform": "Constant Contact"
+  },
+  "surf_report_metadata": {
+    "publication": "HVS Surf Report",
+    "publisher": "HVPTO (Hermosa View, Vista & Valley Parent Teacher Organization)",
+    "cadence": "Weekly, Sunday afternoon",
+    "extras_cadence": "Mid-week as needed for urgent items",
+    "subject_line_format": "HVPTO Surf Report MM.DD.YY",
+    "global_hashtag": "#PoweredByHVPTO",
+    "archive_url": "hvpto.com",
+    "submission_url": "communications@hvpto.com",
+    "hbef_section_label": "HBEF",
+    "hbef_section_color": "red",
+    "hbef_section_alignment": "centered"
+  },
+  "design_observed": {
+    "banner": {
+      "wordmark": "HVS SURF REPORT",
+      "imagery": "palm trees, lifeguard tower, sun disc, beach, ocean horizon",
+      "underbar_text": "News from Hermosa View, Vista, & Valley Parent Teacher Organization",
+      "underbar_color": "#0B4261 navy approximate"
+    },
+    "section_dividers": {
+      "color": "#D43A3A red approximate",
+      "alignment": "centered",
+      "casing": "UPPERCASE",
+      "weight": "bold"
+    },
+    "article_title": {
+      "color": "#1E5A8A blue approximate",
+      "weight": "bold",
+      "size_pt_approx": [16, 18],
+      "casing": "Title Case"
+    },
+    "body_text": {
+      "color": "#1A1A1A near-black",
+      "weight": "regular",
+      "size_pt_approx": [13, 14]
+    },
+    "hyperlinks": {
+      "color": "#2E7AC9 link blue",
+      "underlined": true
+    },
+    "image": {
+      "alignment": "right",
+      "column_width_pct_approx": 30
+    }
+  },
+  "hbef_specifics": {
+    "section_label_in_surf_report": "HBEF",
+    "owner_2025_26": "Rob Chong",
+    "owner_role": "Surf Report & Room Parent Comms",
+    "typical_articles_per_issue": [2, 5],
+    "evergreen_filler": "Volunteer/Board Recruitment article",
+    "best_image_subjects": [
+      "Counselor / Spotlight subject portrait",
+      "Event photo (credit Jennifer Faulk Photography)",
+      "Event poster / themed graphic",
+      "Sponsor logo (when promoting sponsor partnership)",
+      "Community partner logo (Lazy Acres, Gum Tree, etc.)"
+    ]
+  },
+  "related_skills": ["hbef-brand", "hbef-fb-voice"]
+}

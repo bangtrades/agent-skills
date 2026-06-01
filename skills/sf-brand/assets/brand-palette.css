@@ -1,0 +1,208 @@
+/* ============================================================
+ * Summer Fridays brand palette + typography — drop-in CSS
+ * Version: 2026-05-17
+ * Source: extracted from summerfridays.com + brand calibration
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="brand-palette.css">
+ * Or copy the :root block into your own stylesheet.
+ * ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+@font-face {
+  font-family: "Futura PT";
+  /* Adobe Typekit kit ljq5ufs — only loads if site has the kit license.
+     For local rendering, the chain falls back to Avenir Next. */
+  src: local("Futura PT"), local("Futura"), local("Avenir Next"),
+       local("Avenir"), local("Helvetica Neue");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Neutrals ---- */
+  --sf-ink:              #1A1A1A;
+  --sf-ink-60:           #5C5C5C;
+  --sf-ink-30:           #A8A8A8;
+  --sf-chalk:            #FAF6EF;
+  --sf-white:            #FFFFFF;
+
+  /* ---- Brand accents ---- */
+  --sf-morning-sky:      #BDD7E5;
+  --sf-morning-sky-deep: #7DA8BD;
+  --sf-clay:             #C9A582;
+  --sf-vanilla:          #F5E9DD;
+
+  /* ---- Product shades — sweet pastel ---- */
+  --sf-pink-sugar:       #FC88AB;
+  --sf-pink-guava:       #B44F65;
+  --sf-cherry:           #A84544;
+  --sf-poppy:            #A43062;
+  --sf-sweet-mint:       #A4C089;
+
+  /* ---- Product shades — warm deep (coffee taxonomy) ---- */
+  --sf-toffee:           #C1947F;
+  --sf-latte:            #997970;
+  --sf-pecan:            #8D5A54;
+  --sf-cinnamon:         #9B6E53;
+  --sf-hot-cocoa:        #6B3D2E;
+  --sf-espresso:         #674736;
+
+  /* ---- Product shades — warm bright (blush) ---- */
+  --sf-soft-strawberry:  #FE99A8;
+  --sf-pink-sunset:      #E45D50;
+  --sf-sweet-rose:       #EF426F;
+  --sf-toasted-terracotta:#BD4F5C;
+  --sf-sand-neutral:     #C9BBA0;
+
+  /* ---- Functional UI ---- */
+  --sf-accent-blue:      #3C5A78;
+  --sf-success:          #7CA982;
+  --sf-warning:          #D9A06B;
+  --sf-risk:             #A84544;
+  --sf-muted-border:     #E5E5EB;
+  --sf-muted-text:       #676986;
+
+  /* ---- Typography ---- */
+  --sf-font-body: "Futura PT", "Avenir Next", Avenir, "Helvetica Neue",
+                  Helvetica, Arial, sans-serif;
+  --sf-font-display: "Cormorant Garamond", "Playfair Display", Garamond,
+                     Georgia, serif;
+  --sf-body-weight: 450;
+  --sf-body-line-height: 1.55;
+  --sf-body-letter-spacing: 0.013em;
+}
+
+/* ============================================================
+ * Convenience utility classes
+ * ============================================================ */
+
+.sf-bg-chalk         { background-color: var(--sf-chalk); }
+.sf-bg-white         { background-color: var(--sf-white); }
+.sf-bg-morning-sky   { background-color: var(--sf-morning-sky); }
+.sf-bg-vanilla       { background-color: var(--sf-vanilla); }
+.sf-bg-clay          { background-color: var(--sf-clay); }
+.sf-bg-pink-sugar    { background-color: var(--sf-pink-sugar); }
+
+.sf-text-ink         { color: var(--sf-ink); }
+.sf-text-ink-60      { color: var(--sf-ink-60); }
+.sf-text-morning-sky-deep { color: var(--sf-morning-sky-deep); }
+.sf-text-accent-blue { color: var(--sf-accent-blue); }
+
+.sf-font-body    { font-family: var(--sf-font-body); }
+.sf-font-display { font-family: var(--sf-font-display); }
+
+.sf-eyebrow {
+  font-family: var(--sf-font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sf-ink-60);
+}
+
+.sf-h1 {
+  font-family: var(--sf-font-body);
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: var(--sf-ink);
+  line-height: 1.15;
+}
+
+.sf-h2 {
+  font-family: var(--sf-font-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--sf-ink);
+  line-height: 1.25;
+}
+
+.sf-h3 {
+  font-family: var(--sf-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sf-morning-sky-deep);
+}
+
+.sf-body {
+  font-family: var(--sf-font-body);
+  font-size: 1rem;
+  font-weight: var(--sf-body-weight);
+  line-height: var(--sf-body-line-height);
+  letter-spacing: var(--sf-body-letter-spacing);
+  color: var(--sf-ink);
+}
+
+.sf-lead {
+  font-family: var(--sf-font-body);
+  font-size: 1.15rem;
+  font-weight: var(--sf-body-weight);
+  line-height: 1.5;
+  color: var(--sf-ink);
+}
+
+.sf-pull-quote {
+  font-family: var(--sf-font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--sf-ink);
+  border-left: 3px solid var(--sf-morning-sky);
+  padding-left: 1.5rem;
+}
+
+.sf-callout {
+  padding: 1rem 1.25rem;
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+.sf-callout--sky     { background: var(--sf-morning-sky); }
+.sf-callout--vanilla { background: var(--sf-vanilla); }
+.sf-callout--clay    { background: var(--sf-clay); }
+.sf-callout--pink    { background: var(--sf-pink-sugar); }
+
+.sf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sf-font-body);
+  font-size: 0.9rem;
+}
+.sf-table thead th {
+  background: var(--sf-morning-sky);
+  color: var(--sf-ink);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--sf-morning-sky-deep);
+}
+.sf-table tbody td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 0.5px solid var(--sf-muted-border);
+}
+.sf-table tbody tr:nth-child(even) td { background: var(--sf-chalk); }
+.sf-table tbody tr:nth-child(odd) td  { background: var(--sf-white); }
+
+.sf-stat {
+  text-align: center;
+}
+.sf-stat__value {
+  font-family: var(--sf-font-body);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--sf-morning-sky-deep);
+  line-height: 1;
+}
+.sf-stat__label {
+  font-family: var(--sf-font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sf-ink-60);
+  margin-top: 0.25rem;
+}

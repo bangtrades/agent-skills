@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orchestration"
+  short_description: "Coordinate complex software builds"
+  default_prompt: "Use $orchestration to plan agent slices, reporting, tests, and release sequencing for the current software project."
+
+policy:
+  allow_implicit_invocation: true

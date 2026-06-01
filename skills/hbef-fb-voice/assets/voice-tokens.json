@@ -1,0 +1,205 @@
+{
+  "$schema": "https://schemas.hbef.org/voice-tokens/v1",
+  "name": "HBEF Facebook Voice Tokens",
+  "version": "1.0.0",
+  "source": "facebook.com/HBEF90254 + hbef.org news + event pages",
+  "extracted": "2026-05-26",
+  "phrases": {
+    "openers": {
+      "save_the_date": [
+        "Mark your calendar…",
+        "It's that time of year again — time to {themed verb}",
+        "{Event} is coming!",
+        "The countdown is officially on!",
+        "{Event}: {Theme subtitle}"
+      ],
+      "tickets_on_sale": [
+        "🚨 SET YOUR ALARMS 🚨",
+        "Tickets on Sale: {Day, Date}, {TIME}!",
+        "Set your alarm for {time} on {day} to grab your tickets"
+      ],
+      "event_recap": [
+        "A heartfelt THANK YOU to everyone who…",
+        "What a {themed adjective: voyage/night/rodeo}!",
+        "We did it, Hermosa!",
+        "The Check Is In: ${X}!"
+      ],
+      "annual_giving": [
+        "We want to extend a heartfelt thanks for your support…",
+        "We've raised ${X} toward our ${goal} goal — {%} of the way there!",
+        "Every dollar makes a real, tangible difference"
+      ],
+      "program_update": [
+        "HBEF is working to bridge the gap and ensure that…",
+        "Thanks to your support, {School(s)} now has…",
+        "This is what your gifts fund: {program}"
+      ],
+      "volunteer_ask": [
+        "We're looking for {role} for {event}!",
+        "Want to get involved?",
+        "Calling all {themed noun: crew / wranglers / hosts}!"
+      ]
+    },
+    "gratitude_beats": [
+      "A heartfelt THANK YOU",
+      "We are deeply grateful",
+      "We are so grateful to our Hermosa community for their generous support",
+      "Special thanks to our incredible {role}, {names}",
+      "Thanks also to the following generous supporters: {list}",
+      "Your support was essential.",
+      "Thanks to your incredible efforts, we raised…"
+    ],
+    "impact_statements": [
+      "Without this funding, these programs would not have been possible.",
+      "Your generosity demonstrates that education truly matters in our community.",
+      "This funding allows us to provide programs the state won't.",
+      "Helping HBEF fund vital educational programs that would otherwise be unavailable to our Hermosa students",
+      "We were able to fund over 5% of this year's HBCSD budget."
+    ],
+    "soft_urgency": [
+      "Sells out every year in record time.",
+      "Don't miss your chance to secure your spot!",
+      "Tickets sell out quickly, so act fast!",
+      "Limited quantity available.",
+      "Tickets are limited."
+    ],
+    "low_pressure_volunteer": [
+      "Inquiring doesn't commit you; we're here to help!",
+      "Whether you have a little or a lot of time to spare, your contribution will be greatly appreciated.",
+      "Any amount welcome — what matters is that every family participates."
+    ],
+    "signature_taglines": [
+      "Funding matters. Your donation, their future.",
+      "100% Volunteers | 100% Parents",
+      "It Takes a Village OF 100%",
+      "Funding education. Empowering students. Strengthening community.",
+      "Every dollar counts!"
+    ],
+    "sign_offs_generic": [
+      "Well Done, Hermosa!",
+      "We are so grateful to our Hermosa community.",
+      "Save the date for the next one: {Date}",
+      "Let's get this party brainstorming started!",
+      "Here's to another incredible year!"
+    ],
+    "sign_offs_themed": {
+      "come_sail_away": [
+        "Anchors Down!",
+        "Thank you for sailing with us!",
+        "Fair winds, Hermosa!",
+        "Ahoy, friends — see you on deck!"
+      ],
+      "boots_on_the_beach": [
+        "Yee-haw, Hermosa!",
+        "Until the next rodeo!",
+        "Boot-scootin' grateful!"
+      ],
+      "ocean_air_epic_beats": [
+        "See you on the dance floor!",
+        "Until the next set drops!"
+      ]
+    },
+    "ctas": [
+      "DONATE NOW",
+      "GIVE NOW",
+      "BUY TICKETS",
+      "REGISTER NOW",
+      "LEARN MORE",
+      "SUPPORT HBEF NOW",
+      "JOIN WAITLIST",
+      "BID NOW",
+      "CONTACT US",
+      "VOLUNTEER"
+    ],
+    "ask_anchor_phrases": [
+      "Suggested family gift: $1,000 per enrolled child.",
+      "Any amount is welcome — what matters is that every family participates.",
+      "Help us reach 100% family participation.",
+      "Every dollar funds programs the state won't."
+    ],
+    "tax_language": "Tax-deductible! HBEF is a 501(c)(3) — EIN 33-0522270."
+  },
+  "emoji_palette": {
+    "core": {
+      "📚": "education / program / counseling",
+      "🚨": "tickets-on-sale alarm",
+      "🪩": "dance / DJ / party night",
+      "🎟️": "raffle / tickets",
+      "❤️": "Hearts of Hermosa, community love",
+      "☀️": "summer / outdoor / beach",
+      "🎉": "celebration / record-breaking",
+      "🎶": "music / band / DJ"
+    },
+    "theme_accents": {
+      "⚓": "Come Sail Away — 2026 HoH",
+      "🤠": "Boots on the Beach — 2025 HoH",
+      "🌴": "tropical / beach themes",
+      "🛟": "life-saver theme variants"
+    },
+    "forbidden": [
+      "🙏 (too churchy)",
+      "💯 (HBEF says '100%' in words)",
+      "👏 (clap-as-punctuation reads off-brand)",
+      "🔥 (off-brand hype tone)",
+      "🥰",
+      "😍 (too gushing)",
+      "💸",
+      "💰 (commodifies the mission)"
+    ],
+    "cap_per_post": 2,
+    "cap_event_night": 3
+  },
+  "hashtags": {
+    "standard": ["#HBEF", "#HBEF90254", "#HermosaBeach", "#HermosaSchools"],
+    "mission": ["#FundingMatters", "#100Percent"],
+    "regional": ["#SouthBay"],
+    "event_specific": [
+      "#HeartsOfHermosa",
+      "#SkechersFriendshipWalk",
+      "#MomsNightOut",
+      "#AnnualGiving",
+      "#TheStrandClassic",
+      "#SantaPhotos"
+    ],
+    "cap_per_post": 5,
+    "placement": "end of post, dedicated last line, never inline"
+  },
+  "post_length_targets": {
+    "save_the_date": [250, 400],
+    "tickets_on_sale": [150, 300],
+    "event_recap": [400, 800],
+    "check_delivery": [400, 700],
+    "annual_giving_push": [300, 500],
+    "sponsor_spotlight": [100, 250],
+    "volunteer_ask": [150, 300],
+    "program_update": [80, 250],
+    "last_call": [100, 200],
+    "photo_gallery_drop": [60, 150]
+  },
+  "fb_truncation_point_chars": 480,
+  "tier_names_canonical": [
+    {"name": "Brighter Benefactor", "threshold_usd": 25000},
+    {"name": "Diamond", "threshold_usd": 15000},
+    {"name": "Platinum", "threshold_usd": 10000},
+    {"name": "Gold", "threshold_usd": 6000},
+    {"name": "Silver", "threshold_usd": 3500},
+    {"name": "Bronze", "threshold_usd": 1500}
+  ],
+  "events_canonical": [
+    "Hearts of Hermosa",
+    "Skechers Pier-to-Pier Friendship Walk",
+    "Moms' Night Out",
+    "Annual Giving Campaign",
+    "Santa Photos at Gum Tree",
+    "The Strand Classic",
+    "Bring the Thunder Back-to-School Bash",
+    "Thank You Party",
+    "Hearts of Hermosa Flash Parties"
+  ],
+  "schools": {
+    "HV": "Hermosa View School (TK–2)",
+    "Vista": "Hermosa Vista School (3–5)",
+    "Valley": "Hermosa Valley School (6–8)"
+  },
+  "related_skills": ["hbef-brand"]
+}

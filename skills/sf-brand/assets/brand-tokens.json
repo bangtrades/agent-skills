@@ -1,0 +1,113 @@
+{
+  "$schema": "sf-brand-tokens/v1",
+  "brand": "Summer Fridays",
+  "version": "2026-05-17",
+  "provenance": {
+    "font_confirmed_via": "Adobe Typekit kit ljq5ufs on summerfridays.com",
+    "product_shades_extracted_from": "summerfridays.com swatch CSS in source HTML",
+    "neutrals_calibrated_from": "site rendering of Shopify theme variables --ink, --chalk, --clay, --morning-sky",
+    "calibration_note": "Update INK / CHALK / MORNING_SKY / CLAY if first-party theme settings_data.json becomes available"
+  },
+  "colors": {
+    "neutrals": {
+      "INK":               { "hex": "#1A1A1A", "rgb": [26, 26, 26],   "role": "Primary text" },
+      "INK_60":            { "hex": "#5C5C5C", "rgb": [92, 92, 92],   "role": "Secondary text" },
+      "INK_30":            { "hex": "#A8A8A8", "rgb": [168, 168, 168],"role": "Tertiary text, thin rules" },
+      "CHALK":             { "hex": "#FAF6EF", "rgb": [250, 246, 239],"role": "Page background, soft-fill cards" },
+      "WHITE":             { "hex": "#FFFFFF", "rgb": [255, 255, 255],"role": "Inset cards only" }
+    },
+    "brand_accents": {
+      "MORNING_SKY":       { "hex": "#BDD7E5", "rgb": [189, 215, 229],"role": "Signature Jet Lag blue" },
+      "MORNING_SKY_DEEP":  { "hex": "#7DA8BD", "rgb": [125, 168, 189],"role": "Deeper Jet Lag blue, chart contrast" },
+      "CLAY":              { "hex": "#C9A582", "rgb": [201, 165, 130],"role": "Warm sand accent" },
+      "VANILLA":           { "hex": "#F5E9DD", "rgb": [245, 233, 221],"role": "Cream (LBB signature)" }
+    },
+    "product_shades_sweet": {
+      "PINK_SUGAR":        { "hex": "#FC88AB" },
+      "PINK_GUAVA":        { "hex": "#B44F65" },
+      "CHERRY":            { "hex": "#A84544" },
+      "POPPY":             { "hex": "#A43062" },
+      "SWEET_MINT":        { "hex": "#A4C089" }
+    },
+    "product_shades_warm_deep": {
+      "TOFFEE":            { "hex": "#C1947F" },
+      "LATTE":             { "hex": "#997970" },
+      "PECAN":             { "hex": "#8D5A54" },
+      "CINNAMON":          { "hex": "#9B6E53" },
+      "HOT_COCOA":         { "hex": "#6B3D2E" },
+      "ESPRESSO":          { "hex": "#674736" }
+    },
+    "product_shades_warm_bright": {
+      "SOFT_STRAWBERRY":   { "hex": "#FE99A8" },
+      "PINK_SUNSET":       { "hex": "#E45D50" },
+      "SWEET_ROSE":        { "hex": "#EF426F" },
+      "TOASTED_TERRACOTTA":{ "hex": "#BD4F5C" },
+      "SAND_NEUTRAL":      { "hex": "#C9BBA0" }
+    },
+    "functional_ui": {
+      "ACCENT_BLUE":       { "hex": "#3C5A78", "role": "Hyperlinks, citations, CTAs" },
+      "SUCCESS":           { "hex": "#7CA982", "role": "Positive variance" },
+      "WARNING":           { "hex": "#D9A06B", "role": "Caution" },
+      "RISK":              { "hex": "#A84544", "role": "Risk flags (alias of CHERRY)" },
+      "MUTED_BORDER":      { "hex": "#E5E5EB", "role": "Table cell borders, card outlines" },
+      "MUTED_TEXT":        { "hex": "#676986", "role": "Tertiary review-style meta" }
+    }
+  },
+  "typography": {
+    "families": {
+      "primary": "Futura PT",
+      "primary_fallback_chain": ["Futura PT", "Futura", "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+      "display": "Cormorant Garamond",
+      "display_fallback_chain": ["Cormorant Garamond", "Playfair Display", "Garamond", "Georgia", "serif"]
+    },
+    "weights": {
+      "body": 450,
+      "regular": 500,
+      "light": 300
+    },
+    "letter_spacing": {
+      "body_em": 0.013,
+      "eyebrow_em": 0.12,
+      "h1_em": 0.025,
+      "h3_em": 0.12
+    }
+  },
+  "chart_palette": {
+    "categorical_order": ["#7DA8BD", "#C9A582", "#B44F65", "#6B3D2E", "#A4C089", "#5C5C5C"],
+    "single_series_default": "#7DA8BD",
+    "single_series_lip": "#B44F65",
+    "single_series_fragrance": "#C9A582",
+    "gridline": "#E5E5EB",
+    "axis_text": "#5C5C5C",
+    "chart_background": "#FAF6EF"
+  },
+  "callout_tones": {
+    "sky":     { "fill": "#BDD7E5", "text": "#1A1A1A", "use_for": "default recommendations" },
+    "vanilla": { "fill": "#F5E9DD", "text": "#1A1A1A", "use_for": "gourmand, fragrance, lip topics" },
+    "clay":    { "fill": "#C9A582", "text": "#1A1A1A", "use_for": "retail, distribution, travel topics" },
+    "pink":    { "fill": "#FC88AB", "text": "#1A1A1A", "use_for": "lip franchise highlights" }
+  },
+  "spacing": {
+    "page_margin_top_in": 1.0,
+    "page_margin_bottom_in": 1.0,
+    "page_margin_side_in": 1.1,
+    "section_divider_color_rotation": ["MORNING_SKY", "CLAY", "VANILLA", "MORNING_SKY_DEEP"]
+  },
+  "voice": {
+    "brand_mark": "Summer Fridays",
+    "do_not_write": ["SummerFridays", "summer fridays", "Summer fridays"],
+    "founders_first_reference": "Marianna Hewitt and Lauren Gores Ireland",
+    "founders_subsequent": "Marianna and Lauren",
+    "hero_trademarks": {
+      "Jet Lag Mask": "Jet Lag™ Mask",
+      "Cloud Dew": "Cloud Dew®",
+      "Sunlit Vanilla": "Sunlit Vanilla™",
+      "Jet Lag Eye Patches": "Jet Lag™ Eye Patches",
+      "CC Me Serum": "CC Me Vitamin C Serum®",
+      "Gentle Reset": "Gentle Reset™",
+      "Jet Lag Collection": "Jet Lag™ Collection"
+    },
+    "avoid_words": ["leverage", "synergy", "game-changing", "revolutionary", "actionable insights"],
+    "favor_words": ["dewy", "cushion", "soothing", "luminous", "gentle", "butter", "cloud", "soft", "warm", "ease", "ritual", "glow"]
+  }
+}

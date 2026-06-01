@@ -1,0 +1,15 @@
+{
+  "name": "bt-equity-report-template",
+  "version": "1.0.0",
+  "description": "BT Stock Report — Druckenmiller-tier equity research dossier template",
+  "main": "build_report.js",
+  "scripts": {
+    "build": "node build_report.js",
+    "build-pdf": "node build_report.js && python ~/.claude/skills/docx/scripts/office/soffice.py --headless --convert-to pdf $(ls *.docx | tail -1) --outdir ."
+  },
+  "dependencies": {
+    "docx": "^9.0.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

@@ -1,0 +1,102 @@
+/* {ENTITY_NAME} Brand Tokens
+ * Drop into any web deliverable: dashboards, demos, mockups.
+ * Extracted from {primary_url} via Firecrawl branding analysis {DATE}.
+ */
+
+:root {
+  /* Primary brand colors */
+  --{SLUG_LOWER}-primary:    {primary-hex};
+  --{SLUG_LOWER}-secondary:  {secondary-hex};
+  --{SLUG_LOWER}-accent:     {accent-hex};
+  --{SLUG_LOWER}-background: {background-hex};
+
+  /* Supporting tones */
+  --{SLUG_LOWER}-tone-1:     {hex};
+  --{SLUG_LOWER}-tone-2:     {hex};
+  --{SLUG_LOWER}-tone-3:     {hex};
+  --{SLUG_LOWER}-tone-4:     {hex};
+  --{SLUG_LOWER}-white:      #FFFFFF;
+
+  /* Text colors */
+  --{SLUG_LOWER}-text-primary:  {hex};
+  --{SLUG_LOWER}-text-inverse:  {hex};
+  --{SLUG_LOWER}-text-muted:    {hex};
+
+  /* Functional */
+  --{SLUG_LOWER}-success:  {hex};
+  --{SLUG_LOWER}-warn:     {hex};
+  --{SLUG_LOWER}-danger:   {hex};
+
+  /* Typography */
+  --{SLUG_LOWER}-font-primary:   '{Primary Font}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --{SLUG_LOWER}-font-secondary: '{Secondary Font}', '{Primary Font}', sans-serif;
+
+  /* Type scale */
+  --{SLUG_LOWER}-fs-display:    {size}px;
+  --{SLUG_LOWER}-fs-h1:         {size}px;
+  --{SLUG_LOWER}-fs-h2:         {size}px;
+  --{SLUG_LOWER}-fs-h3:         {size}px;
+  --{SLUG_LOWER}-fs-body:       {size}px;
+  --{SLUG_LOWER}-fs-small:      {size}px;
+  --{SLUG_LOWER}-fs-eyebrow:    {size}px;
+
+  /* Weights */
+  --{SLUG_LOWER}-fw-regular:    400;
+  --{SLUG_LOWER}-fw-semibold:   600;
+  --{SLUG_LOWER}-fw-bold:       700;
+
+  /* Line heights */
+  --{SLUG_LOWER}-lh-tight:    1.15;
+  --{SLUG_LOWER}-lh-snug:     1.3;
+  --{SLUG_LOWER}-lh-normal:   1.5;
+  --{SLUG_LOWER}-lh-loose:    1.75;
+
+  /* Spacing (4px base) */
+  --{SLUG_LOWER}-space-1:   4px;
+  --{SLUG_LOWER}-space-2:   8px;
+  --{SLUG_LOWER}-space-3:   12px;
+  --{SLUG_LOWER}-space-4:   16px;
+  --{SLUG_LOWER}-space-5:   24px;
+  --{SLUG_LOWER}-space-6:   32px;
+  --{SLUG_LOWER}-space-7:   48px;
+  --{SLUG_LOWER}-space-8:   64px;
+  --{SLUG_LOWER}-space-9:   96px;
+
+  /* Radii */
+  --{SLUG_LOWER}-radius-sharp:    0px;
+  --{SLUG_LOWER}-radius-subtle:   {value};
+  --{SLUG_LOWER}-radius-card:     8px;
+  --{SLUG_LOWER}-radius-pill:     50px;
+
+  /* Shadows */
+  --{SLUG_LOWER}-shadow-card:   0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --{SLUG_LOWER}-shadow-hover:  0 4px 12px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Layout */
+  --{SLUG_LOWER}-max-width:     1200px;
+  --{SLUG_LOWER}-content-width: 800px;
+}
+
+/* Base resets */
+body {
+  font-family: var(--{SLUG_LOWER}-font-primary);
+  font-size: var(--{SLUG_LOWER}-fs-body);
+  line-height: var(--{SLUG_LOWER}-lh-normal);
+  color: var(--{SLUG_LOWER}-text-primary);
+  background: var(--{SLUG_LOWER}-background);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--{SLUG_LOWER}-font-primary);
+  color: var(--{SLUG_LOWER}-primary);
+  font-weight: var(--{SLUG_LOWER}-fw-bold);
+  line-height: var(--{SLUG_LOWER}-lh-tight);
+  margin: 0 0 var(--{SLUG_LOWER}-space-4) 0;
+}
+
+h1 { font-size: var(--{SLUG_LOWER}-fs-h1); letter-spacing: -0.01em; }
+h2 { font-size: var(--{SLUG_LOWER}-fs-h2); font-weight: var(--{SLUG_LOWER}-fw-semibold); letter-spacing: -0.01em; }
+h3 { font-size: var(--{SLUG_LOWER}-fs-h3); font-weight: var(--{SLUG_LOWER}-fw-semibold); }

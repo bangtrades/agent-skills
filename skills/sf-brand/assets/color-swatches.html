@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Summer Fridays — Color Swatches</title>
+<link rel="stylesheet" href="brand-palette.css">
+<style>
+  body {
+    margin: 0;
+    padding: 3rem 2.5rem;
+    background: var(--sf-chalk);
+    font-family: var(--sf-font-body);
+    color: var(--sf-ink);
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sf-ink-60); margin-bottom: 0.5rem; }
+  h1 { font-size: 2.5rem; font-weight: 500; letter-spacing: 0.02em; margin: 0 0 0.25rem; }
+  .subtitle { font-family: var(--sf-font-display); font-style: italic; font-size: 1.25rem; color: var(--sf-ink-60); margin: 0 0 0.5rem; }
+  .rule { width: 1.5rem; height: 2px; background: var(--sf-morning-sky); margin: 1rem 0 2.5rem; }
+
+  h2 { font-size: 1.5rem; font-weight: 500; margin: 2.5rem 0 1rem; }
+  h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sf-morning-sky-deep); font-weight: 500; margin: 0 0 0.75rem; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+  .swatch {
+    border: 1px solid var(--sf-muted-border);
+    overflow: hidden;
+    background: var(--sf-white);
+  }
+  .swatch .color { height: 110px; }
+  .swatch .meta {
+    padding: 0.6rem 0.75rem 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+  .swatch .name {
+    font-weight: 500;
+    color: var(--sf-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+  }
+  .swatch .hex {
+    font-family: SFMono-Regular, Consolas, Menlo, monospace;
+    color: var(--sf-ink-60);
+    margin-top: 0.15rem;
+  }
+  .swatch .role {
+    color: var(--sf-ink-60);
+    font-size: 0.7rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  .text-samples { background: var(--sf-white); border: 1px solid var(--sf-muted-border); padding: 1.5rem 2rem; margin-top: 1rem; }
+  .sample-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.4rem 0; border-bottom: 1px solid var(--sf-muted-border); }
+  .sample-row:last-child { border-bottom: none; }
+  .sample-row .meta { font-size: 0.75rem; color: var(--sf-ink-60); min-width: 12rem; font-family: SFMono-Regular, monospace; }
+  .sample-row .sample { flex: 1; }
+
+  .pairings { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 1rem; }
+  .pairing { padding: 1.25rem 1.5rem; border-radius: 2px; }
+  .pairing .lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.7; margin-bottom: 0.25rem; }
+  .pairing h4 { margin: 0 0 0.25rem; font-size: 1.1rem; font-weight: 500; }
+  .pairing p  { margin: 0; font-size: 0.85rem; line-height: 1.5; }
+
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--sf-ink-30); font-size: 0.75rem; color: var(--sf-ink-60); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="eyebrow">Summer Fridays  ·  Brand System</div>
+  <h1>Color Swatches</h1>
+  <p class="subtitle">The palette, rendered. Every value here ships from <code>brand-tokens.json</code>.</p>
+  <div class="rule"></div>
+
+  <!-- Neutrals -->
+  <h2>Brand neutrals — the document core</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#1A1A1A"></div><div class="meta"><div class="name">Ink</div><div class="hex">#1A1A1A</div><div class="role">Primary text</div></div></div>
+    <div class="swatch"><div class="color" style="background:#5C5C5C"></div><div class="meta"><div class="name">Ink 60</div><div class="hex">#5C5C5C</div><div class="role">Secondary text</div></div></div>
+    <div class="swatch"><div class="color" style="background:#A8A8A8"></div><div class="meta"><div class="name">Ink 30</div><div class="hex">#A8A8A8</div><div class="role">Tertiary, thin rules</div></div></div>
+    <div class="swatch"><div class="color" style="background:#FAF6EF"></div><div class="meta"><div class="name">Chalk</div><div class="hex">#FAF6EF</div><div class="role">Page background</div></div></div>
+    <div class="swatch"><div class="color" style="background:#FFFFFF;border-bottom:1px solid var(--sf-muted-border)"></div><div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">Inset cards only</div></div></div>
+  </div>
+
+  <!-- Brand accents -->
+  <h2>Brand accents</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#BDD7E5"></div><div class="meta"><div class="name">Morning Sky</div><div class="hex">#BDD7E5</div><div class="role">The Jet Lag blue</div></div></div>
+    <div class="swatch"><div class="color" style="background:#7DA8BD"></div><div class="meta"><div class="name">Morning Sky Deep</div><div class="hex">#7DA8BD</div><div class="role">Type on blue, chart</div></div></div>
+    <div class="swatch"><div class="color" style="background:#C9A582"></div><div class="meta"><div class="name">Clay</div><div class="hex">#C9A582</div><div class="role">Warm sand</div></div></div>
+    <div class="swatch"><div class="color" style="background:#F5E9DD"></div><div class="meta"><div class="name">Vanilla</div><div class="hex">#F5E9DD</div><div class="role">LBB cream signature</div></div></div>
+  </div>
+
+  <!-- Product sweet -->
+  <h2>Product shades — sweet pastel (Lip Butter Balm)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#FC88AB"></div><div class="meta"><div class="name">Pink Sugar</div><div class="hex">#FC88AB</div></div></div>
+    <div class="swatch"><div class="color" style="background:#B44F65"></div><div class="meta"><div class="name">Pink Guava</div><div class="hex">#B44F65</div></div></div>
+    <div class="swatch"><div class="color" style="background:#A84544"></div><div class="meta"><div class="name">Cherry</div><div class="hex">#A84544</div></div></div>
+    <div class="swatch"><div class="color" style="background:#A43062"></div><div class="meta"><div class="name">Poppy</div><div class="hex">#A43062</div></div></div>
+    <div class="swatch"><div class="color" style="background:#A4C089"></div><div class="meta"><div class="name">Sweet Mint</div><div class="hex">#A4C089</div></div></div>
+  </div>
+
+  <!-- Product warm deep -->
+  <h2>Product shades — warm deep (Lip Liner / coffee taxonomy)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#C1947F"></div><div class="meta"><div class="name">Toffee</div><div class="hex">#C1947F</div></div></div>
+    <div class="swatch"><div class="color" style="background:#997970"></div><div class="meta"><div class="name">Latte</div><div class="hex">#997970</div></div></div>
+    <div class="swatch"><div class="color" style="background:#8D5A54"></div><div class="meta"><div class="name">Pecan</div><div class="hex">#8D5A54</div></div></div>
+    <div class="swatch"><div class="color" style="background:#9B6E53"></div><div class="meta"><div class="name">Cinnamon</div><div class="hex">#9B6E53</div></div></div>
+    <div class="swatch"><div class="color" style="background:#6B3D2E"></div><div class="meta"><div class="name">Hot Cocoa</div><div class="hex">#6B3D2E</div></div></div>
+    <div class="swatch"><div class="color" style="background:#674736"></div><div class="meta"><div class="name">Espresso</div><div class="hex">#674736</div></div></div>
+  </div>
+
+  <!-- Product warm bright -->
+  <h2>Product shades — warm bright (Blush + Color)</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#FE99A8"></div><div class="meta"><div class="name">Soft Strawberry</div><div class="hex">#FE99A8</div></div></div>
+    <div class="swatch"><div class="color" style="background:#E45D50"></div><div class="meta"><div class="name">Pink Sunset</div><div class="hex">#E45D50</div></div></div>
+    <div class="swatch"><div class="color" style="background:#EF426F"></div><div class="meta"><div class="name">Sweet Rosé</div><div class="hex">#EF426F</div></div></div>
+    <div class="swatch"><div class="color" style="background:#BD4F5C"></div><div class="meta"><div class="name">Toasted Terracotta</div><div class="hex">#BD4F5C</div></div></div>
+    <div class="swatch"><div class="color" style="background:#C9BBA0"></div><div class="meta"><div class="name">Sand Neutral</div><div class="hex">#C9BBA0</div></div></div>
+  </div>
+
+  <!-- UI -->
+  <h2>Functional UI</h2>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#3C5A78"></div><div class="meta"><div class="name">Accent Blue</div><div class="hex">#3C5A78</div><div class="role">Links, citations</div></div></div>
+    <div class="swatch"><div class="color" style="background:#7CA982"></div><div class="meta"><div class="name">Success</div><div class="hex">#7CA982</div></div></div>
+    <div class="swatch"><div class="color" style="background:#D9A06B"></div><div class="meta"><div class="name">Warning</div><div class="hex">#D9A06B</div></div></div>
+    <div class="swatch"><div class="color" style="background:#A84544"></div><div class="meta"><div class="name">Risk</div><div class="hex">#A84544</div><div class="role">= Cherry</div></div></div>
+  </div>
+
+  <!-- Type samples -->
+  <h2>Typography in action</h2>
+  <div class="text-samples">
+    <div class="sample-row"><div class="meta">Cover title — 36pt 500</div><div class="sample" style="font-size:2.2rem;font-weight:500;">Every Day a Summer Friday</div></div>
+    <div class="sample-row"><div class="meta">Cover subtitle — 18pt italic display</div><div class="sample" style="font-family:var(--sf-font-display);font-size:1.25rem;font-style:italic;color:var(--sf-ink-60)">The brand intelligence brief for Q2 2026</div></div>
+    <div class="sample-row"><div class="meta">H1 — 22pt 500</div><div class="sample sf-h1">Section Heading</div></div>
+    <div class="sample-row"><div class="meta">H2 — 16pt 500</div><div class="sample sf-h2">Sub-section Heading</div></div>
+    <div class="sample-row"><div class="meta">H3 — 12pt uppercase</div><div class="sample sf-h3">Sub-sub-section Heading</div></div>
+    <div class="sample-row"><div class="meta">Lead — 13pt 450</div><div class="sample sf-lead">The lead paragraph carries the headline insight in slightly larger type than the body.</div></div>
+    <div class="sample-row"><div class="meta">Body — 11pt 450</div><div class="sample sf-body">Body copy reads soft, sun-warmed, California-coded. The brand voice avoids consultancy speak.</div></div>
+    <div class="sample-row"><div class="meta">Pull quote — 18pt italic display</div><div class="sample"><blockquote class="sf-pull-quote" style="margin:0;">"Every day should feel like a Summer Friday."</blockquote></div></div>
+    <div class="sample-row"><div class="meta">Eyebrow — 9pt uppercase</div><div class="sample sf-eyebrow">Marketing Intelligence · May 2026</div></div>
+  </div>
+
+  <!-- Pairings -->
+  <h2>Callout pairings</h2>
+  <div class="pairings">
+    <div class="pairing sf-callout--sky"><div class="lbl">Recommendation · sky</div><h4>Default tone</h4><p>Use Morning Sky for general recommendations and "watch this signal" callouts.</p></div>
+    <div class="pairing sf-callout--vanilla"><div class="lbl">Gourmand · vanilla</div><h4>Fragrance + lip topics</h4><p>Use Vanilla cream when the callout supports fragrance, gourmand scent, or Lip Butter Balm content.</p></div>
+    <div class="pairing sf-callout--clay"><div class="lbl">Retail · clay</div><h4>Distribution + travel</h4><p>Use Clay for retail strategy, distribution growth, and travel/wellness platform content.</p></div>
+    <div class="pairing sf-callout--pink"><div class="lbl">Lip · pink</div><h4>Lip franchise highlight</h4><p>Use Pink Sugar when the callout is specifically about the lip franchise and you want it to pop.</p></div>
+  </div>
+
+  <footer>
+    Generated 2026-05-17 · Summer Fridays brand skill v1 · Calibrated from summerfridays.com theme 450 + Adobe Typekit kit ljq5ufs
+  </footer>
+
+</div>
+</body>
+</html>

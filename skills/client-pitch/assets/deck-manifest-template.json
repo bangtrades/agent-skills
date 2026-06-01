@@ -1,0 +1,34 @@
+{
+  "client": "",
+  "brand_skill": "",
+  "audience": "executive team",
+  "offer": "Agent Director / agentic AI build sprint",
+  "output_files": {
+    "pptx": "<Client>_Agent_Director_Pitch.pptx",
+    "pdf": "<Client>_Agent_Director_Pitch.pdf"
+  },
+  "slides": [
+    "Cover / Thesis",
+    "What Agents Are",
+    "Current Operating Mess",
+    "System Architecture",
+    "Use Cases",
+    "Acceleration Analogy",
+    "Build Scenarios",
+    "Roadmap / Timeline",
+    "Close / Operating Model"
+  ],
+  "required_visuals": [
+    "client proof visual or app/dashboard preview",
+    "messy current-state operating model",
+    "architecture map",
+    "acceleration analogy"
+  ],
+  "qa": [
+    "render contact sheet",
+    "check PPTX integrity",
+    "verify slide/page count",
+    "verify stale phrase replacements",
+    "export matching PDF"
+  ]
+}

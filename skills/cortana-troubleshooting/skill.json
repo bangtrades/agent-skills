@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "cortana.skill",
+  "id": "cortana-troubleshooting",
+  "name": "Cortana Troubleshooting",
+  "description": "Troubleshoot Cortana Paperclip, shim, router, budget, skills, memory, and UI incidents using read-only diagnostics and smoke-test workflows.",
+  "version": "0.1.0",
+  "tools": [
+    {
+      "name": "cortana_diagnostic_snapshot",
+      "description": "Prepare a read-only diagnostic snapshot plan for the local Cortana stack. Does not mutate Docker, database, capability markers, credentials, or Paperclip state.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "focus": {
+            "type": "string",
+            "enum": ["general", "paperclip", "router", "shim", "budget", "skills", "memory", "ui", "model-routing"],
+            "default": "general",
+            "description": "Primary subsystem to inspect."
+          },
+          "include_db_read_queries": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to include read-only Postgres inspection queries."
+          }
+        }
+      },
+      "requires_capability": [],
+      "scope": "workspace_only"
+    },
+    {
+      "name": "cortana_incident_report",
+      "description": "Produce a structured Cortana incident report with symptom, evidence, likely boundary, minimal fix, and regression gate.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "symptom": {
+            "type": "string",
+            "description": "Observed failure or operator report."
+          },
+          "url": {
+            "type": "string",
+            "description": "Optional Paperclip URL or local endpoint tied to the incident."
+          },
+          "affected_agent": {
+            "type": "string",
+            "description": "Optional agent name or id."
+          },
+          "affected_issue": {
+            "type": "string",
+            "description": "Optional Paperclip issue key or task id."
+          }
+        },
+        "required": ["symptom"]
+      },
+      "requires_capability": [],
+      "scope": "workspace_only"
+    }
+  ],
+  "requires_capability": [],
+  "dependencies": [],
+  "implementation": {
+    "language": "documentation",
+    "entrypoint": "SKILL.md"
+  },
+  "owner": "cortana-coordinator",
+  "stability": "alpha"
+}

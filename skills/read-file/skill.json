@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "cortana.skill",
+  "id": "read-file",
+  "name": "Read File",
+  "description": "Read text files and list directories from the agent's workspace. Workspace-scoped by default; reaching outside requires the filesystem_outside_workspace capability.",
+  "version": "0.1.0",
+  "tools": [
+    {
+      "name": "read_file",
+      "description": "Read up to `limit` lines of a UTF-8 text file. Returns the file contents as a string with line numbers prefixed. Refuses paths outside the agent workspace unless the agent holds the filesystem_outside_workspace capability.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Workspace-relative path (preferred) or absolute path. Absolute paths outside the workspace require filesystem_outside_workspace."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 200,
+            "description": "Maximum number of lines to read from the start of the file."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Line number to start reading from (0-indexed)."
+          }
+        },
+        "required": ["path"]
+      },
+      "requires_capability": [],
+      "scope": "workspace_only"
+    },
+    {
+      "name": "list_directory",
+      "description": "List the entries of a directory (one entry per line). Refuses paths outside the agent workspace unless the agent holds the filesystem_outside_workspace capability. Hidden entries (.dotfiles) are omitted unless `include_hidden` is true.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Workspace-relative path (preferred) or absolute path."
+          },
+          "include_hidden": {
+            "type": "boolean",
+            "default": false,
+            "description": "When true, include entries starting with `.`."
+          }
+        },
+        "required": ["path"]
+      },
+      "requires_capability": [],
+      "scope": "workspace_only"
+    }
+  ],
+  "requires_capability": [],
+  "dependencies": [],
+  "implementation": {
+    "language": "python",
+    "entrypoint": "lib/handler.py:handle"
+  },
+  "owner": "cortana-coordinator",
+  "stability": "alpha"
+}

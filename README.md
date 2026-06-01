@@ -34,21 +34,116 @@ discoverable skill. The directory name is the skill id.
 
 ### Skills in this registry
 
-| Skill id | Kind | Purpose |
-| --- | --- | --- |
-| `markets-research` | trading (stub) | Market + signal research |
-| `indicator-build` | trading (stub) | Building trading indicators (Pine Script / charting) |
-| `backtest-run` | trading (stub) | Running + analyzing backtests |
-| `risk-rules` | trading (stub) | Position sizing, drawdown, risk checks |
-| `data-fetch` | trading (stub) | Market data retrieval |
-| `code-review` | dev (stub) | Code review checklist + standards |
-| `test-runner` | dev (stub) | Test + smoke harness |
-| `cortana-memory` | platform | Memory pillar reference (carried from v1, intact) |
-| `paperclip-triage` | platform | Incident-grade Paperclip/Cortana debugging (carried from v1, intact) |
+As of the consolidation, this registry holds **67 skills** merged from the Codex, Claude/Cowork, and Hermes harness skill sets (de-duplicated by skill id).
 
-The seven trading/dev skills are **stubs**: each ships a complete `SKILL.md`
-(name, trigger-friendly description, usage) and placeholder `scripts/`. The
-owning agent fills in script bodies as it masters the skill.
+
+**Trading & markets**
+
+| Skill id | Purpose |
+| --- | --- |
+| `backtest-run` | Use when running, analyzing, or validating a trading strategy backtest — preparing data, executing a backtest, and readi |
+| `indicator-build` | Use when building, porting, or debugging a trading indicator or charting study — Pine Script (TradingView), or indicator |
+| `markets-research` | Use when researching a market, ticker, sector, or trading signal — gathering news, sentiment, macro context, on-chain/or |
+| `risk-rules` | Use when sizing a position, checking risk before a trade, or enforcing drawdown / exposure limits — position sizing, sto |
+| `data-fetch` | Use when retrieving market data — OHLCV bars, quotes, fundamentals, or on-chain data from an exchange or data provider. |
+| `nq-snapshot` | Capture an MTF deep-analysis snapshot of MNQ/NQ futures from live TradingView via the tradingview MCP, applying bang's f |
+| `crystal-ball` | >- Capture and analyze bang's Crystal Ball (CB) fib-expansion tool on a TradingView NQ/MNQ chart — decode the T1–T5 targ |
+| `pine-script` | > Use this skill whenever the user wants to write, debug, optimize, or understand Pine Script for TradingView. |
+| `pre-trade-intel` | >- Query bang's structured trade history before entering a new NQ/MNQ trade and return a pre-trade intelligence brief: h |
+| `trade-capture` | >- Convert a natural-language trade description into a fully populated structured trade file in `projects/nq-trading/tra |
+| `bt-equity` | Produce a BT Stock Report — bang's institutional-tier (Druckenmiller-style) equity research dossier on a single ticker — |
+| `brand-recon` | Investigate a brand or company end-to-end and emit a structured dossier + a reusable per-entity brand skill into the Cor |
+
+
+**Cortana platform & ops**
+
+| Skill id | Purpose |
+| --- | --- |
+| `cortana-memory` | Cortana platform memory pillar — spec, contracts, operations, troubleshooting, and upgrade ceremonies. |
+| `cortana-troubleshooting` | This skill should be used when the user asks to "debug Cortana", "troubleshoot Paperclip", "check the router", "investig |
+| `paperclip-triage` | This skill should be used when the user asks to "triage Paperclip", "debug Paperclip", "troubleshoot Cortana agents", "f |
+| `read-file` |  |
+| `orchestration` | This skill should be used when the user asks to "orchestrate agents", "give me agent slices", "coordinate a complex buil |
+| `sprint-audit` | This skill should be used when the user asks to "run a sprint audit", "audit the sprint plan", "review agent slice work" |
+| `sprint-runner` | Track solo indie sprints — scaffold sprint trackers, compose per-story run summaries from git log + test output, and mai |
+| `schedule` | Create or update a scheduled task that runs automatically. |
+| `setup-cowork` | Guided Cowork setup — install role-matched plugins, connect your tools, try a skill. |
+| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. |
+| `consolidate-memory` | Reflective pass over your memory files — merge duplicates, fix stale facts, prune the index. |
+
+
+**Knowledge & research**
+
+| Skill id | Purpose |
+| --- | --- |
+| `obsidian` | > Cortana knowledge engine — manages bang's Obsidian vault (`cortana-vault/`) and the parallel Reports/ output layer (`~ |
+| `obsidian-review` | > Run a comprehensive health review of the Cortana vault — audit frontmatter, tag hygiene, link density, orphan pages, b |
+| `yt` | > Process a YouTube video into a Cortana vault wiki page. |
+| `rag-architect` | Use when the user asks to design RAG pipelines, optimize retrieval strategies, choose embedding models, implement vector |
+| `product-strategist` | Strategic product leadership toolkit for Head of Product covering OKR cascade generation, quarterly planning, competitiv |
+
+
+**Software engineering**
+
+| Skill id | Purpose |
+| --- | --- |
+| `code-review` | Use when reviewing a pull request, diff, or change set — checking correctness, security, style, and test coverage agains |
+| `code-reviewer` | Comprehensive code review skill for TypeScript, JavaScript, Python, Swift, Kotlin, Go. |
+| `test-runner` | Use when running a test or smoke harness, interpreting failures, or wiring tests into a workflow — unit, integration, an |
+| `senior-backend` | Comprehensive backend development skill for building scalable backend systems using NodeJS, Express, Go, Python, Postgre |
+| `senior-frontend` | Comprehensive frontend development skill for building modern, performant web applications using ReactJS, NextJS, TypeScr |
+| `senior-fullstack` | Comprehensive fullstack development skill for building complete web applications with React, Next.js, Node.js, GraphQL,  |
+| `senior-devops` | Comprehensive DevOps skill for CI/CD, infrastructure automation, containerization, and cloud platforms (AWS, GCP, Azure) |
+| `senior-data-engineer` | World-class data engineering skill for building scalable data pipelines, ETL/ELT systems, and data infrastructure. |
+| `senior-data-scientist` | World-class senior data scientist skill specialising in statistical modeling, experiment design, causal inference, and p |
+| `senior-qa` | Generates unit tests, integration tests, and E2E tests for React/Next.js applications. |
+| `senior-pm` | Senior Project Manager for enterprise software, SaaS, and digital transformation projects. |
+| `senior-prompt-engineer` | World-class prompt engineering skill for LLM optimization, prompt patterns, structured outputs, and AI product developme |
+| `security-pen-testing` | Use when the user asks to perform security audits, penetration testing, vulnerability scanning, OWASP Top 10 checks, or  |
+| `tech-stack-evaluator` | Technology stack evaluation and comparison with TCO analysis, security assessment, and ecosystem health scoring. |
+| `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. |
+| `jira-expert` | Atlassian Jira expert for creating and managing projects, planning, product discovery, JQL queries, workflows, custom fi |
+| `scrum-master` | Advanced Scrum Master skill for data-driven agile team analysis and coaching. |
+| `pso-optimizer` | > Particle Swarm Optimization (PSO) skill for algorithm design, implementation, parameter tuning, convergence analysis,  |
+
+
+**Apple / Swift**
+
+| Skill id | Purpose |
+| --- | --- |
+| `senior-swift` | Senior Swift/SwiftUI engineering skill for writing, debugging, and fixing iOS/macOS code. |
+| `swift-concurrency` | 'Diagnose data races, convert callback-based code to async/await, implement actor isolation patterns, resolve Sendable c |
+| `swift-security-expert` | Use when working with iOS/macOS Keychain Services (SecItem queries, kSecClass, OSStatus errors), biometric authenticatio |
+| `swiftui-pro` | Comprehensively reviews SwiftUI code for best practices on modern APIs, maintainability, and performance. |
+| `swiftui-performance-audit` | Audit and improve SwiftUI runtime performance from code review and architecture. |
+| `ios-accessibility` | 'Expert guidance on iOS accessibility best practices, patterns, and implementation. |
+
+
+**Design & docs**
+
+| Skill id | Purpose |
+| --- | --- |
+| `canvas-design` | Create beautiful visual art in .png and .pdf documents using design philosophy. |
+| `frontend-design` | Create distinctive, production-grade frontend interfaces with high design quality. |
+| `epic-design` | > Build immersive, cinematic 2.5D interactive websites using scroll storytelling, parallax depth, text animations, and p |
+| `ui-design-system` | UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive d |
+| `docx` | Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). |
+| `pdf` | Use this skill whenever the user wants to do anything with PDF files. |
+| `pptx` | Use this skill any time a .pptx file is involved in any way — as input, output, or both. |
+| `xlsx` | Use this skill any time a spreadsheet file is the primary input or output. |
+| `client-pitch` | Create client-specific AI/agentic transformation pitch packages with branded PowerPoint and matching PDF outputs. |
+
+
+**Brand kits**
+
+| Skill id | Purpose |
+| --- | --- |
+| `copperjoint-brand` | CopperJoint brand guide for generating consistent, on-brand documents and digital deliverables. |
+| `hbef-brand` | Hermosa Beach Education Foundation (HBEF) brand guide for generating consistent, on-brand documents. |
+| `hbef-fb-voice` | HBEF Facebook (and Instagram caption) voice guide — generate posts that match Hermosa Beach Education Foundation's socia |
+| `hbef-surf-report` | HBEF Surf Report voice and format guide — write HBEF's contributions to the weekly HVPTO Surf Report newsletter, or buil |
+| `sf-brand` | Summer Fridays brand guide for generating consistent, on-brand documents and deliverables. |
+| `varian-brand` | Siemens Healthineers / Varian brand guide for generating consistent, on-brand documents and presentations. |
 
 ## Manifest format (what Paperclip actually discovers)
 
@@ -121,3 +216,24 @@ state/cortana-memory/<agent-uuid>/skill-mastery/<skill-id>.md
 
 This separation keeps the registry clean and shareable while letting each agent
 build private fluency over the same shared skills.
+
+## Consolidation provenance
+
+This registry was consolidated on 2026-05-31 from the three Cortana agent
+harnesses into a single source of truth:
+
+- **Claude / Cowork** authored skill set (56 skills) — trading, research,
+  engineering, Swift, design, document, and brand-kit skills.
+- **Codex / Hermes (Paperclip)** platform skills — `cortana-memory`,
+  `paperclip-triage`, `cortana-troubleshooting`, `read-file`, plus the original
+  seven trading/dev registry stubs.
+
+De-duplication is by **skill id** (directory name). The only collision was
+`paperclip-triage`, where the richer registry copy (v0.2.0, four reference docs)
+was kept over the Claude/Cowork copy (v0.1.0). Hermes contributes no distinct
+skill content of its own — its agents draw from this shared registry, so linking
+Hermes means pointing it at this repo (see `HARNESS-LINKING.md`).
+
+Vendor/marketplace plugin caches that happened to live under the Codex home
+(Vercel, Supabase, Box, etc.) were intentionally **excluded** — those are
+third-party plugins, not bang's authored skills.
