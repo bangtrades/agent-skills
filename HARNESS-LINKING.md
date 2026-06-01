@@ -76,23 +76,60 @@ means making this shared registry the source its agents read.
 
 ## Running the helper
 
-`link-harnesses.sh` automates the two symlinks (it backs up any existing skills
-dir to `<dir>.bak-<timestamp>` first, and is safe to re-run):
+`sync-skills.sh` wires all three harnesses and installs the git hooks. It is
+idempotent and safe to re-run; it backs up any real skill dirs it replaces.
 
 ```bash
-# clone first run:
-REPO_URL=git@github.com:<you>/cortana-skill-registry.git ./link-harnesses.sh
-# subsequent runs (clone already present):
-./link-harnesses.sh
+cd ~/Cortana/cortana-skill-registry
+./sync-skills.sh
 ```
 
-Override any path inline, e.g. `CODEX_SKILLS=~/dev/.codex/skills ./link-harnesses.sh`.
+It uses these defaults (override any inline, e.g.
+`HERMES_SKILLS=/Volumes/symba/.hermes/skills ./sync-skills.sh`):
+
+- `CODEX_SKILLS`  = `~/.codex/skills`            (MIRROR)
+- `CLAUDE_SKILLS` = `~/.claude/skills`           (MIRROR)
+- `HERMES_SKILLS` = `/Volumes/symba/.hermes/skills` (FILL) — falls back to `~/.hermes/skills`
+
+**MIRROR** (Codex, Claude): every registry skill becomes a per-skill symlink;
+real dirs are backed up to `<skills>/.pre-consolidation-backup-<ts>`; harness
+internals (`.system`, `codex-primary-runtime`, etc.) are left alone.
+
+**FILL** (Hermes): only adds top-level symlinks for registry skills Hermes
+doesn't already have (nested ones counted), so Hermes's curator-managed library
+and category layout stay intact. Its native skills remain curator-owned; the
+cross-harness shared set is mirrored in alongside them.
+
+## Auto-sync (how "sync on every change" works)
+
+1. **Editing an existing shared skill** → propagates instantly. Codex/Claude
+   read through symlinks; Hermes too for the filled-in shared skills. No step.
+2. **Adding/removing skills** → the installed git hooks (`post-merge`,
+   `post-checkout`, `post-commit`, `post-rewrite`, under `hooks/`, wired via
+   `core.hooksPath`) re-run `sync-skills.sh` automatically on every commit and
+   every `git pull`, so new skills get linked into all harnesses with no manual
+   step. (Output is appended to `.sync.log`.)
+3. **Across machines** → `git pull` triggers the hook → all harnesses resync.
+
+### Optional: true file-watch auto-commit
+
+The hooks resync on git events. If you also want a *local edit* to auto-commit
+and push (so other machines pick it up without you running git), add a watcher:
+
+```bash
+brew install fswatch
+fswatch -o ~/Cortana/cortana-skill-registry/skills | while read; do
+  git -C ~/Cortana/cortana-skill-registry add -A \
+  && git -C ~/Cortana/cortana-skill-registry commit -m "auto: skill change $(date)" \
+  && git -C ~/Cortana/cortana-skill-registry push
+done
+```
+
+Wrap that in a launchd agent to run at login if you want it always on. (Left
+opt-in — auto-push is a standing automation you should enable deliberately.)
 
 ## Updating skills later
 
 1. Edit / add skills in the canonical clone (`~/Cortana/cortana-skill-registry`).
-2. `git add -A && git commit && git push`.
-3. On any other machine: `git -C ~/Cortana/cortana-skill-registry pull`.
-
-All linked harnesses pick up the change automatically (symlinks) or on next
-container restart (read-only mount).
+2. `git add -A && git commit && git push` — the `post-commit` hook resyncs.
+3. On any other machine: `git pull` — the `post-merge` hook resyncs there.

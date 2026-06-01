@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Auto-resync all harnesses after the repo content changes.
+# Resolve repo root regardless of where git invokes the hook from.
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ -x "$ROOT/sync-skills.sh" ]; then
+  CANONICAL="$ROOT" "$ROOT/sync-skills.sh" >> "$ROOT/.sync.log" 2>&1 || true
+fi
