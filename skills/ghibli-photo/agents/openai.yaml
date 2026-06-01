@@ -1,0 +1,7 @@
+interface:
+  display_name: "Ghibli Photo"
+  short_description: "Turns real photos into faithful warm watercolor storybook illustrations."
+  default_prompt: "Use $ghibli-photo to turn this photo into a warm hand-painted storybook illustration."
+
+policy:
+  allow_implicit_invocation: true
