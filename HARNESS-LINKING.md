@@ -48,16 +48,28 @@ ln -s ~/Cortana/cortana-skill-registry/skills ~/.codex/skills
 ln -s ~/Cortana/cortana-skill-registry/skills ~/.claude/skills
 ```
 
-**Hermes / Paperclip** — Hermes agents run inside the Paperclip container and load
-skills via Paperclip's standard discovery from a **read-only mount** of the
-registry (the model the registry README already documents). In your
-`docker-compose.yml` / container config, mount the canonical clone's `skills/`
-read-only at the path Paperclip scans, e.g.:
+**Hermes / Paperclip** — Hermes (and the in-container Codex/Claude adapters) run
+inside the Paperclip container, which provisions skills through Paperclip's own
+**company-skills import surface**, keyed by this repo's GitHub URL — this is the
+platform-native path the registry README documents, and the reason the GitHub
+push must happen first. After the repo is pushed:
 
-```yaml
-    volumes:
-      - ~/Cortana/cortana-skill-registry/skills:/runtime/paperclip/skills:ro
+```bash
+# Import the registry into the Cortana Paperclip company by GitHub URL:
+COMPANY_ID=<your-cortana-company-id>
+curl -X POST "http://localhost:${PAPERCLIP_PORT:-4201}/api/companies/$COMPANY_ID/skills/import" \
+  -H 'Content-Type: application/json' \
+  -d '{"source":"https://github.com/<you>/cortana-skill-registry"}'
+# Then assign to an agent (or set desiredSkills at hire):
+curl -X POST "http://localhost:${PAPERCLIP_PORT:-4201}/api/agents/<agent-id>/skills/sync"
 ```
+
+Alternatively, for a quick read-only bind (bypasses the import surface), add a
+volume to the `paperclip` service in `platform-v2/docker-compose.yml` pointing at
+each adapter home's skills dir, e.g.
+`- /Users/nolan/Cortana/cortana-skill-registry/skills:/state/codex-home/skills:ro`
+(repeat for `/state/claude-home/skills` and `/state/hermes-home/skills`). Prefer
+the import API — the bind can collide with Paperclip's per-company materialization.
 
 Hermes contributes no distinct skill content of its own, so "linking Hermes" just
 means making this shared registry the source its agents read.
