@@ -1,3 +1,9 @@
+---
+name: read-file
+description: Read text files and list directories from the agent's workspace. Workspace-scoped by default; reaching outside requires the filesystem_outside_workspace capability.
+version: 0.1.0
+---
+
 # read-file
 
 Workspace-scoped file reader. Two tools: `read_file(path, limit, offset)` and
