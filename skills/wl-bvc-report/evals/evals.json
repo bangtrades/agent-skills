@@ -1,0 +1,23 @@
+{
+  "skill_name": "wl-bvc-report",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We just wrapped the CopperJoint dashboard build. I need a build & value creation report for prospects — don't name the client anywhere, keep the language simple. 3 workspaces, 4 agents (brief agent, inventory agent, review-response agent, academy coach), ~6,000 lines of code, built in 6 days, data across Shopify + Amazon + Klaviyo.",
+      "expected_output": "4-page WaiveLabs-branded PDF, no client name, no forbidden terms, KPI strips, agent table, before/after savings table, brand band on final page",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Make me a BVC report from the project in this folder — measure the LOC and build time yourself from the files, and derive the conventional-team comparison.",
+      "expected_output": "Report with evidenced metrics (LOC counted excluding deps/build output, build days from mtimes), ranged conventional estimate, rendered and visually verified",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The prospect is a beauty brand — I need collateral showing what our technology could do for them based on the last build. Keep it confidential-safe.",
+      "expected_output": "Skill triggers; report frames prior build generically ('a high-growth omnichannel consumer brand'), client_terms populated, lint passes",
+      "files": []
+    }
+  ]
+}

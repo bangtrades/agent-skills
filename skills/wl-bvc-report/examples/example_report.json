@@ -1,0 +1,91 @@
+{
+  "output": "/tmp/wl_bvc_example.pdf",
+  "doc_type": "BUILD & VALUE CREATION REPORT",
+  "date_line": "JULY 2026  ·  CONFIDENTIAL",
+  "client_terms": ["driftwood", "roasters"],
+  "pages": [
+    {
+      "blocks": [
+        {"type": "title", "text": "Build & Value Creation Report",
+         "dek": "The AI Ops Desk — an agentic operations command center, designed, built, and shipped by WaiveLabs."},
+        {"type": "h2", "text": "Executive summary"},
+        {"type": "para", "text": "WaiveLabs designed, built, and deployed a complete agentic operations platform for a multi-location specialty food and beverage brand: a live, secured web application spanning four executive workspaces, five embedded AI agents, a two-year operations dataset across 40+ vendor-native feeds, and an in-app AI Academy that trains the client’s team to work with agents. Total elapsed build time: roughly eight working days."},
+        {"type": "para", "text": "A seasoned three-to-four person design and development team building the same scope with conventional methods would need an estimated 12 to 14 weeks — across product design, custom data visualization, an AI agent layer, secure deployment, data engineering, and curriculum content. The WaiveLabs agentic build process compressed that timeline by roughly 90 percent while holding executive-presentation quality throughout."},
+        {"type": "h2", "text": "By the numbers"},
+        {"type": "kpi_strip", "items": [
+          {"value": "~8 days", "label": "WaiveLabs build time", "hot": true},
+          {"value": "12–14 wks", "label": "Conventional team estimate"},
+          {"value": "~90%", "label": "Timeline compression", "hot": true},
+          {"value": "5", "label": "AI agents in production"},
+          {"value": "8,000+", "label": "Lines of custom code"}
+        ]},
+        {"type": "kpi_strip", "items": [
+          {"value": "4", "label": "Executive workspaces"},
+          {"value": "120K+", "label": "Rows of operations data"},
+          {"value": "40+", "label": "Vendor data feeds"},
+          {"value": "600+ hrs", "label": "Est. reporting hours saved / yr", "hot": true},
+          {"value": "100%", "label": "Human-approved actions"}
+        ]},
+        {"type": "callout", "title": "The takeaway",
+         "text": "What used to be a quarter-long engagement is now an eight-day sprint. The same approach — agentic build process, calibrated data foundation, human-in-the-loop AI — applies to any operating business that runs on sales, supply, and labor data."}
+      ]
+    },
+    {
+      "blocks": [
+        {"type": "h2", "text": "What was built"},
+        {"type": "para", "text": "The AI Ops Desk is a single command center that replaces the spreadsheet-and-slide ritual of running a multi-location brand. Four workspaces cover the operating cadence of the executive team, each rendered with custom-built visualization and styled to the brand’s design system."},
+        {"type": "table", "headers": ["Workspace", "What it does"], "widths": [1.7, null], "rows": [
+          ["Executive Dashboard", "KPI cards, sales trend by location, product mix, and an always-on Ops Agent panel for questions and briefs."],
+          ["Location Command", "Per-location flash reports assembled automatically each morning: sales vs plan, labor vs schedule, waste, and an exceptions feed where every anomaly ships with a diagnosed cause and a one-click action."],
+          ["Supply & Inventory", "Ingredient-level coverage with run-out countdowns, supplier scorecards, and one-click purchase-order drafts."],
+          ["AI Academy", "A built-in learning environment with a personal AI coach that explains, grades practice work against a rubric, and runs hands-on practice scenarios — so the client’s team graduates as confident agent operators."]
+        ]},
+        {"type": "h2", "text": "The data foundation"},
+        {"type": "para", "text": "Underneath the application sits a two-year operations dataset — over 120,000 rows — engineered to the exact export formats of the systems a modern multi-location brand already runs: the point-of-sale platform, online ordering, delivery marketplaces, the scheduling system, supplier portals, and paid media. The data is organized in a warehouse-ready layout so the same application wires directly into the client’s live systems — the connectors change, the application does not."},
+        {"type": "para", "text": "Every number in the application reconciles: daily sales, labor hours, ingredient usage, delivery commissions, and marketing spend all trace back to one consistent model of the business."}
+      ]
+    },
+    {
+      "blocks": [
+        {"type": "h2", "text": "The agents"},
+        {"type": "para", "text": "Five AI agents run inside the platform. Each reads the live workspace data and returns one concrete, quantified recommendation — reasoning streamed in the open, credentials never in the browser, and a human approving before anything executes."},
+        {"type": "table", "headers": ["Agent", "What it does"], "widths": [1.85, null], "rows": [
+          ["Executive Brief Agent", "Scans the whole business and drafts the highest-leverage action of the day."],
+          ["Replenishment Agent", "Finds run-out risk by ingredient and location, proposes purchase orders, and projects the cost of stockout avoided."],
+          ["Labor Agent", "Matches schedules to forecast demand and flags over- and under-staffed shifts with a proposed fix."],
+          ["Menu Performance Agent", "Reads product mix and margin and proposes one menu change with projected impact."],
+          ["Academy Coach", "A personal tutor for the client’s team — explains in plain language, grades practice against a rubric, coaches through real scenarios."]
+        ]},
+        {"type": "h2", "text": "Report generation: before and after"},
+        {"type": "para", "text": "Estimated production time for the executive team’s recurring reports — conventional process versus inside the Ops Desk:"},
+        {"type": "table", "headers": ["Report", "Conventional", "With Ops Desk", "Est. saved / yr"], "widths": [1.85, 1.85, 1.75, null], "rows": [
+          ["Daily flash report", "30–45 min every morning", "Assembled on entry — instant", "~180 hrs"],
+          ["Weekly ops review", "3–4 hrs per week", "One click — minutes", "~180 hrs"],
+          ["Monthly P&L pack", "1–2 analyst-days per month", "One click — shareable", "~150 hrs"],
+          ["Supplier scorecards", "2–3 hrs per month", "Always current", "~30 hrs"],
+          ["Executive readout", "2–3 hrs per request", "Under a minute", "~60 hrs"]
+        ]},
+        {"type": "para", "bold": true, "color": "deep",
+         "text": "Estimated total: 600+ hours per year returned to the team — about a third of a full-time analyst."}
+      ]
+    },
+    {
+      "blocks": [
+        {"type": "h2", "text": "Technology stack"},
+        {"type": "table", "headers": ["Layer", "Detail"], "widths": [1.55, null], "rows": [
+          ["Application", "Framework-free front end with fully custom data visualization, styled to the client’s design system. Fast, dependency-light, and easy to maintain."],
+          ["Agent layer", "Server-side agent broker with structured function-calling, live streamed reasoning, and a deterministic fallback mode so the application always performs — on stage, on a plane, or in a boardroom."],
+          ["Platform", "Next.js and TypeScript on Vercel’s global edge network, deployed on a dedicated WaiveLabs subdomain."],
+          ["Security & access", "Signed-session access gate: per-person access codes, instant revocation, per-viewer watermarking, and no secrets ever exposed to the browser."],
+          ["Data engineering", "Python-built data foundation in a warehouse-ready layout with vendor-exact feed formats for direct connector swap-in."]
+        ]},
+        {"type": "h2", "text": "Why this matters for your business"},
+        {"type": "para", "text": "This build demonstrates the WaiveLabs operating model end to end: we map the systems your business already runs, stand up a governed data foundation, build the application and agents on top of it, and train your team to operate — and keep extending — the platform themselves. The result is not a slide: it is a working application your executives can open on Monday morning."},
+        {"type": "para", "text": "And because the build process itself is agentic, the economics change. Work that conventionally prices as a multi-month, multi-person engagement is delivered in weeks — which means the budget conversation shifts from “can we afford to build this” to “which part of the business do we transform first.”"},
+        {"type": "callout", "title": "Next step",
+         "text": "See the Ops Desk live against your own business questions. Write to hello@waivelabs.ai and we’ll set up a private, secured walkthrough — what would your team do with 600 hours back?"},
+        {"type": "brand_band", "tagline": "Ride the AI wave.", "contact": "hello@waivelabs.ai"}
+      ]
+    }
+  ]
+}
