@@ -1,0 +1,50 @@
+# Sprint {{N}} Tracker — {{theme}}
+
+**Sprint dates:** {{start_date}} → {{end_date}}
+**Goal:** {{goal}}
+**Velocity target:** {{velocity}} pts
+**Status:** 🟡 Open
+
+{{#if carry_in}}
+## Carry-in from Sprint {{N_prev}}
+
+{{carry_in_notes}}
+
+{{/if}}
+{{#each epics}}
+## {{name}} Epic — {{description}} ({{total_pts}} pts)
+
+| ID | Story | Pts | Status | Notes |
+|----|-------|-----|--------|-------|
+{{#each stories}}
+| S{{../../N}}-{{id}} | {{title}} | {{pts}} | ⏸ Pending | {{notes}} |
+{{/each}}
+
+**{{name}}: 0/{{total_pts}} pts — OPEN**
+
+{{/each}}
+## Sprint Summary
+
+| Epic | Points | Complete | Pending |
+|------|--------|----------|---------|
+{{#each epics}}
+| {{name}} | {{total_pts}} | 0 | {{total_pts}} |
+{{/each}}
+| **Total** | **{{velocity}}** | **0** | **{{velocity}}** |
+
+**Completion: 0% — Sprint in progress.**
+
+## Key Decisions
+
+<!-- Append numbered entries as decisions land. Each entry: brief statement, then "why X over Y" rationale. -->
+
+## Files Changed
+
+<!-- Append per-story sections as stories close. Format:
+### S{{N}}-XX — <Story title>
+- `path/to/file.ts` (new/edited, +LOC/-LOC)
+-->
+
+## Run Summaries
+
+<!-- One line per closed story, linking to docs/sprint-runs/S{{N}}-XX-<slug>.md -->

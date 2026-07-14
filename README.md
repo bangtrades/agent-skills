@@ -32,6 +32,25 @@ cortana-skill-registry/
 Each immediate subdirectory of `skills/` that contains a `SKILL.md` is one
 discoverable skill. The directory name is the skill id.
 
+## Keeping agent harnesses synchronized
+
+This repository is the only place shared skills should be created or edited.
+Claude uses a direct link to `skills/`, while Codex keeps per-skill links so
+its harness-managed folders (such as `.system`) remain intact. Thus changes to
+an existing skill are immediately visible to both harnesses.
+
+Run this after adding or removing a skill directory, especially before the
+change is committed:
+
+```bash
+/Users/nolan/Cortana/cortana-skill-registry/sync-skills.sh
+```
+
+The repository's Git hooks also run the same command after commits, checkouts,
+rewrites, and merges. The sync only replaces or removes links that point into
+this registry; unrelated harness-provided skills are preserved. New skills
+must be committed and pushed from this repository to reach other machines.
+
 ### Skills in this registry
 
 As of the consolidation, this registry holds **175 skills** merged from the Codex, Claude/Cowork, and Hermes harness skill sets (de-duplicated by skill id; Hermes folded in full, including its bundled library).

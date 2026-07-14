@@ -1,0 +1,50 @@
+# data-simulator run config — THE single source of truth for a simulation.
+# Everything (bronze, vendor exports, database, Growth Desk contract) derives from this file.
+brand:
+  name: ""                 # client brand display name
+  slug: ""                 # kebab-case, matches brand-recon slug
+  business_model: dtc      # dtc | saas | services | marketplace
+  demo_target: growth-desk
+
+window:
+  start: ""                # YYYY-MM-01 — default: first day, 24 complete months back
+  end: ""                  # YYYY-MM-DD — last day of most recent complete month
+  as_of: ""                # usually == end
+
+seed: 0                    # int(YYYYMMDD) of run date; bronze uses seed, vendor exports seed+1, docs seed+2
+
+# ---- CALIBRATION LADDER (Phase 3 — requires bang's approval before generation) ----
+calibration:
+  monthly_net_m: []        # 24 floats, $M net revenue per month, oldest first
+  channel_share: {}        # latest-FY share by channel id, sums to 1.0  e.g. {DTC: 0.45, MKT: 0.35, RTL: 0.20}
+  channel_yoy: {}          # YoY growth per channel; prior year share derived as share/(1+yoy), renormalized
+  category_split: {}       # revenue share by category
+  aov_by_channel: {}
+  approved_by_bang: false  # generators refuse to run while false
+  estimation_notes: ""     # how the ladder was derived (signals, benchmarks, math)
+
+channels: []               # [{id: RTL, name: <retail partner>, type: retail, owned: false, discount_rate: 0.04, return_rate: 0.02}]
+products: []               # [{sku, name, variant, category, list_price, unit_cost, launch_date, weight}]
+events: []                 # [{name, start, end, lift, tag}]  — sale windows, launches, gifting, holiday
+
+sources: []                # filled from sources.yaml resolution — [{vendor, tier, exports: [...]}]
+
+distortion:                # override defaults from references/generation-architecture.md as needed
+  ga4_vs_platform: 0.90
+  meta_attribution: 1.45
+  tiktok_attribution: 1.35
+  google_attribution: 1.15
+  lifecycle_share: 0.16
+  amazon_ops_gross_up: 0.12
+  panel_error: 0.10
+  scraper_error: 0.25
+
+dirt:
+  messy_key_rate: 0.02
+  null_discount_rate: 0.005
+  duplicate_rows: 25
+
+outputs:
+  duckdb: true
+  supabase: false          # true → push gold to schema sim_{slug}; keys from env only
+  contract: true

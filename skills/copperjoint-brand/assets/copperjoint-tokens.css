@@ -1,0 +1,218 @@
+/* CopperJoint Brand Tokens
+ * Drop into any web deliverable: dashboards, demos, mockups.
+ * Extracted from copperjoint.com via Firecrawl branding analysis 2026-05-27.
+ */
+
+:root {
+  /* Primary brand colors */
+  --cj-ink:           #1A2332;
+  --cj-copper:        #B87333;
+  --cj-gold:          #BA9731;
+  --cj-chalk:         #F2F2F2;
+
+  /* Supporting tones */
+  --cj-slate:         #1A1C1C;
+  --cj-mist:          #F9F9F9;
+  --cj-clay:          #D8C3B4;
+  --cj-iron:          #6B7280;
+  --cj-white:         #FFFFFF;
+
+  /* Text colors */
+  --cj-text-primary:  #000000;
+  --cj-text-inverse:  #F2F2F2;
+  --cj-text-muted:    #6B7280;
+
+  /* Functional */
+  --cj-success:       #3B7A57;
+  --cj-warn:          #B87333;
+  --cj-danger:        #8B2E2E;
+
+  /* Typography */
+  --cj-font-primary:  'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cj-font-clinical: 'Epilogue', 'Montserrat', sans-serif;
+
+  /* Type scale */
+  --cj-fs-display:    56px;
+  --cj-fs-h1:         40px;
+  --cj-fs-h2:         28px;
+  --cj-fs-h3:         20px;
+  --cj-fs-body:       16px;
+  --cj-fs-small:      14px;
+  --cj-fs-eyebrow:    12px;
+
+  /* Weights */
+  --cj-fw-regular:    400;
+  --cj-fw-semibold:   600;
+  --cj-fw-bold:       700;
+
+  /* Line heights */
+  --cj-lh-tight:      1.15;
+  --cj-lh-snug:       1.3;
+  --cj-lh-normal:     1.5;
+  --cj-lh-loose:      1.75;
+
+  /* Spacing (4px base) */
+  --cj-space-1:       4px;
+  --cj-space-2:       8px;
+  --cj-space-3:       12px;
+  --cj-space-4:       16px;
+  --cj-space-5:       24px;
+  --cj-space-6:       32px;
+  --cj-space-7:       48px;
+  --cj-space-8:       64px;
+  --cj-space-9:       96px;
+
+  /* Radii */
+  --cj-radius-sharp:    0px;       /* inputs */
+  --cj-radius-subtle:   3.75px;    /* secondary buttons */
+  --cj-radius-card:     8px;
+  --cj-radius-pill:     50px;      /* primary buttons */
+
+  /* Shadows */
+  --cj-shadow-card:   0 1px 3px rgba(26, 35, 50, 0.08), 0 4px 12px rgba(26, 35, 50, 0.04);
+  --cj-shadow-hover:  0 4px 12px rgba(26, 35, 50, 0.12), 0 8px 24px rgba(26, 35, 50, 0.08);
+
+  /* Layout */
+  --cj-max-width:     1200px;
+  --cj-content-width: 800px;
+}
+
+/* Base resets */
+body {
+  font-family: var(--cj-font-primary);
+  font-size: var(--cj-fs-body);
+  line-height: var(--cj-lh-normal);
+  color: var(--cj-text-primary);
+  background: var(--cj-chalk);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--cj-font-primary);
+  color: var(--cj-ink);
+  font-weight: var(--cj-fw-bold);
+  line-height: var(--cj-lh-tight);
+  margin: 0 0 var(--cj-space-4) 0;
+}
+
+h1 { font-size: var(--cj-fs-h1); letter-spacing: -0.01em; }
+h2 { font-size: var(--cj-fs-h2); font-weight: var(--cj-fw-semibold); letter-spacing: -0.01em; }
+h3 { font-size: var(--cj-fs-h3); font-weight: var(--cj-fw-semibold); }
+
+/* Eyebrow label */
+.cj-eyebrow {
+  font-size: var(--cj-fs-eyebrow);
+  font-weight: var(--cj-fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cj-gold);
+  margin-bottom: var(--cj-space-2);
+  display: block;
+}
+
+/* Buttons */
+.cj-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cj-space-2);
+  font-family: var(--cj-font-primary);
+  font-weight: var(--cj-fw-semibold);
+  font-size: var(--cj-fs-small);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.cj-btn--primary {
+  background: var(--cj-ink);
+  color: var(--cj-chalk);
+  border-radius: var(--cj-radius-pill);
+  padding: 14px 28px;
+}
+.cj-btn--primary:hover { background: #2A3344; }
+
+.cj-btn--secondary {
+  background: var(--cj-mist);
+  color: var(--cj-slate);
+  border: 1px solid var(--cj-clay);
+  border-radius: var(--cj-radius-subtle);
+  padding: 12px 24px;
+}
+.cj-btn--secondary:hover { border-color: var(--cj-copper); }
+
+.cj-btn--link {
+  background: transparent;
+  color: var(--cj-gold);
+  padding: 0;
+  text-decoration: none;
+  border-radius: 0;
+}
+.cj-btn--link:hover { text-decoration: underline; }
+
+/* Cards */
+.cj-card {
+  background: var(--cj-white);
+  border: 1px solid rgba(26, 35, 50, 0.08);
+  border-radius: var(--cj-radius-card);
+  box-shadow: var(--cj-shadow-card);
+  padding: var(--cj-space-5);
+}
+
+/* Inputs */
+.cj-input {
+  background: var(--cj-white);
+  border: 1px solid var(--cj-iron);
+  border-radius: var(--cj-radius-sharp);
+  padding: 10px 12px;
+  font-family: var(--cj-font-primary);
+  font-size: var(--cj-fs-body);
+  width: 100%;
+  box-sizing: border-box;
+}
+.cj-input:focus { outline: none; border-color: var(--cj-copper); }
+
+/* Layout container */
+.cj-container {
+  max-width: var(--cj-max-width);
+  margin: 0 auto;
+  padding: 0 var(--cj-space-5);
+}
+
+/* Section */
+.cj-section {
+  padding: var(--cj-space-9) 0;
+}
+
+/* Trust badge */
+.cj-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cj-space-2);
+  font-size: var(--cj-fs-small);
+  font-weight: var(--cj-fw-semibold);
+  color: var(--cj-ink);
+  background: rgba(184, 115, 51, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--cj-radius-pill);
+}
+
+/* Stat display */
+.cj-stat {
+  font-family: var(--cj-font-primary);
+  font-size: var(--cj-fs-display);
+  font-weight: var(--cj-fw-bold);
+  color: var(--cj-ink);
+  line-height: 1;
+}
+.cj-stat-label {
+  font-size: var(--cj-fs-small);
+  font-weight: var(--cj-fw-semibold);
+  color: var(--cj-iron);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: var(--cj-space-2);
+}

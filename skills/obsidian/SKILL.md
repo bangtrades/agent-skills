@@ -319,8 +319,61 @@ When asked (or periodically), check vault health:
 - **Index drift** — `index.md` or `projects-directory.md` missing new projects
 - **Contradictions** — conflicting information across pages
 - **Tag hygiene** — pages missing emoji category tags or using wrong categories
+- **Bookmark hygiene** — run `python scripts/bookmark.py prune` to drop bookmarks whose target file moved/deleted; flag any bookmark group with >7 items (curation guardrail) and any page tagged `bookmark: true` that isn't bookmarked yet
 
 Fix automatically where safe (stubs, indexes, tag fixes). Flag contradictions for the user.
+
+---
+
+### 9. BOOKMARK — Navigation Skeleton
+
+Bookmarks are the vault's **navigation skeleton** — the ~40–60 anchors bang returns to,
+rendered as a tree in Obsidian's Bookmarks pane. They are NOT a second copy of every
+important note. The rule is **curate, don't capture**: bookmark the hubs; let the hubs
+(and the graph/search) reach everything else. A bookmark list of 200 items is as useless
+as none.
+
+**Two layers (keep them distinct):**
+- **Bookmarks = skeleton.** Category MOCs + project hubs + a few explicitly-pinned pages.
+- **MOCs / hub pages = the full index.** Every important page is *linked* into its project
+  hub and category MOC (you already do this on INGEST/SESSION). Navigation = bookmark → hub → page.
+
+**When to bookmark (deterministic trigger):**
+1. A **new project hub** (`projects/<slug>/<slug>.md`) — bookmark on creation, under its category.
+2. A **MOC / category index** (`moc/*.md`, `research-hub.md`, etc.).
+3. Any page whose frontmatter has **`bookmark: true`** (optional `bookmark_group: "Category/Project/Sub"`
+   to place it). This flag is the source of truth for opt-in pins.
+
+   **Never** bookmark sessions, daily journals, YouTube transcripts, raw ingests, or one-off
+   topic pages — those are reached via their hub, search, and the graph.
+
+**Hierarchy (≤3 levels; 4 only for a large project):**
+`Category (emoji group) → Project (subgroup) → pages`. Categories mirror the emoji taxonomy —
+map from the page's emoji category tag:
+🎯 → `🎯 Trading` · 🤖 → `🤖 Platform & Agents` · 💼 → `💼 Business` · 📚 → `📚 Research` ·
+📺 → `📺 YouTube` · 🔧 → `🔧 Vault Meta`. Plus a top `🏠 Navigation` group (dashboard/index/action-items).
+
+**How — use the helper, never hand-edit the JSON:**
+```bash
+python scripts/bookmark.py upsert \
+  --path "cortana-vault/projects/<slug>/<slug>.md" \
+  --group "Business/WaiveLabs" \
+  --title "WaiveLabs Hub"
+python scripts/bookmark.py list      # show the tree
+python scripts/bookmark.py prune     # drop bookmarks whose file no longer exists
+```
+The helper is idempotent (re-running MOVES/retitles rather than duplicating), creates nested
+groups, backs up + re-validates the JSON, and matches group titles ignoring a leading emoji
+(so `--group "Business"` finds `💼 Business`). Group path segments are passed without emoji;
+the helper reuses the existing emoji group.
+
+> [!warning] Gotchas (learned the hard way)
+> - **Two vaults exist.** `~/Cortana` (root, LIVE) and `~/Cortana/cortana-vault` (stale). The helper
+>   auto-detects the active one by most-recent `workspace.json`; bookmarks written to the wrong
+>   file silently do nothing. Override with `--vault` only if needed.
+> - **Paths are vault-root-relative** → prefixed `cortana-vault/…` in the root vault.
+> - **Obsidian caches bookmarks on load** — a vault reload / restart is needed to see new ones.
+> - **Keep groups ≤~7 items.** If a group overflows, add a subgroup or push detail into the hub page.
 
 ---
 
@@ -351,8 +404,13 @@ tags: [🎯, relevant, tags]   # emoji category tag FIRST, then text tags
 status: active | completed | archived | draft
 sources: []
 related: []
+bookmark: true            # OPTIONAL — opt this page into the Bookmarks skeleton (see Operation 9)
+bookmark_group: "Business/WaiveLabs/Marketing"   # OPTIONAL — where to place it; defaults by emoji tag → project
 ---
 ```
+
+> Project hubs and MOCs are bookmarked automatically (Operation 9); `bookmark: true` is only
+> needed to pin a non-hub page. Most pages should have neither field.
 
 ### Emoji Category Tags
 
@@ -398,6 +456,7 @@ are optional — everything they do can be done inline by the agent.
 | `vault-watcher.py` | Watches `inbox/` for new files, auto-ingests | `python scripts/vault-watcher.py` (watch) or `--process-once` |
 | `deep-dive.py` | Tier 2 materialization from archived dirs | `--list`, `--search "term"`, or pass a path |
 | `yt_extract.py` | YouTube transcript + metadata extraction | `python scripts/yt_extract.py "URL" --output-dir /tmp/yt-ingest` |
+| `bookmark.py` | Safe idempotent Bookmarks-tree maintenance (Operation 9) | `upsert --path … --group "A/B" --title "…"`, `prune`, `list` |
 
 All scripts talk to OpenAI-compatible API endpoints (LM Studio, Ollama, OpenAI, etc.).
 Default: `http://localhost:1234/v1`. Override with `--api-base`.

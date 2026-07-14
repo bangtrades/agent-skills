@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HBEF Brand — Color Swatches</title>
+<link rel="stylesheet" href="brand-palette.css">
+<style>
+  body {
+    margin: 0;
+    padding: 2rem;
+    background: var(--surface-page);
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 3rem;
+    box-shadow: 0 2px 12px rgba(11, 66, 97, 0.06);
+  }
+  h1 { margin: 0 0 0.5em 0; }
+  .subtitle {
+    font-size: 22pt;
+    font-weight: var(--fw-thin);
+    color: var(--hbef-teal);
+    margin: 0 0 2em 0;
+  }
+  h2 { margin-top: 2em; }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .swatch {
+    border: 1pt solid var(--muted-border);
+  }
+  .swatch-color {
+    height: 90px;
+  }
+  .swatch-meta {
+    padding: 0.6rem 0.8rem;
+    font-size: 9pt;
+  }
+  .swatch-token {
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.8pt;
+    color: var(--hbef-navy);
+  }
+  .swatch-hex {
+    color: var(--ink-60);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    margin-top: 2px;
+  }
+  .swatch-role {
+    color: var(--ink-60);
+    margin-top: 4px;
+    font-size: 8pt;
+  }
+  .type-spec {
+    margin: 2em 0;
+    padding: 1.5em;
+    background: var(--surface-soft);
+  }
+  .footer-band {
+    height: 0.25in;
+    background: var(--hbef-teal);
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <p style="font-size: 9pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--ink-60); margin: 0;">
+    HERMOSA BEACH EDUCATION FOUNDATION · BRAND PALETTE
+  </p>
+  <h1 class="cover-title">HBEF Brand — Color Swatches</h1>
+  <p class="subtitle">Visual reference for the HBEF design system</p>
+
+  <h2>Primary Brand Colors</h2>
+  <div class="row">
+    <div class="swatch"><div class="swatch-color" style="background:#0B4261"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_NAVY</div><div class="swatch-hex">#0B4261</div><div class="swatch-role">Headers, structure, primary brand</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#124362"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_NAVY_DEEP</div><div class="swatch-hex">#124362</div><div class="swatch-role">Footer body text, IC accent</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F79B32"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_ORANGE</div><div class="swatch-hex">#F79B32</div><div class="swatch-role">CTAs, donate, hover links</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#75C4B9"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_TEAL</div><div class="swatch-hex">#75C4B9</div><div class="swatch-role">Secondary brand, footer, hero</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#417987"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_TEAL_MUTED</div><div class="swatch-hex">#417987</div><div class="swatch-role">Inline emphasis, event dates</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FAEF7A"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_YELLOW</div><div class="swatch-hex">#FAEF7A</div><div class="swatch-role">"Give" highlight, sparing use</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E7E7E7"></div>
+      <div class="swatch-meta"><div class="swatch-token">HBEF_PAGE</div><div class="swatch-hex">#E7E7E7</div><div class="swatch-role">Page background behind cards</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFFFFF; border-right: 1pt solid var(--muted-border)"></div>
+      <div class="swatch-meta"><div class="swatch-token">WHITE</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-role">Content card background</div></div></div>
+  </div>
+
+  <h2>Text</h2>
+  <div class="row">
+    <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div>
+      <div class="swatch-meta"><div class="swatch-token">INK</div><div class="swatch-hex">#1A1A1A</div><div class="swatch-role">Default body text</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#333333"></div>
+      <div class="swatch-meta"><div class="swatch-token">INK_80</div><div class="swatch-hex">#333333</div><div class="swatch-role">Heavy emphasis</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#5C5C5C"></div>
+      <div class="swatch-meta"><div class="swatch-token">INK_60</div><div class="swatch-hex">#5C5C5C</div><div class="swatch-role">Captions, footnotes, metadata</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#999999"></div>
+      <div class="swatch-meta"><div class="swatch-token">INK_40</div><div class="swatch-hex">#999999</div><div class="swatch-role">De-emphasized</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#A8A8A8"></div>
+      <div class="swatch-meta"><div class="swatch-token">INK_30</div><div class="swatch-hex">#A8A8A8</div><div class="swatch-role">Thin rules, tertiary</div></div></div>
+  </div>
+
+  <h2>Functional</h2>
+  <div class="row">
+    <div class="swatch"><div class="swatch-color" style="background:#5A9E78"></div>
+      <div class="swatch-meta"><div class="swatch-token">SUCCESS</div><div class="swatch-hex">#5A9E78</div><div class="swatch-role">Positive variance, on track</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F79B32"></div>
+      <div class="swatch-meta"><div class="swatch-token">WARNING</div><div class="swatch-hex">#F79B32</div><div class="swatch-role">Caution (= HBEF_ORANGE)</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B23A2D"></div>
+      <div class="swatch-meta"><div class="swatch-token">RISK</div><div class="swatch-hex">#B23A2D</div><div class="swatch-role">Material risk flags</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#CCCCCC"></div>
+      <div class="swatch-meta"><div class="swatch-token">MUTED_BORDER</div><div class="swatch-hex">#CCCCCC</div><div class="swatch-role">Borders, outlines</div></div></div>
+  </div>
+
+  <h2>Chart Series (categorical order)</h2>
+  <div style="display:flex; gap: 0; height: 50px; margin: 1em 0;">
+    <div style="background:#0B4261; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">1</div>
+    <div style="background:#F79B32; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">2</div>
+    <div style="background:#75C4B9; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">3</div>
+    <div style="background:#417987; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">4</div>
+    <div style="background:#124362; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">5</div>
+    <div style="background:#5C5C5C; flex:1; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:8pt;">6</div>
+  </div>
+
+  <h2>Typography Specimens</h2>
+  <div class="type-spec">
+    <h1 class="cover-title">Cover Title — BauhausBold 42pt</h1>
+    <h1 class="display-hero" style="font-size: 42pt;">Display Hero — Montserrat 200</h1>
+    <h1 style="margin-top: 1em;">Heading 1 — Montserrat 700 28pt</h1>
+    <h2>Heading 2 — Montserrat 700 18pt</h2>
+    <h3>Heading 3 — Montserrat 700 13pt teal</h3>
+    <p style="font-size: 13pt;">Lead paragraph — Montserrat 400 13pt. Every dollar makes a real, tangible difference and every student in Hermosa Schools directly benefits from our funding.</p>
+    <p>Body paragraph — Montserrat 400 11pt. The Hermosa Beach Education Foundation (HBEF) was established in 1992 as a 501(c)(3) organization with the aim of advocating for high-quality public school education in Hermosa Beach.</p>
+    <blockquote>"Funding matters. Your donation, their future." — HBEF mission tagline</blockquote>
+    <p style="font-size: 9pt; font-style: italic; color: var(--ink-60);">Caption — Montserrat 400 italic 9pt INK_60.</p>
+  </div>
+
+  <h2>Sponsor Tier Recognition</h2>
+  <div class="row">
+    <div class="swatch" style="border-top: 4pt solid #0B4261;"><div class="swatch-meta"><div class="swatch-token">Brighter Benefactor</div><div class="swatch-hex">$25,000+</div></div></div>
+    <div class="swatch" style="border-top: 4pt solid #F79B32;"><div class="swatch-meta"><div class="swatch-token">Diamond</div><div class="swatch-hex">$15,000+</div></div></div>
+    <div class="swatch" style="border-top: 4pt solid #417987;"><div class="swatch-meta"><div class="swatch-token">Platinum</div><div class="swatch-hex">$10,000+</div></div></div>
+    <div class="swatch" style="border-top: 4pt solid #75C4B9;"><div class="swatch-meta"><div class="swatch-token">Gold</div><div class="swatch-hex">$6,000+</div></div></div>
+    <div class="swatch" style="border-top: 4pt solid #5C5C5C;"><div class="swatch-meta"><div class="swatch-token">Silver</div><div class="swatch-hex">$3,500+</div></div></div>
+    <div class="swatch" style="border-top: 4pt solid #A8A8A8;"><div class="swatch-meta"><div class="swatch-token">Bronze</div><div class="swatch-hex">$1,500+</div></div></div>
+  </div>
+
+  <p style="margin-top: 4rem; font-size: 8pt; color: var(--ink-60); font-style: italic; text-align: center;">
+    Hermosa Beach Education Foundation is a registered 501(c)(3) non-profit organization. EIN: 33-0522270.
+  </p>
+</div>
+<div class="footer-band"></div>
+</body>
+</html>

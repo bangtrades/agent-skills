@@ -18,15 +18,27 @@ Primary ownership:
 - <file or module path>
 
 Non-ownership / coordination:
-- Do not edit <shared file> unless required.
-- Coordinate reason names/schema/API shape with <other slice>.
+- Do not edit <shared file> unless required. (Shared config files — package
+  manifests, lockfiles — have exactly ONE owning slice; name it.)
+- PINNED CONTRACT with <other slice> (paste the identical signature + data
+  shape in both prompts; consumer lazy-imports with a fallback so both
+  slices test standalone).
 - Do not revert unrelated work.
+
+Environment (paste facts, don't make the agent rediscover them):
+- Working directory + branch: <path>, <branch>.
+- Test command: <exact command with absolute venv/tool path>.
+- Lint command: <exact command>.
+- Key installed versions the code must target: <pkg==ver, ...>.
+- Do NOT run version-control commands — the orchestrator commits.
 
 Rules:
 - Read local project instructions first.
 - Preserve user changes.
 - Keep the patch narrow.
 - Add regression coverage at the layer being changed.
+- Write code before tests before report, so a mid-run kill leaves
+  salvageable work in that order.
 
 Tasks:
 1. Inspect <specific files>.
@@ -149,3 +161,9 @@ Tasks:
 - Dependencies are explicit.
 - The agent knows what not to touch.
 - The slice can be judged from evidence, not vibes.
+- Cross-slice contracts are pinned verbatim in every prompt that touches them.
+- Every shared config file has exactly one owning slice, named in all prompts.
+- Environment facts (venv path, exact test/lint commands, versions) are pasted in.
+- The prompt forbids version-control commands; the orchestrator commits.
+- The slice survives a mid-run kill: work products land on disk incrementally,
+  and the orchestrator can judge them from diffs + gates without the report.

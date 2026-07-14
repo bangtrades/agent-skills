@@ -1,0 +1,11 @@
+# Sprint Runs Index
+
+Rolling ledger of every run summary under `docs/sprint-runs/`, sorted newest-first. Each entry is one story's worth of actually-shipped work — the backward-looking truth, distinct from the forward-looking plan in `docs/SPRINT-N-tracker.md`.
+
+Scan this to find the last time a module was touched, or to cite prior work when writing a new run summary.
+
+| Run | Story | Landed | Status | Summary |
+|-----|-------|--------|--------|---------|
+{{#each runs}}
+| [{{id}}](./{{filename}}) | {{story_title}} | {{landed}} | {{status}} | {{one_line}} |
+{{/each}}

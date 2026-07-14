@@ -150,7 +150,12 @@ Based on what's in the vault, propose:
 ## Report Template
 
 Write the report as a vault page at:
-`projects/metacortex/metacortex--vault-review-YYYY-MM-DD.md`
+`projects/cortana-platform/cortana-platform--vault-review-YYYY-MM-DD.md`
+
+> **Canonical destination = `projects/cortana-platform/`** (per `SCHEMA.md` § Dashboard
+> Maintenance). This supersedes the older `projects/metacortex/` path. `update-dashboard-reports.py`
+> scans `cortana-platform/` and auto-archives reviews >7 days into `cortana-platform/reviews-archive/`.
+> `metacortex` remains the home for vault *meta-operations*, not review output.
 
 Use this structure:
 
@@ -162,7 +167,7 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [🔧, vault, review, maintenance, meta]
 status: completed
-project: "[[projects/metacortex/metacortex|Metacortex]]"
+project: "[[projects/cortana-platform/cortana-platform|Cortana Platform]]"
 sources: []
 related: ["[[SCHEMA]]", "[[index]]"]
 ---

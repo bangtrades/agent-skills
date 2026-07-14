@@ -1,0 +1,25 @@
+# Vendor schema — one file per vendor in ~/Cortana/cortana-vault/research/data-sim/schemas/{vendor}.yaml
+# Produced by Opus doc-extraction agents (Phase 2) or banked from a verified corpus.
+vendor: ""                  # library key, lowercase snake (shopify, amazon_seller_central)
+category: ""                # commerce|esp|sms|analytics|marketplace|retail_portal|paid_media|affiliate|panel|support|reviews|internal
+display_name: ""
+doc_sources:                # where the schema came from — feeds _playbook.md yield tracking
+  - url: ""
+    yield: ""               # high | medium | low
+extracted: ""               # YYYY-MM-DD
+extracted_by: ""            # opus-agent | sf-corpus | manual
+fidelity: ""                # HIGH | MED | LOW — worst of the exports below
+
+exports:                    # the 2-5 exports an operator actually downloads / a pipeline ingests
+  - key: ""                 # snake_case identifier
+    filename_pattern: ""    # exact, with placeholders: "BusinessReport-{MM-DD-YY}.csv"
+    grain: ""               # e.g. "order line item", "campaign × day", "store × week"
+    window_convention: ""   # e.g. "calendar month", "Sat–Fri weeks ending Friday", "trailing export"
+    format: csv             # csv | tsv | txt | xlsx
+    columns:                # EXACT names, EXACT order — generators write in this order
+      - {name: "", type: string}   # types: string|int|decimal|percent_string|currency_string|date|datetime; add format: where relevant
+    quirks: []              # MANDATORY. metadata comment blocks, title/total rows, "US$1,234.56"
+                            # strings, blank continuation rows, casing oddities, encoding, BOM…
+    fidelity: ""            # HIGH (docs show exact columns) | MED (reconstructed) | LOW (inferred)
+
+notes: ""                   # attribution semantics, relationships to other sources, distortion-model role

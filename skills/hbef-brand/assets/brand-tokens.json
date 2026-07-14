@@ -1,0 +1,153 @@
+{
+  "$schema": "https://schemas.hbef.org/brand-tokens/v1",
+  "name": "HBEF Brand Tokens",
+  "version": "1.0.0",
+  "source": "https://hbef.org/wp-content/themes/hbef-2023/assets/main.css",
+  "extracted": "2026-05-26",
+  "colors": {
+    "primary": {
+      "HBEF_NAVY":         { "hex": "#0B4261", "rgb": [11, 66, 97],     "role": "Primary brand. Site header bar, headings, structure" },
+      "HBEF_NAVY_DEEP":    { "hex": "#124362", "rgb": [18, 67, 98],     "role": "Footer body text, IC accent rule" },
+      "HBEF_ORANGE":       { "hex": "#F79B32", "rgb": [247, 155, 50],   "role": "Primary CTA, hover links, donate buttons" },
+      "HBEF_TEAL":         { "hex": "#75C4B9", "rgb": [117, 196, 185],  "role": "Secondary brand. Footer background, hero display H1" },
+      "HBEF_TEAL_DISPLAY": { "hex": "#74C4B9", "rgb": [116, 196, 185],  "role": "Event display H1 + event title links (alias of HBEF_TEAL)" },
+      "HBEF_TEAL_MUTED":   { "hex": "#417987", "rgb": [65, 121, 135],   "role": "Inline emphasis links, italic event dates" },
+      "HBEF_YELLOW":       { "hex": "#FAEF7A", "rgb": [250, 239, 122],  "role": "'Give now' highlight in footer column" },
+      "HBEF_PAGE":         { "hex": "#E7E7E7", "rgb": [231, 231, 231],  "role": "Page background behind content cards" },
+      "WHITE":             { "hex": "#FFFFFF", "rgb": [255, 255, 255],  "role": "Content card background" }
+    },
+    "text": {
+      "INK":     { "hex": "#1A1A1A", "rgb": [26, 26, 26],   "role": "Primary body text" },
+      "INK_80":  { "hex": "#333333", "rgb": [51, 51, 51],   "role": "Heavy body emphasis" },
+      "INK_60":  { "hex": "#5C5C5C", "rgb": [92, 92, 92],   "role": "Secondary text, captions, footnotes" },
+      "INK_40":  { "hex": "#999999", "rgb": [153, 153, 153], "role": "De-emphasized text" },
+      "INK_30":  { "hex": "#A8A8A8", "rgb": [168, 168, 168], "role": "Tertiary text, thin rules" }
+    },
+    "functional": {
+      "SUCCESS":       { "hex": "#5A9E78", "rgb": [90, 158, 120],  "role": "Positive variance, on track" },
+      "WARNING":       { "hex": "#F79B32", "rgb": [247, 155, 50],  "role": "Caution (reuses HBEF_ORANGE)" },
+      "RISK":          { "hex": "#B23A2D", "rgb": [178, 58, 45],   "role": "Material risk flags" },
+      "MUTED_BORDER":  { "hex": "#CCCCCC", "rgb": [204, 204, 204], "role": "Table borders, card outlines" }
+    },
+    "surfaces": {
+      "SURFACE_PAGE":   { "hex": "#E7E7E7", "role": "Page background (= HBEF_PAGE)" },
+      "SURFACE_CARD":   { "hex": "#FFFFFF", "role": "Card background (= WHITE)" },
+      "SURFACE_SOFT":   { "hex": "#F2F2F2", "role": "Spreadsheet sub-header fill, alt-row light" },
+      "SURFACE_ZEBRA":  { "hex": "#FAFAFA", "role": "Lightest zebra-stripe alt-row" },
+      "SURFACE_TOTAL":  { "hex": "#E7E7E7", "role": "Table total row fill (= HBEF_PAGE)" },
+      "SURFACE_HERO":   { "hex": "#0B4261", "role": "Cover-page hero band (= HBEF_NAVY)" },
+      "SURFACE_FOOTER": { "hex": "#75C4B9", "role": "Footer band fill (= HBEF_TEAL)" }
+    },
+    "chart_series_order": [
+      "#0B4261",
+      "#F79B32",
+      "#75C4B9",
+      "#417987",
+      "#124362",
+      "#5C5C5C"
+    ]
+  },
+  "typography": {
+    "families": {
+      "primary": "Montserrat",
+      "primary_fallback": ["Montserrat", "Avenir Next", "Helvetica Neue", "Arial", "sans-serif"],
+      "display": "BauhausBold",
+      "display_fallback": ["BauhausBold", "ITC Avant Garde Gothic", "Century Gothic", "Futura", "Montserrat", "sans-serif"]
+    },
+    "weights": {
+      "extraLight": 200,
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extraBold": 800,
+      "black": 900
+    },
+    "scale_docx_pt": {
+      "cover_title":     { "family": "display", "size": 42, "weight": 700, "tracking": 1.5, "case": "upper", "color": "HBEF_NAVY" },
+      "display_hero":    { "family": "primary", "size": 54, "weight": 200, "tracking": 1.0, "case": "upper", "color": "HBEF_TEAL" },
+      "h1":              { "family": "primary", "size": 28, "weight": 700, "tracking": 0.8, "case": "upper", "color": "HBEF_NAVY", "space_before": 24, "space_after": 12 },
+      "h2":              { "family": "primary", "size": 18, "weight": 700, "tracking": 0.5, "case": "upper", "color": "HBEF_NAVY", "space_before": 18, "space_after": 9 },
+      "h3":              { "family": "primary", "size": 13, "weight": 700, "tracking": 1.2, "case": "upper", "color": "HBEF_TEAL_MUTED", "space_before": 14, "space_after": 6 },
+      "lead":            { "family": "primary", "size": 13, "weight": 400, "color": "INK", "line_height": 1.5 },
+      "body":            { "family": "primary", "size": 11, "weight": 400, "color": "INK", "line_height": 1.55 },
+      "bullet":          { "family": "primary", "size": 11, "weight": 400, "color": "INK", "line_height": 1.5 },
+      "caption":         { "family": "primary", "size": 9,  "weight": 400, "style": "italic", "color": "INK_60" },
+      "pull_quote":      { "family": "primary", "size": 16, "weight": 400, "style": "italic", "color": "HBEF_NAVY" },
+      "footnote":        { "family": "primary", "size": 8,  "weight": 400, "color": "INK_60" },
+      "table_header":    { "family": "primary", "size": 10, "weight": 700, "tracking": 0.8, "case": "upper", "color": "WHITE", "fill": "HBEF_NAVY" },
+      "table_cell":      { "family": "primary", "size": 10, "weight": 400, "color": "INK" },
+      "table_notes":     { "family": "primary", "size": 9,  "weight": 400, "style": "italic", "color": "INK_60" },
+      "event_date":      { "family": "primary", "size": 13, "weight": 700, "style": "italic", "color": "HBEF_TEAL_MUTED" }
+    },
+    "scale_pptx_pt": {
+      "cover_title":         { "family": "display", "size": 60, "weight": 700, "tracking": 2.0, "case": "upper", "color": "HBEF_NAVY" },
+      "cover_subtitle":      { "family": "primary", "size": 22, "weight": 200, "color": "HBEF_TEAL" },
+      "section_divider":     { "family": "primary", "size": 44, "weight": 700, "tracking": 1.0, "case": "upper", "color": "WHITE", "fill": "HBEF_NAVY" },
+      "slide_title":         { "family": "primary", "size": 28, "weight": 700, "tracking": 0.8, "case": "upper", "color": "HBEF_NAVY" },
+      "slide_subtitle":      { "family": "primary", "size": 14, "weight": 400, "color": "INK_60" },
+      "body":                { "family": "primary", "size": 16, "weight": 400, "color": "INK" },
+      "bullet":              { "family": "primary", "size": 14, "weight": 400, "color": "INK" },
+      "stat_value":          { "family": "primary", "size": 60, "weight": 200, "color": "HBEF_NAVY" },
+      "stat_label":          { "family": "primary", "size": 11, "weight": 400, "tracking": 1.0, "case": "upper", "color": "INK_60" },
+      "footer":              { "family": "primary", "size": 9,  "weight": 400, "color": "INK_60" },
+      "page_number":         { "family": "primary", "size": 9,  "weight": 700, "color": "HBEF_NAVY" }
+    },
+    "scale_xlsx_pt": {
+      "workbook_title":  { "family": "primary", "size": 18, "weight": 700, "color": "HBEF_NAVY", "fill": "WHITE" },
+      "section_header":  { "family": "primary", "size": 12, "weight": 700, "color": "WHITE", "fill": "HBEF_NAVY" },
+      "sub_header":      { "family": "primary", "size": 11, "weight": 700, "color": "HBEF_NAVY", "fill": "SURFACE_SOFT" },
+      "data":            { "family": "primary", "size": 10, "weight": 400, "color": "INK", "fill": "WHITE" },
+      "data_zebra":      { "family": "primary", "size": 10, "weight": 400, "color": "INK", "fill": "SURFACE_ZEBRA" },
+      "total":           { "family": "primary", "size": 11, "weight": 700, "color": "HBEF_NAVY", "fill": "SURFACE_TOTAL" },
+      "negative":        { "color": "RISK" },
+      "positive":        { "color": "SUCCESS" },
+      "cell_note":       { "family": "primary", "size": 9, "weight": 400, "style": "italic", "color": "INK_60" }
+    }
+  },
+  "spacing": {
+    "page_margin_word_in": 1.0,
+    "page_margin_pdf_in":  0.6,
+    "content_width_dxa":   9360,
+    "page_size":           "letter",
+    "table_cell_pad_dxa":  { "top": 100, "bottom": 100, "left": 120, "right": 120 }
+  },
+  "logos": {
+    "primary_lockup_dark":   "assets/logos/hbef-secondary-lockup-dark.png",
+    "vertical_lockup_dark":  "assets/logos/hbef-logo-vertical-dark.png",
+    "favicon":               "assets/logos/hbef-favicon.png"
+  },
+  "fonts": {
+    "bauhaus_bold_woff": "assets/fonts/bauhaus-bold.woff",
+    "bauhaus_bold_ttf":  "assets/fonts/bauhaus-bold.ttf",
+    "montserrat_source": "https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+  },
+  "organization": {
+    "name": "Hermosa Beach Education Foundation",
+    "short": "HBEF",
+    "tagline_primary": "Funding matters. Your donation, their future.",
+    "tagline_secondary": "100% Volunteers | 100% Parents",
+    "ein": "33-0522270",
+    "status": "501(c)(3)",
+    "founded": 1992,
+    "office": "1645 Valley Drive, Hermosa Beach, CA 90254",
+    "mailing": "P.O. Box 864, Hermosa Beach, CA 90254",
+    "email": "admin@hbef.org",
+    "website": "https://hbef.org",
+    "social": {
+      "instagram": "https://www.instagram.com/hbef90254/",
+      "facebook":  "https://www.facebook.com/HBEF90254/",
+      "youtube":   "https://www.youtube.com/@hbef90254"
+    },
+    "tax_language": "Hermosa Beach Education Foundation is a registered 501(c)(3) non-profit organization. Contributions are tax-deductible to the extent allowed by law. Federal tax identification number (EIN): 33-0522270."
+  },
+  "sponsor_tiers": [
+    { "name": "Brighter Benefactor", "threshold_usd": 25000, "accent": "HBEF_NAVY" },
+    { "name": "Diamond",             "threshold_usd": 15000, "accent": "HBEF_ORANGE" },
+    { "name": "Platinum",            "threshold_usd": 10000, "accent": "HBEF_TEAL_MUTED" },
+    { "name": "Gold",                "threshold_usd": 6000,  "accent": "HBEF_TEAL" },
+    { "name": "Silver",              "threshold_usd": 3500,  "accent": "INK_60" },
+    { "name": "Bronze",              "threshold_usd": 1500,  "accent": "INK_30" }
+  ]
+}

@@ -1,0 +1,195 @@
+/*
+ * HBEF Brand Palette — CSS Custom Properties
+ * Hermosa Beach Education Foundation
+ * Extracted from hbef.org main.css v1.0.0 on 2026-05-26
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="path/to/brand-palette.css">
+ *   color: var(--hbef-navy);
+ *   background: var(--hbef-teal);
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'BauhausBold';
+  src: url('fonts/bauhaus-bold.woff') format('woff'),
+       url('fonts/bauhaus-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Primary brand */
+  --hbef-navy:         #0B4261;
+  --hbef-navy-deep:    #124362;
+  --hbef-orange:       #F79B32;
+  --hbef-teal:         #75C4B9;
+  --hbef-teal-display: #74C4B9;
+  --hbef-teal-muted:   #417987;
+  --hbef-yellow:       #FAEF7A;
+  --hbef-page:         #E7E7E7;
+  --white:             #FFFFFF;
+
+  /* Text */
+  --ink:    #1A1A1A;
+  --ink-80: #333333;
+  --ink-60: #5C5C5C;
+  --ink-40: #999999;
+  --ink-30: #A8A8A8;
+
+  /* Functional */
+  --success:      #5A9E78;
+  --warning:      #F79B32;
+  --risk:         #B23A2D;
+  --muted-border: #CCCCCC;
+
+  /* Surfaces */
+  --surface-page:   #E7E7E7;
+  --surface-card:   #FFFFFF;
+  --surface-soft:   #F2F2F2;
+  --surface-zebra:  #FAFAFA;
+  --surface-total:  #E7E7E7;
+  --surface-hero:   #0B4261;
+  --surface-footer: #75C4B9;
+
+  /* Typography */
+  --font-primary: 'Montserrat', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'BauhausBold', 'ITC Avant Garde Gothic', 'Century Gothic', 'Futura', 'Montserrat', sans-serif;
+
+  /* Type scale */
+  --fs-display:  54pt;
+  --fs-cover:    42pt;
+  --fs-h1:       28pt;
+  --fs-h2:       18pt;
+  --fs-h3:       13pt;
+  --fs-lead:     13pt;
+  --fs-body:     11pt;
+  --fs-caption:  9pt;
+  --fs-footnote: 8pt;
+
+  /* Weights */
+  --fw-thin:     200;
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extra:    800;
+  --fw-black:    900;
+}
+
+/* ----- Element baselines ----- */
+
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  color: var(--ink);
+  background: var(--white);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+}
+
+h1.display-hero {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-thin);
+  font-size: var(--fs-display);
+  color: var(--hbef-teal);
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  line-height: 1.05;
+}
+
+h1.cover-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-cover);
+  color: var(--hbef-navy);
+  text-transform: uppercase;
+  letter-spacing: 1.5pt;
+  line-height: 1.1;
+}
+
+h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h1);
+  color: var(--hbef-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.8pt;
+  line-height: 1.15;
+}
+
+h2 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  color: var(--hbef-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  color: var(--hbef-teal-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2pt;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--hbef-navy);
+  text-decoration: underline;
+}
+a:hover { color: var(--hbef-orange); }
+a.cta {
+  background: var(--hbef-orange);
+  color: var(--white);
+  padding: 0.4em 1em;
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+}
+
+blockquote {
+  border-left: 3pt solid var(--hbef-teal);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  font-style: italic;
+  font-size: 16pt;
+  color: var(--hbef-navy);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+}
+table thead th {
+  background: var(--hbef-navy);
+  color: var(--white);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.8pt;
+  padding: 8pt 12pt;
+  text-align: left;
+}
+table tbody tr:nth-child(even) {
+  background: var(--surface-zebra);
+}
+table tbody td {
+  padding: 6pt 12pt;
+  border-bottom: 0.5pt solid var(--muted-border);
+}
+table tfoot tr {
+  background: var(--surface-total);
+  font-weight: var(--fw-bold);
+  color: var(--hbef-navy);
+  border-top: 1.5pt solid var(--hbef-navy);
+}

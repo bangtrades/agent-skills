@@ -1,0 +1,74 @@
+{
+  "$schema": "https://design-tokens.dev/schema",
+  "brand": "CopperJoint",
+  "version": "1.0.0",
+  "extracted": "2026-05-27",
+  "source": "copperjoint.com (Firecrawl branding analysis)",
+  "color": {
+    "primary": {
+      "ink":    { "value": "#1A2332", "role": "Dominant brand color, headings, primary buttons" },
+      "copper": { "value": "#B87333", "role": "Secondary accent, single-element highlights" },
+      "gold":   { "value": "#BA9731", "role": "Links, eyebrows, hover states" },
+      "chalk":  { "value": "#F2F2F2", "role": "Default page background — warm off-white" }
+    },
+    "support": {
+      "slate": { "value": "#1A1C1C" },
+      "mist":  { "value": "#F9F9F9" },
+      "clay":  { "value": "#D8C3B4" },
+      "iron":  { "value": "#6B7280" },
+      "white": { "value": "#FFFFFF", "role": "Interior surfaces only — never primary background" }
+    },
+    "text": {
+      "primary":  { "value": "#000000" },
+      "inverse":  { "value": "#F2F2F2" },
+      "muted":    { "value": "#6B7280" }
+    },
+    "functional": {
+      "success": { "value": "#3B7A57" },
+      "warn":    { "value": "#B87333" },
+      "danger":  { "value": "#8B2E2E" }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary":  "Montserrat",
+      "clinical": "Epilogue",
+      "stack":    "Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "scale": {
+      "display":  { "size": "56px", "lineHeight": "64px", "weight": 700, "letterSpacing": "-0.02em" },
+      "h1":       { "size": "40px", "lineHeight": "48px", "weight": 700, "letterSpacing": "-0.01em" },
+      "h2":       { "size": "28px", "lineHeight": "36px", "weight": 600, "letterSpacing": "-0.01em" },
+      "h3":       { "size": "20px", "lineHeight": "28px", "weight": 600 },
+      "body":     { "size": "16px", "lineHeight": "24px", "weight": 400 },
+      "small":    { "size": "14px", "lineHeight": "20px", "weight": 400 },
+      "eyebrow":  { "size": "12px", "lineHeight": "16px", "weight": 600, "letterSpacing": "0.08em", "transform": "uppercase" }
+    }
+  },
+  "spacing": {
+    "base": 4,
+    "scale": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 48, "8": 64, "9": 96 }
+  },
+  "radii": {
+    "sharp":  "0px",
+    "subtle": "3.75px",
+    "card":   "8px",
+    "pill":   "50px"
+  },
+  "shadows": {
+    "card":  "0 1px 3px rgba(26, 35, 50, 0.08), 0 4px 12px rgba(26, 35, 50, 0.04)",
+    "hover": "0 4px 12px rgba(26, 35, 50, 0.12), 0 8px 24px rgba(26, 35, 50, 0.08)"
+  },
+  "layout": {
+    "maxWidth":     "1200px",
+    "contentWidth": "800px"
+  },
+  "logo": {
+    "url":   "https://www.copperjoint.com/cdn/shop/files/Logo_no_background.png",
+    "style": "wordmark only, no icon mark exists",
+    "color": {
+      "onLight": "#1A2332",
+      "onDark":  "#F2F2F2"
+    }
+  }
+}

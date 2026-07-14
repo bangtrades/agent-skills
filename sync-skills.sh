@@ -2,8 +2,10 @@
 # Cortana skill sync — keep Codex, Claude, and Hermes harnesses pointed at the
 # single canonical registry. Idempotent and safe to re-run.
 #
-#   Codex  & Claude : MIRROR  — every registry skill becomes a per-skill symlink
+#   Codex           : MIRROR  — every registry skill becomes a per-skill symlink
 #                     (real dirs backed up; harness-internal siblings preserved).
+#   Claude          : DIRECT  — may symlink its entire skills root to the registry;
+#                     in that case it is already synchronized and is left alone.
 #   Hermes          : FILL    — only adds top-level symlinks for registry skills
 #                     Hermes doesn't already have (anywhere, nested included), so
 #                     its own curator-managed library and categories are untouched.
@@ -31,14 +33,37 @@ ts() { date +%Y%m%d-%H%M%S; }
 # MIRROR: every registry skill -> per-skill symlink in target (back up real dirs).
 mirror() {
   local T="$1" L="$2"; [ -z "$T" ] && return 0
-  mkdir -p "$T"; local bk="$T/.pre-consolidation-backup-$(ts)" n=0 b=0
+  mkdir -p "$T"
+
+  # A harness can expose the canonical registry by symlinking its entire
+  # skills directory (Claude does this here). It is already synchronized;
+  # attempting a per-skill mirror would move the canonical source itself.
+  local src_real target_real
+  src_real=$(cd -P "$SRC" && pwd)
+  target_real=$(cd -P "$T" && pwd)
+  if [ "$target_real" = "$src_real" ]; then
+    echo "[$L] direct canonical link: already synchronized -> $T"
+    return 0
+  fi
+
+  local bk="$T/.pre-consolidation-backup-$(ts)" n=0 b=0 p=0
   for d in "$SRC"/*/; do
     local id; id=$(basename "$d"); local tgt="$T/$id"
     if [ -L "$tgt" ]; then rm -f "$tgt"
     elif [ -e "$tgt" ]; then mkdir -p "$bk"; mv "$tgt" "$bk/$id"; b=$((b+1)); fi
     ln -s "$SRC/$id" "$tgt"; n=$((n+1))
   done
-  echo "[$L] mirror: $n linked, $b backed up -> $T"
+
+  # Remove only stale links previously managed by this registry. Native
+  # harness skills and links outside the canonical source remain untouched.
+  for tgt in "$T"/*; do
+    [ -L "$tgt" ] || continue
+    local dest; dest=$(readlink "$tgt")
+    if [[ "$dest" == "$SRC/"* ]] && [ ! -e "$tgt" ]; then
+      rm -f "$tgt"; p=$((p+1))
+    fi
+  done
+  echo "[$L] mirror: $n linked, $b backed up, $p stale links removed -> $T"
 }
 
 # FILL: add top-level symlinks only for registry skills Hermes lacks anywhere.

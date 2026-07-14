@@ -1,0 +1,63 @@
+{
+  "skill_name": "sprint-runner",
+  "evals": [
+    {
+      "id": 1,
+      "name": "new-sprint-scaffold",
+      "prompt": "I'm starting Sprint 11 tomorrow (May 13 2026). Goal is polish + hardening after the S10 skill-engine push — no new major features, just retire S10's carry-in debt and tighten the observability story. Velocity target 75 pts. Carry-in: S10-05 (Dev Console session-context tab polish) and S10-08 (modality-partial edge cases). Two weeks. Scaffold the tracker.",
+      "expected_output": "A new docs/SPRINT-11-tracker.md file with the meta block (dates May 13 -> May 27, goal, 75 pts, Status 🟡 Open), a Carry-in section naming S10-05 and S10-08, an Epic section (possibly TBD stub since bang didn't specify epics), a Sprint Summary table, and placeholder Key Decisions / Files Changed / Run Summaries sections. No invented velocity breakdowns.",
+      "assertions": [
+        {"text": "File docs/SPRINT-11-tracker.md was created"},
+        {"text": "Meta block contains 'Sprint dates:' line with 2026-05-13 and 2026-05-27"},
+        {"text": "Meta block contains 'Velocity target:' line with 75"},
+        {"text": "Status is 🟡 Open"},
+        {"text": "Carry-in section mentions both S10-05 and S10-08"},
+        {"text": "Sprint Summary table exists with Total row showing 75"},
+        {"text": "Key Decisions, Files Changed, and Run Summaries sections are present as headers"},
+        {"text": "No hallucinated story points assigned to stories bang didn't specify"}
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "finish-sprint-run-summary",
+      "prompt": "We just shipped S10-12 (skill engine wiring + Dev Console Pipeline tab, 8 pts). It retires S9-07 (flaky Zod retry). Commits are in range f5f304e..f16186a. Tests went from 639 to 646 passing. Write the run summary — it touches HTTP API surface (/api/skill/execute, /dev/skills), has new Dev Console UI, and adds a skillEngine.enabled flag (default on).",
+      "expected_output": "A docs/sprint-runs/S10-12-<slug>.md file with the meta block filled in (Sprint 10, S10-12, 8 pts, Retires: S9-07, Landed: today, Status: ✅ Done), an opening paragraph linking prior runs, a What shipped list from the commit range, Architectural decisions with 'why X over Y' rationale, a Quick-start runbook with # expect: annotations, a Validation matrix split between sandbox ✅ and Mac 🟡, End-to-end Dev Console walkthrough section (since has-ui), a curl cheat sheet piped through jq (since has-http-api), a Feature-flag matrix row for skillEngine.enabled, a Debt retired section for S9-07, a What's next section, and Cross-references.",
+      "assertions": [
+        {"text": "File docs/sprint-runs/S10-12-<anything>.md exists"},
+        {"text": "Meta block has Sprint: 10, Story: S10-12 (8 pts), Retires: S9-07, Status: ✅ Done"},
+        {"text": "Opening paragraph is 2-4 sentences and references context from prior runs"},
+        {"text": "What shipped section lists actual files from git range (not hallucinated)"},
+        {"text": "Architectural decisions section has at least 1 numbered entry with 'why X over Y' or equivalent trade-off framing"},
+        {"text": "Quick-start runbook contains at least one `# expect:` annotation"},
+        {"text": "Validation matrix contains both ✅ and 🟡 rows"},
+        {"text": "Prerequisites bang must run on his Mac section is present"},
+        {"text": "Dev Console walkthrough section is present"},
+        {"text": "curl cheat sheet present with jq pipe and # expected: annotation"},
+        {"text": "Feature-flag matrix has row for skillEngine.enabled"},
+        {"text": "Debt retired section present with S9-07 named"},
+        {"text": "What's next has 1-3 bullets, not an essay"},
+        {"text": "No `<!-- FILL: ... -->` placeholders remain in the final output"},
+        {"text": "Uses em-dashes (—) not double-hyphens (--) in prose"}
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "sprint-index-rollup",
+      "prompt": "We've added three new run summaries since the last index build (S10-04, S10-05, S10-11, S10-12). Regenerate docs/sprint-runs/index.md so it picks up everything and sorts newest-first by Landed date.",
+      "expected_output": "A regenerated docs/sprint-runs/index.md with the preamble paragraph, a table (columns: Run, Story, Landed, Status, Summary), one row per existing run summary file (not just the new ones — all of them), sorted by Landed desc. The one-line summaries should be extracted from each run's opening paragraph (truncated to ~140 chars). Nothing else in the docs/ tree should be touched.",
+      "assertions": [
+        {"text": "File docs/sprint-runs/index.md was written"},
+        {"text": "Index contains the preamble paragraph explaining the ledger's purpose"},
+        {"text": "Table has columns: Run, Story, Landed, Status, Summary"},
+        {"text": "One row per S*.md file in docs/sprint-runs/ (excluding index.md itself)"},
+        {"text": "Rows sorted newest-first by Landed date"},
+        {"text": "Each Run cell is a markdown link to the corresponding file"},
+        {"text": "No run summary files were modified (script only touches index.md)"},
+        {"text": "One-line summaries truncated at ~140 chars where applicable"}
+      ],
+      "files": []
+    }
+  ]
+}

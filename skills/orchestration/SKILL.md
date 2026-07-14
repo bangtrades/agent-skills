@@ -1,7 +1,7 @@
 ---
 name: orchestration
 description: This skill should be used when the user asks to "orchestrate agents", "give me agent slices", "coordinate a complex build", "plan parallel dev work", "manage implementation slices", "turn a roadmap into agent prompts", "recover a stuck project", "sequence next engineering work", or asks how to coordinate multiple agents, reports, gates, tests, commits, or release decisions for any software project.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Orchestration
@@ -49,6 +49,27 @@ Apply these patterns from prior complex build orchestration:
 - Keep one slice responsible for truth reconciliation. This prevents implementation agents from marking their own work done without independent evidence.
 - Require report paths up front. A report that lands in a predictable location becomes part of the sprint ledger instead of disappearing into chat history.
 - Promote repeated troubleshooting lessons into skills. When a failure pattern recurs, add it to a triage or orchestration skill before the next rerun.
+- Probe tool boundaries before dispatching agents across them. Deploy tools, external APIs, and browser automation have capability ceilings (payload size, auth state, platform/arch) that a ≤60-second orchestrator probe reveals; an agent discovers the same ceiling only after an expensive grind. One probe beats one retry-agent, every time. Deeper mechanism, confirmed across model tiers: NO model can hand-transcribe large
+  byte-exact payloads (~50KB+) into a tool-call parameter — emission degrades to placeholders
+  or truncation regardless of tier. Inline-content tools are therefore bounded by model
+  transcription reliability, not just by the tool's own limits. For large payloads, always
+  prefer a channel that reads bytes from disk directly (browser file-input upload, CLI, git)
+  over any inline tool parameter; escalating model tier does NOT fix transcription.
+- Budget every dispatched agent and give it an abort clause: state the effort budget and instruct "if blocked by auth, a capability ceiling, or a policy gate — stop and report the exact blocker and what you verified." Treat a precise blocker report as a SUCCESSFUL run. Unbudgeted agents fail heroically (encoding detours, web-UI workarounds) and burn 5–10× a productive slice's tokens producing nothing shippable.
+- Own the contract, parallelize the surfaces: when multiple agents build against one artifact, the ORCHESTRATOR writes the shared kernel (shell/API/data module) and documents the interface in the kernel's file header; slices get disjoint file ownership plus the header as their spec. Assign shared-state seeding to exactly one slice. This pattern has produced zero-conflict first-merge integration across parallel coding agents.
+- Verify with the cheapest sufficient evidence, in a ladder: static/syntax check → stub or dry-run against real data → real runtime (headless browser / live endpoint, console + screenshots) → human-eyeball of the highest-stakes surfaces. Climb only until the gate's question is answered; never accept a lower rung as proof of a higher rung's property.
+
+Patterns from multi-agent parallel waves (2026-07, MetaCortex M2/M4 — agents killed mid-wave by provider credit exhaustion and by a session restart):
+
+- **Update the issue tracker per slice at verification time, never batched at wave end.** Batched close-out is the root cause of stale boards: agents finish the code, die before the paperwork, and the tracker lags reality for hours. Verify a slice → immediately move its issue with an evidence comment.
+- **Reports are advisory; diffs + gate runs are the record.** Accept work whose report never landed if the diff exists and the focused gate passes (two of five M4 slices shipped this way). Refuse "done" claims with no matching diff. Never order re-work to recover missing paperwork.
+- **Agents die silently — plan the wave to be salvageable.** Background agents are killed by session restarts, credit exhaustion, and user stops, usually AFTER writing code and BEFORE tests/reports. On any resume: inventory disk first (`git status` + focused gates), classify each slice `complete-unverified` / `partial` / `zero-output`, then accept / resume-from-transcript / re-dispatch respectively. Resuming a partial agent with a one-message "here is what landed, finish only X" is far cheaper than a redo.
+- **Pin cross-slice contracts verbatim in BOTH prompts.** When slice B consumes slice C's API, put the identical signature + data shape in both prompts and require the consumer to lazy-import with a fallback, so neither slice blocks the other and tests pass standalone. (Held twice with zero coordination traffic.)
+- **Exactly one slice owns each shared config file** (pyproject/package manifests/lockfiles), named explicitly in every prompt ("you are the ONLY slice allowed to edit X"). The orchestrator pre-creates shared package `__init__` files before dispatch so no two agents invent them.
+- **Prompts carry the environment facts:** absolute venv/tool paths, the exact test + lint commands, installed dependency versions, and "do NOT run version-control commands — the orchestrator commits." Each agent rediscovering the environment wastes its context; agents committing in a shared worktree corrupts the index.
+- **Focused gates while the wave runs; the full gate only at reconcile.** Mid-wave, other agents' half-written files pollute a full-suite run — verify a completing slice against its own tests + lint, and run the whole suite once when the wave settles (and again after any merge).
+- **Identify operator-gated actions before dispatch.** Permission classifiers refuse some actions regardless of agent intent (creating repos, pushing to new remotes, weakening branch protection, applying migrations). Don't assign these to agents or burn retries — stage everything, then hand the operator exact copy-paste commands and record the handoff on the tracker item.
+- **Model tiering works:** orchestrator on the premium model doing assignment/verification only; complex slices (graph/pipeline/stateful logic) on the strong builder model; mechanical slices (renderers, registries, tool wrappers) on the fast model. Verification effort concentrates where correctness is subtle, not evenly.
 
 ### 1. Stabilize Context
 
@@ -114,6 +135,8 @@ Each agent prompt must be self-contained and concrete. Include:
 - Required tests/gates.
 - Required report path.
 - Expected final report contents.
+- Effort budget and abort clause (what "blocked" means and the exact stop-and-report rule).
+- The verified-passable path for any tool boundary the slice must cross (the orchestrator's probe result), or an explicit statement that the slice must NOT attempt that boundary.
 
 Prefer four slices when the work naturally separates into implementation, verification, docs/release, and adversarial/truth review. Prefer fewer slices when ownership cannot be separated cleanly.
 
@@ -136,10 +159,25 @@ When agent reports return:
 - Compare claims to git status and diffs.
 - Check that tests actually ran and are current.
 - Re-run focused gates when cheap and local.
+- For a new CI workflow, validate command ordering from a clean checkout or identify generated-file prerequisites; a local pass after a prior build is not CI evidence.
 - Mark stale, missing, or simulated evidence explicitly.
 - Identify contradictions between reports, issue state, UI, logs, and gates.
 
 If a report says done but no evidence exists, classify it as a reporting gap, not completion.
+
+Log each agent's cost (tokens / tool-uses / wall time) next to its outcome in the ledger. Cost-per-shipped-artifact is the metric that exposes silent failure modes — a run can be "all green" while half its spend produced nothing.
+
+The inverse also holds: if the diff exists and the focused gate passes but the report is missing (agent killed mid-run), accept the work on direct evidence and record "report missing, verified by orchestrator" — do not re-dispatch to recover paperwork.
+
+### 6b. Recover A Broken Wave
+
+When agents die mid-wave (session restart, provider credit exhaustion, user stop):
+
+1. Inventory disk before anything else: `git status` + the file list each slice owned.
+2. Classify every slice: `complete-unverified` (diff present, run its focused gate), `partial` (some owned files missing — usually tests or reports), `zero-output`.
+3. Accept complete-unverified slices on gate evidence. Resume partial agents from their saved transcript with a one-message delta ("here is what landed and verifies; finish only X"). Re-dispatch only zero-output slices, noting in the new prompt that a prior attempt left empty artifacts.
+4. Sweep the issue tracker to match the classification immediately — a broken wave's worst symptom is a board that lies for hours.
+5. Do not treat pre-existing scaffold files in an agent's ownership area as its work product; check `git ls-files` provenance before crediting output.
 
 ### 7. Decide Commit And Release Scope
 
@@ -173,6 +211,9 @@ Keep agent prompts copy-ready. Avoid vague instructions like “investigate thor
 - Do not re-run expensive live tests before checking whether the last run already contains canonical proof.
 - Do not mix runtime fixes, gate truth fixes, docs, and release commits without naming the scope.
 - Do not bury “remaining defect” under a green headline.
+- Do not dispatch a retry-agent for a failed slice before naming the failing layer — the retry inherits the same wall plus fresh ignorance of it.
+- Do not let an agent cross an authentication wall "creatively" (web-UI logins, signups, alternate upload endpoints). Auth walls are stop-and-report events by definition.
+- Do not schedule work whose single stage exceeds the execution environment's hard caps (shell timeouts, no surviving background processes); split into sub-cap stages with file-based state handoff.
 
 ## End-of-Run Skill Improvement
 
@@ -187,7 +228,7 @@ End every orchestration session with a short process review:
 Then run this improvement command as a prompt in the current assistant session:
 
 ```text
-Use the orchestration skill to review the orchestration run we just completed. Compare the planned slices, agent reports, code changes, tests, gates, commits, and remaining blockers. Recommend one concrete improvement to /Users/nolan/.codex/skills/orchestration/SKILL.md or its references, and patch it if the improvement is small and clearly correct.
+Use the orchestration skill to review the orchestration run we just completed. Compare the planned slices, agent reports, code changes, tests, gates, commits, and remaining blockers. Recommend one concrete improvement to /Users/nolan/.claude/skills/orchestration/SKILL.md or its references, and patch it if the improvement is small and clearly correct.
 ```
 
 Prefer adding one crisp rule, checklist item, or template refinement over long narrative.
