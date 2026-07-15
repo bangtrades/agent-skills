@@ -1,0 +1,46 @@
+{
+  "brand": "Sense Neuro Diagnostics",
+  "slug": "sense-neuro",
+  "source": "senseneuro.com live computed-style extraction",
+  "extracted": "2026-06-18",
+  "tagline": "Time is brain.",
+  "color": {
+    "blue": "#008ED1",
+    "blueDeep": "#004D71",
+    "navy": "#002A3A",
+    "blueMid": "#0073AA",
+    "blueTint": "#5FBDEE",
+    "orange": "#F39119",
+    "orangeHover": "#D97D10",
+    "ink": "#222222",
+    "body": "#666666",
+    "bg": "#FFFFFF",
+    "bgAlt": "#F9F9F9",
+    "hairline": "#EEEEEE",
+    "white": "#FFFFFF"
+  },
+  "chartRamp": ["#002A3A", "#004D71", "#0073AA", "#008ED1", "#5FBDEE"],
+  "chartHighlight": "#F39119",
+  "typography": {
+    "heading": { "family": "Open Sans, Arial, sans-serif", "weight": 500 },
+    "body": { "family": "Nunito Sans, Helvetica, Arial, sans-serif", "weight": 400 },
+    "button": { "family": "Open Sans, Arial, sans-serif", "weight": 700, "transform": "uppercase", "letterSpacing": "1px" },
+    "docxFallback": { "heading": "Calibri", "body": "Calibri" }
+  },
+  "components": {
+    "buttonPrimary": {
+      "bg": "#F39119", "color": "#FFFFFF", "radius": "100px",
+      "padding": "12px 36px", "transform": "uppercase", "weight": 700, "border": "none"
+    },
+    "buttonSecondary": {
+      "bg": "transparent", "color": "#008ED1", "border": "2px solid #008ED1", "radius": "100px"
+    },
+    "cardRadius": "6px",
+    "titleUnderline": { "width": "48px", "height": "3px", "color": "#008ED1" }
+  },
+  "usageRules": {
+    "orange": "primary CTA only — never body text or large fills",
+    "dominant": "blue + white + gray (~90% of surface)",
+    "logo": "blue 'Sense Neuro' wordmark on white; reversed white on navy"
+  }
+}

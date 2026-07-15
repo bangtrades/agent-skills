@@ -1,0 +1,61 @@
+/* SD Wheel brand tokens — extracted 2026-07-10 by brand-recon */
+:root {
+  /* Palette */
+  --sdw-orange: #FFA500;
+  --sdw-orange-dark: #CC8400;
+  --sdw-orange-light: #FFC04D;
+  --sdw-charcoal: #2F2F2F;
+  --sdw-charcoal-light: #4A4A4A;
+  --sdw-white: #FFFFFF;
+  --sdw-gray: #909090;
+  --sdw-gray-light: #D9D9D9;
+  --sdw-black: #000000;
+  --sdw-input-text: #555555;
+
+  /* Semantic */
+  --sdw-color-primary: var(--sdw-orange);
+  --sdw-color-accent: var(--sdw-orange);
+  --sdw-color-bg: var(--sdw-white);
+  --sdw-color-text: var(--sdw-charcoal);
+  --sdw-color-link: var(--sdw-orange);
+  --sdw-color-cta-bg: var(--sdw-orange);
+  --sdw-color-cta-text: var(--sdw-black);
+  --sdw-color-btn2-bg: var(--sdw-gray);
+  --sdw-color-btn2-text: var(--sdw-white);
+
+  /* Typography */
+  --sdw-font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --sdw-font-weight-heading: 800;
+  --sdw-font-weight-subhead: 700;
+  --sdw-font-weight-body: 400;
+  --sdw-fs-h1: 64px;
+  --sdw-fs-h2: 33px;
+  --sdw-fs-body: 22.4px;
+
+  /* Shape & spacing */
+  --sdw-radius-btn: 0px;
+  --sdw-radius-input: 4px;
+  --sdw-radius-card: 0px;
+  --sdw-space-unit: 8px;
+  --sdw-shadow-input: rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset;
+}
+
+.sdw-btn-primary {
+  background: var(--sdw-color-cta-bg);
+  color: var(--sdw-color-cta-text);
+  border: none;
+  border-radius: var(--sdw-radius-btn);
+  font-family: var(--sdw-font-family);
+  font-weight: var(--sdw-font-weight-subhead);
+  text-transform: uppercase;
+  padding: calc(var(--sdw-space-unit) * 1.5) calc(var(--sdw-space-unit) * 3);
+}
+
+.sdw-btn-secondary {
+  background: var(--sdw-color-btn2-bg);
+  color: var(--sdw-color-btn2-text);
+  border: none;
+  border-radius: var(--sdw-radius-btn);
+  font-family: var(--sdw-font-family);
+  font-weight: var(--sdw-font-weight-subhead);
+}

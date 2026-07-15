@@ -1,0 +1,76 @@
+/* Sense Neuro Diagnostics — brand tokens
+   Source: senseneuro.com live computed-style extraction, 2026-06-18
+   Pair with references/visual-tokens.md */
+
+:root {
+  /* Brand blues */
+  --sn-blue: #008ED1;        /* primary brand blue */
+  --sn-blue-deep: #004D71;   /* deep blue — section headers */
+  --sn-navy: #002A3A;        /* darkest navy — dark bg / heavy headings */
+  --sn-blue-mid: #0073AA;    /* mid blue — secondary fills/hovers */
+  --sn-blue-tint: #5FBDEE;   /* light tint for charts */
+
+  /* CTA accent — use ONLY on primary buttons */
+  --sn-orange: #F39119;
+  --sn-orange-hover: #d97d10;
+
+  /* Neutrals */
+  --sn-ink: #222222;         /* heading text on light */
+  --sn-body: #666666;        /* body text */
+  --sn-bg: #FFFFFF;          /* page bg */
+  --sn-bg-alt: #F9F9F9;      /* alt section bg */
+  --sn-hairline: #EEEEEE;    /* dividers/borders */
+  --sn-white: #FFFFFF;
+
+  /* Typography */
+  --sn-font-heading: "Open Sans", Arial, sans-serif;
+  --sn-font-body: "Nunito Sans", Helvetica, Arial, "Lucida Sans", sans-serif;
+  --sn-heading-weight: 500;
+  --sn-body-weight: 400;
+  --sn-button-weight: 700;
+
+  /* Components */
+  --sn-radius-pill: 100px;   /* signature fully-rounded buttons */
+  --sn-radius-card: 6px;
+  --sn-button-padding: 12px 36px;
+  --sn-button-letterspacing: 1px;
+  --sn-divider: 48px;        /* width of blue underline accent under section titles */
+}
+
+/* Primary button (signature element) */
+.sn-btn {
+  background: var(--sn-orange);
+  color: var(--sn-white);
+  font-family: var(--sn-font-heading);
+  font-weight: var(--sn-button-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--sn-button-letterspacing);
+  border: 0;
+  border-radius: var(--sn-radius-pill);
+  padding: var(--sn-button-padding);
+  cursor: pointer;
+}
+.sn-btn:hover { background: var(--sn-orange-hover); }
+
+/* Secondary button */
+.sn-btn--ghost {
+  background: transparent;
+  color: var(--sn-blue);
+  border: 2px solid var(--sn-blue);
+  border-radius: var(--sn-radius-pill);
+  padding: 10px 34px;
+  text-transform: uppercase;
+  letter-spacing: var(--sn-button-letterspacing);
+  font-family: var(--sn-font-heading);
+  font-weight: var(--sn-button-weight);
+}
+
+/* Headings & body */
+h1, h2, h3, h4 { font-family: var(--sn-font-heading); font-weight: var(--sn-heading-weight); color: var(--sn-ink); }
+body, p { font-family: var(--sn-font-body); font-weight: var(--sn-body-weight); color: var(--sn-body); line-height: 1.6; }
+
+/* Section title underline accent */
+.sn-title-accent::after {
+  content: ""; display: block; width: var(--sn-divider);
+  height: 3px; background: var(--sn-blue); margin-top: 12px;
+}

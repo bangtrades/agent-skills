@@ -1,0 +1,54 @@
+{
+  "brand": "SD Wheel",
+  "slug": "sd-wheel",
+  "extracted": "2026-07-10",
+  "source": "https://www.sdwheel.com/ (firecrawl branding format)",
+  "colors": {
+    "orange": "#FFA500",
+    "orangeDark": "#CC8400",
+    "orangeLight": "#FFC04D",
+    "charcoal": "#2F2F2F",
+    "charcoalLight": "#4A4A4A",
+    "white": "#FFFFFF",
+    "gray": "#909090",
+    "grayLight": "#D9D9D9",
+    "black": "#000000",
+    "inputText": "#555555"
+  },
+  "semantic": {
+    "primary": "#FFA500",
+    "accent": "#FFA500",
+    "background": "#FFFFFF",
+    "textPrimary": "#2F2F2F",
+    "link": "#FFA500",
+    "ctaBackground": "#FFA500",
+    "ctaText": "#000000",
+    "buttonSecondaryBackground": "#909090",
+    "buttonSecondaryText": "#FFFFFF"
+  },
+  "typography": {
+    "fontFamily": "Montserrat",
+    "fallbackStack": "Montserrat, 'Helvetica Neue', Arial, sans-serif",
+    "weights": { "heading": 800, "subhead": 700, "body": 400 },
+    "sizesWeb": { "h1": "64px", "h2": "33px", "body": "22.4px" },
+    "sizesDoc": { "h1": "40pt", "h2": "26pt", "body": "12pt" }
+  },
+  "shape": {
+    "buttonRadius": "0px",
+    "inputRadius": "4px",
+    "cardRadius": "0px",
+    "spacingBaseUnit": 8,
+    "inputShadow": "rgba(0,0,0,0.075) 0px 1px 1px 0px inset"
+  },
+  "logo": {
+    "onDark": "https://images.sdwheel.com/logo/white-horizontal.svg",
+    "onLight": "https://images.sdwheel.com/old/sd-logo.png",
+    "ogImage": "https://images.sdwheel.com/new/sd_og_image.jpg"
+  },
+  "personality": {
+    "tone": "bold",
+    "energy": "high",
+    "audience": "automotive enthusiasts (truck-first)"
+  },
+  "chartsPalette": ["#FFA500", "#2F2F2F", "#909090", "#FFC04D", "#4A4A4A", "#CC8400"]
+}
