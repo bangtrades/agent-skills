@@ -96,8 +96,20 @@ structure — do not stall the run on tooling.
 
 Launch agents per `references/task-slices.md`, in dependency order, independent slices in
 parallel. Every dispatched agent prompt contains: the slice brief verbatim, the client slug +
-folder paths, the motion, the manifest path, and the standing rules (below). Update Linear
-issue status as slices start/finish.
+folder paths, the motion, the manifest path, and the standing rules (below).
+
+**Board leads the work.** Move each slice's Linear issue to **In Progress the moment you start
+it — BEFORE the agent runs or the inline build begins**, with a one-line "dispatching" comment.
+Never let an issue jump created→Done; the operator watches the board to see what is being worked
+*now*. Mark Done only when the exit artifact verifiably exists (Step 4).
+
+**Inline-first for the single-file demo.** The static-first demo (demo-doctrine.md) is one HTML
+build whose surfaces share a single token sheet and one chart/UI kit — that is *coupled* work.
+Build it **inline and sequentially**, not by fanning out an agent per surface: sibling agents
+collide on the shared kit, and mid-turn operator messages kill in-flight subagents. Fan out only
+for genuinely file-disjoint work (e.g. the vendor-export estate, the legal doc set). If a
+dispatch wave returns dead/junk twice, go inline immediately (orchestration.md → Dispatch
+Discipline). This is the biggest wall-clock lever in the whole motion.
 
 The pre-signature default ("full parity" — what Summer Fridays got):
 
@@ -120,15 +132,37 @@ accept the cheap rung as proof of visual/brand quality. Before anything is stage
 G1 send: rendered through `{client}-brand` + `brand-waive`, numbers match the manifest, and
 the honesty rules below hold.
 
-## Step 5 — Close the loop (self-improvement)
+## Step 5 — Retrospective (MANDATORY at every demo-complete AND engagement-close)
 
-At run end (or engagement close): append a dated run-log entry (actual vs. planned timeline,
-what landed, what broke, pricing/objection notes) to
-`~/Projects/agency/playbook/00-retrospective-2026-07.md` if it exists, else to
-`RUN_LOG.md` beside the manifest. Then propose concrete diffs to THIS skill's references —
-new patterns in, disproven guidance out. If the installed skill is read-only, write the diffs
-to the client folder and tell bang to fold them in. The playbook only compounds if every run
-writes back.
+**This is a hard trigger, not optional cleanup — the equal of brand-recon's Phase 14.** The
+moment the demo passes its ship checklist (and again at engagement close), stop and run a
+retrospective before starting anything new. bang's standing instruction: *every completed build
+launches a retro and improves the process.* A build that ships without a retro is unfinished.
+
+Produce `~/Projects/{Client}/00_context/RETRO_{date}.md` from `templates/retro-template.md`:
+
+1. **Timeline table** — phase-by-phase wall-clock from hard evidence (Linear
+   `startedAt`/`completedAt`, artifact mtimes, commit times), planned vs actual. bang measures
+   the run in wall-clock; measure it the same way. To make this cheap, **instrument as you go**:
+   stamp each phase's start/end in `RUN_TRACKER.md` (or rely on Linear transitions if the board
+   led the work — which, per Step 3, it now does).
+2. **What compounded** — the reusable wins to keep/strengthen (evidence-based tie-outs, the vault
+   schema-library hits, contract-first, per-checkpoint commits).
+3. **What slowed it** — root-caused, with the wall-clock cost of each (dispatch thrash,
+   post-hoc calibration tuning, recurring build gotchas). Name the single biggest lever.
+4. **Board-discipline self-check** — did every issue move to In Progress *before* its work
+   started? List any that jumped created→Done. (Fix the habit, not just the record.)
+5. **Skill diffs across EVERY skill the engagement used** — brand-recon, data-simulator,
+   client-build-package, orchestration. New patterns in, disproven guidance out. If the installed
+   skill is writable, patch it in-session and note it; if read-only, write the diffs to
+   `00_context/skill-patches/` with an `INSTALL.md` and tell bang to fold them in.
+6. **Run-log entry** — append the dated summary to
+   `~/Projects/agency/playbook/00-retrospective-2026-07.md` if it exists, else `RUN_LOG.md`
+   beside the manifest.
+
+Open a Linear issue for the retro itself (`Retro — {date} build → skill patches`), moved to
+In Progress before you start it — the retro obeys its own board rule. The playbook only compounds
+if every run writes back.
 
 ## Standing rules (every agent, every slice)
 
@@ -159,6 +193,17 @@ writes back.
     tools, external APIs, browser automation), the orchestrator runs a ≤60-second capability
     probe itself: smallest possible payload through the same tool, auth state check,
     platform/arch check. Only dispatch once the path is proven passable.
+11. **One gated surface, no strays.** A demo is not "deployed" until exactly one URL is gated AND every
+    earlier/duplicate deploy is neutralized or deleted — verified UNAUTHENTICATED. On Vercel Pro there is
+    no production Vercel-auth to hide a leak; the custom gate (or deletion) is the only close. Deploy via
+    the Vercel CLI + token (the MCP can't carry a real demo), disable the project's Vercel
+    deployment-protection so the gate is the front door, and never ship the operator's WIP branch when
+    redeploying a git-connected project.
+12. **Board leads work.** Every tracked issue moves to In Progress *before* its work begins and
+    Done only on verified artifact — never created→Done. The board is a live picture of what is
+    being worked now, not an after-the-fact log.
+13. **Retro every build.** Demo-complete and engagement-close each trigger Step 5's mandatory
+    retrospective before any new work starts. No exceptions.
 
 ## The Kit (reusable assets on bang's machine)
 

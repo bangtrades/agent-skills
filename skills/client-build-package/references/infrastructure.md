@@ -23,8 +23,11 @@ Linear issue.
 
 Follow the waivelabs-secure-demo skill for mechanics. Operational facts from the SF deploy:
 
-- Wrap the demo in Next.js: `middleware.ts` gate → `app/login` → static app served from
-  `public/` byte-identical, watermark injected at render.
+- Wrap the demo in Next.js: `middleware.ts` gate → `app/login` → the demo served THROUGH the gate.
+  **Do NOT serve a static SPA from `public/`** — public assets are directly fetchable and the matcher
+  excludes `.js/.css/...`, so the whole demo IP leaks with no code. Inline the SPA (gzip+base64) and
+  render it via `<iframe srcDoc>` from the gated route with the watermark overlaid — one liveness check
+  per page load, zero fetchable asset URL. (SD Wheel: `~/Projects/SDWheels/demo-gated/` — `lib/demo-inline.ts`.)
 - Vercel project per client (`vercel` CLI or Vercel MCP), prod domain
   `{client}.waivelabs.ai`.
 - **DNS is manual:** waivelabs.ai has no wildcard record — add the per-client CNAME at
@@ -33,6 +36,14 @@ Follow the waivelabs-secure-demo skill for mechanics. Operational facts from the
 - Access motion: create per-person codes (`WL-{CLIENT}-######`) via `/vadmin` or WaiveBoard
   › Demos; watermarked login binds identity; instant revoke + device reset. Codes are
   STAGED at deploy; issuing them to client viewers is G1.
+- Codes are **globally unique**; the owner code is per-client (`WL-{CLIENT}-MASTER`, `unbound`), never a
+  shared `WL-BANG-MASTER` (it collides with whatever demo already owns it). Mint via `/vadmin`/WaiveBoard,
+  or a direct Supabase INSERT into `vail_access_codes` when you don't hold the plaintext admin secret
+  (`demo={slug}`; check for a name collision first).
+- **Register the demo in WaiveBoard's Demos console** — the selector is hardcoded: add the client to the
+  `DEMO_HOSTS` map + `<option>` list in `~/Projects/agency/WaiveLabs/app/src/app/app/demos/page.tsx`
+  (repo `github.com/waivelabs/waiveboard`, prod tracks `main`) and redeploy, or codes can't be issued for
+  it from the shared console.
 - Honest posture (say it this way): screen capture can't be blocked — the gate makes leaks
   *attributable* and access *disposable*.
 - **MCP deploy-tool ceilings are real:** inline file-tree deploy tools cap per-call payload
@@ -49,6 +60,31 @@ Follow the waivelabs-secure-demo skill for mechanics. Operational facts from the
   the gitignored `.deploy-secrets.local.md`, pre-created project) so the deploy slice needs
   zero human interaction. Until that exists, deploys are STAGED-by-default and the demo ships
   locally runnable.
+- **Cowork/session git reality:** the sandbox has no GitHub creds and the mounted `.git` blocks unlink
+  (git writes leave stale `*.lock` files the operator must `rm`; `git push` can't run in-session). Do
+  commits/pushes on the operator's machine. A CLI deploy of a git-connected project ships the CURRENT
+  working tree — base a hotfix on what prod tracks (Vercel API `target=production` `githubCommitRef`;
+  `git archive origin/main | tar -x`, patch, deploy), never the operator's WIP branch.
+
+## Vercel plan reality + no strays (this is a security gate)
+
+- **The waivelabs team is on Vercel PRO — there is NO production Vercel-Authentication.**
+  `PATCH ssoProtection {deploymentType:"all"}` → `428 invalid_sso_protection`. So the custom middleware
+  gate is the ONLY way to gate a production URL, and a stray public production deploy CANNOT be locked
+  with Vercel protection — plan around this; do not expect Vercel-auth to save a leak.
+- **New Vercel projects can default deployment-protection ON**, 302-ing the `.vercel.app` to
+  `vercel.com/sso-api` and hiding YOUR gate. `PATCH /v9/projects/{id} {"ssoProtection":null}`, then
+  VERIFY unauthenticated from a clean context: `/`→307 `/login`, `/login`→200 is OUR page (grep brand
+  markers, not `sso-api`).
+- **Bake env fallbacks in code** (`lib/auth/env.ts`, `process.env.X || <fallback>`: Supabase URL +
+  publishable key + a per-deploy `openssl rand -hex 32` + demo scope) so the gate runs with zero
+  dashboard env — CLI deploys don't set env. The publishable key is safe server-side; a baked session
+  secret is fine because `vail_check` re-validates liveness DB-side every navigation.
+- **Stray-sweep after every deploy = security.** `GET /v9/projects?search={slug}`; assert exactly ONE
+  gated URL and no other public copy (verify unauth). Failed/duplicate deploys serve the full demo IP.
+  You can't lock a stray on Pro — overwrite its production with a retire→`/login` page (static,
+  `vercel.json {"framework":null}`, deployed to that project id) and hand the operator delete links;
+  project deletion is destructive → the operator's action, never the agent's.
 
 ## Secrets discipline (SF lessons, now rules)
 

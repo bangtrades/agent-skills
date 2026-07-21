@@ -49,9 +49,43 @@ models improve).
 ## Two demo modes (from the SF build)
 
 - **Static-first (fastest to wow):** vanilla HTML/JS single-page app with rich modules —
-  demo runs anywhere, zero build step. Wrap in Next.js for the gated deploy afterward
-  (`public/desk.html` byte-identical + watermark injection). This is the SF pattern.
+  demo runs anywhere, zero build step. For the gated deploy, **inline it (gzip+base64) and serve via
+  `<iframe srcDoc>` from the secure-demo gated route** — NOT from `public/` (public assets are fetchable
+  without a code and leak the whole IP). One liveness check per load; the QA'd SPA ships byte-for-byte
+  inside the frame. Current SD Wheel pattern; supersedes SF's `public/desk.html`.
 - **Next.js-native:** when the demo will become the production app shell (enterprise).
+
+## Build mode: inline vs fan-out (added 2026-07 — PSG)
+
+**The static-first single-file demo is COUPLED work — build it inline, not by fanning out an
+agent per surface.** Its surfaces share one design-token sheet and one chart/UI kit; that shared
+surface is exactly what parallel agents collide on, and mid-turn operator messages kill in-flight
+subagents. At PSG, ~26 min of dispatch thrashing produced one orphan file and zero usable app
+code; the inline rebuild produced the entire 7-surface app + kit + single-file build in ~11 min.
+Rule: **fan out only for genuinely file-disjoint work** (the vendor-export estate, the legal set,
+independent route modules). For the demo itself, build the contract → kit → shell → surfaces
+inline and sequentially. If a dispatch wave returns dead/junk twice, go inline at once
+(orchestration.md → Dispatch Discipline). Move each surface's board issue to In Progress before
+you build it.
+
+## Single-file build hygiene
+
+The portable single-file build must run from `file://` with **zero console errors** — that is a
+ship-checklist gate, not a nicety. Two recurring gotchas: (1) **no CDN links** (Google Fonts,
+cdnjs) — they error or block under `file://`; vendor fonts locally (`@fontsource`) and
+**base64-inline** them into the CSS for the single-file build. (2) No ES-module `import`/`export`
+across files — a `file://` page can't fetch modules; use plain classic scripts in dependency
+order (data → kit → surfaces → boot).
+
+## Calibrate before you generate — band every headline number, including derived ones
+
+Every number the demo shows on screen — especially **derived** ones like a shed-demand total that
+falls out of assumption rates — gets a **credibility band written into the demo-spec as an
+acceptance target BEFORE generation**, and the generator asserts against it (data-simulation.md).
+Bands set up front mean you tune once with intent; bands discovered after generation mean you tune
+by surprise. (PSG: the shed total first landed at ~$37k against an unstated ~$18–24k credibility
+band and took three post-hoc tuning passes — a banded target in the spec would have caught it on
+run one.)
 
 **Live-agent option:** a local broker (`server.mjs` pattern, SF `agent/` folder) that holds
 the model credential server-side so no key reaches the browser — MOCK mode as stage
@@ -79,6 +113,8 @@ calls; sequence stages through files on disk.
 - [ ] Every KPI/entity click-to-inspects
 - [ ] Approval queue + audit ledger present
 - [ ] Gated + watermarked + revocable; codes staged per named viewer
+- [ ] Exactly ONE gated URL for this client; no stray public Vercel project serves the demo (verified
+      unauthenticated); demo registered in WaiveBoard's selector
 - [ ] QA screenshots archived to `demo/deck-qa/`
 - [ ] 10-minute demo path rehearsed; nothing 404s off it
 - [ ] `DEMO_SCRIPT.md` written: timed beats, talking points, honest framing lines

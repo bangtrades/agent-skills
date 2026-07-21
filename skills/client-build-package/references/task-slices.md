@@ -59,6 +59,14 @@ Sub-slices, parallel after S3a:
   login flow), and confirm DNS prerequisites. If any probe fails: record the deploy as
   STAGED with the exact blocker and move on — the demo stays locally runnable by design
   (static-first mode), and a blocked deploy must never block S3h or S4.
+  *Mechanics (SD Wheel-proven):* serve a static SPA via `<iframe srcDoc>` inline, NOT from `public/`
+  (public assets leak); deploy with the Vercel CLI + token (not the MCP); bake env fallbacks so the gate
+  needs no dashboard env; `PATCH ssoProtection=null` on the project, then verify UNAUTHENTICATED that `/`
+  bounces to `/login` and `/login` renders our page (not `sso-api`); mint a per-client `WL-{CLIENT}-MASTER`
+  owner code; register the client in WaiveBoard's demo selector (`page.tsx` `DEMO_HOSTS` + `<option>`).
+  *Exit includes a stray-sweep:* `GET /v9/projects?search={slug}` shows exactly one gated URL; any other
+  public copy is neutralized (retire page) and flagged for deletion (operator deletes). On Pro a stray
+  cannot be locked with Vercel-auth.
 - **S3h:** QA click-through + screenshots → `demo/deck-qa/` (feeds S4).
 - **S3i:** package assembler — the "demo package" exit artifact. Bundle the S3f-passed demo,
   deck-qa screenshots, DEMO_SCRIPT.md, calibration-provenance note (window/seed/ladder-approval
@@ -159,5 +167,9 @@ in `RUN_TRACKER.md` + the local task list and keep moving.
   - `G2 — Approve legal set` (blocks signature staging)
   - `G1 — Send: proposal` · `G1 — Send: pitch/demo access` · `G1 — Send: follow-up #n`
   These are the ONLY issues requiring a human. Everything else the agents move themselves.
-- **Agent hygiene:** move your issue to In Progress when you start, attach output paths in a
-  comment when done, mark Done only when the exit artifact verifiably exists.
+- **Board leads the work (hygiene):** move your issue to In Progress **before the work starts**
+  — the instant you dispatch the agent or begin the inline build, with a one-line "starting"
+  comment — never in a batch at the end. Attach output paths in a comment when done. Mark Done
+  only when the exit artifact verifiably exists. An issue that jumps created→Done (never showing
+  In Progress) means the operator couldn't see it being worked — that's a process miss, not just
+  a stale record.

@@ -55,6 +55,27 @@ Inject into the idealized bronze layer, in configured quantities, and report exa
 
 Everything above is driven by `simulation.config.yaml` (template in `assets/`). Generators contain *mechanism*; the config contains *facts about the brand*. When real client data eventually replaces a simulated source, the swap is config + one generator function — not a rebuild. Design every function with that swap in mind.
 
+## 5b. Contract-first, estate-second (when the demo ships before the estate)
+
+Sometimes the app/demo is built and shipped *before* the full vendor estate (operator priority,
+or a static-first demo that only needs the contract). When the estate is built afterward, it must
+tie to the already-shipped app to the cent — the app is now the source of truth for every derived
+series. The proven pattern (PSG 2026-07):
+
+1. **Replicate only the ledger block**, and make sure the canonical daily ledger is the **first
+   RNG draw off the seed** — nothing else may consume the stream before it, or the replica
+   diverges. (This is why an orphaned generator with a different draw order produced a different
+   ledger at PSG.)
+2. **Parse the shipped contract** (`data.js` / `growth-desk-data.js`) for every already-committed
+   derived series — months, calls, reservations, menu history, review platforms — instead of
+   recomputing them. Read them back; don't re-derive.
+3. **Verify the replica byte-exact against the app's own bronze anchor BEFORE generating any
+   vendor file.** If the ledger replica doesn't match the shipped app to the cent, stop — every
+   downstream file would inherit the drift. Only after the replica verifies do you generate.
+
+This makes app/estate drift structurally impossible: the estate is generated *from*, and
+re-verified *against*, the numbers the app already shows.
+
 ## 6. Reconciliation report
 
 `run_all.py` ends by printing and writing:
