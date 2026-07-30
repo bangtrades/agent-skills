@@ -97,8 +97,16 @@ dies (exit 143). Never HTTP-smoke-test. Instead:
 
 - **Mount forbids `unlink`/`rm`** on many paths: expect EPERM deleting files.
   Wrap unlinks in try/except in app code (rows must still delete); tell bang
-  to `rm` leftovers on his machine. Git side-effect: stale `.git/*.lock` +
-  `tmp_obj_*` files bang must remove before `git gc`.
+  to `rm` leftovers on his machine.
+- **RUN NO GIT COMMANDS IN THIS REPO — not even `git status`.** Any git command
+  that touches the index creates `.git/index.lock`, and the mount blocks its
+  removal, so the NEXT command bang runs dies with "Unable to create
+  index.lock". This bit three times in one session, the third time from a
+  `git status` mistakenly assumed read-only. Inspect state with non-git tools
+  instead: `find app -newer <ref>`, `ls -l`, `diff`. Leave changes staged in
+  the working tree and hand bang the exact `git add`/`commit`/`push` block —
+  he owns every git invocation. When a lock already exists, the recovery he
+  runs is `find .git -name "*.lock" -delete`.
 - File tools (Read/Write/Edit) use Mac paths; bash uses `/sessions/...` mount
   paths. Same files.
 - `pip install --break-system-packages`; installs don't persist sessions.

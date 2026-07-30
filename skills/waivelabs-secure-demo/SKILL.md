@@ -76,6 +76,14 @@ Any Next.js 14 App Router app. If starting fresh, build it with the client's bra
 `frontend-design`. The gate is brand-neutral (inline styles + a few CSS vars with fallbacks);
 it adopts the client's palette if you pass brand vars.
 
+**If the demo is a static SPA (SF/SD Wheel pattern), do NOT drop it in `public/`.** Public assets are
+directly fetchable and `middleware.ts`'s matcher excludes `.js/.css/…`, so the whole demo IP is reachable
+with no code. Inline it instead: concatenate the SPA into one self-contained `index.html` (inline every
+local `<script>`/`<style>`; keep CDN tags), gzip+base64 it into `lib/demo-inline.ts`, and in `app/page.tsx`
+(runtime `nodejs`, `dynamic="force-dynamic"`) gunzip → decode → render `<iframe srcDoc={html} …/>`
+full-viewport with `<Watermark/>` overlaid. No demo asset gets a public URL; one `vail_check` per page
+load, not one per asset. (SD Wheel: `~/Projects/SDWheels/demo-gated/`.)
+
 ### 2. Drop in the gate
 Copy these into the demo app (full source in `references/gate-files.md`):
 - `lib/auth/session.ts` — Web-Crypto HMAC signed cookie (edge + node safe)
@@ -102,15 +110,29 @@ Copy these into the demo app (full source in `references/gate-files.md`):
 Admin secret is **not** an env var — it lives as a bcrypt hash in `public.vail_admin` and is
 verified DB-side by the RPCs.
 
+> CLI/MCP deploys don't set Vercel env vars. To ship self-contained, put these four in a
+> `lib/auth/env.ts` as `process.env.X || <fallback>` and reference THAT from middleware/routes. The
+> publishable key is safe server-side; a baked `WL_SESSION_SECRET` is acceptable because `vail_check`
+> re-validates liveness DB-side every navigation. Real Production env vars override the fallback.
+
 ### 4. Deploy + subdomain
+Deploy with the **Vercel CLI + a token** — the Vercel MCP `deploy_to_vercel` is inline-files-only and
+cannot carry a ~200KB demo (58KB gzipped). Pre-install the CLI to a native path (not a mounted folder).
 ```bash
-# from the demo app dir
-npx vercel deploy --prod --yes --token <TOKEN>
-npx vercel domains add client.waivelabs.ai --token <TOKEN>   # from the linked project dir
+# from the demo app dir (.vercel/project.json links it, or pass --scope <team>)
+npx vercel deploy --prod --yes --token <TOKEN> --scope waivelabs
+npx vercel domains add client.waivelabs.ai --token <TOKEN>
 ```
 Then add ONE DNS record at GoDaddy for `waivelabs.ai`:
 - **CNAME** · Host `client` · Value `cname.vercel-dns.com` (or A `client` → `76.76.21.21`).
 Vercel auto-issues TLS within minutes of the record resolving.
+
+> [!warning] Vercel PRO has no production Vercel-Authentication.
+> A new project may default deployment-protection ON → the `.vercel.app` 302s to `vercel.com/sso-api`,
+> hiding YOUR gate. Turn it off so the per-person gate is the front door:
+> `PATCH /v9/projects/{id}?teamId=… {"ssoProtection":null}`. You CANNOT re-enable it to protect a
+> production URL on Pro (`428 invalid_sso_protection`) — the custom gate is the only production close.
+> Always VERIFY unauthenticated: `/`→307 `/login`, `/login`→200 renders your brand page (not `sso-api`).
 
 ### 5. Issue / revoke (the daily motion)
 **Primary: WaiveBoard › Demos** — `waiveboard.vercel.app/app/demos` (behind bang's magic-link admin login). One console for *every* client demo + usage analytics. Requires env `VAIL_ADMIN_SECRET` on the WaiveBoard Vercel project (server-side only; the page inherits WaiveBoard's admin gate, so the secret is never in the browser).
@@ -122,7 +144,7 @@ Vercel auto-issues TLS within minutes of the record resolving.
 
 **Fallback: per-demo `/vadmin`** — `client.waivelabs.ai/vadmin`, enter the admin secret directly. Same actions, scoped to that one demo; use if WaiveBoard is unavailable.
 
-**Owner login:** mint one code with `unbound = true` (use `vail_admin_create2(..., p_unbound => true)` or set the column) — no expiry, no device-lock — for bang's own viewing across devices (e.g. `WL-BANG-MASTER`).
+**Owner login:** mint one code with `unbound = true` (use `vail_admin_create2(..., p_unbound => true)` or set the column) — no expiry, no device-lock — for bang's own viewing across devices. **Codes are globally unique, so the owner code must be per-client** (`WL-{CLIENT}-MASTER`, e.g. `WL-SDW-MASTER`) — a shared `WL-BANG-MASTER` collides with whatever demo already owns it. If you don't hold the plaintext admin secret, mint it with a direct Supabase INSERT into `vail_access_codes` (`demo={slug}`, `unbound=true`); check for a name collision first.
 
 ### 6. Hand-off note to bang
 Record per-demo in the vault / password manager: subdomain, `WL_SESSION_SECRET`, `WL_DEMO_SCOPE`,
@@ -143,6 +165,9 @@ distinct one per demo by storing multiple hashes — see schema notes).
 - **Cert pending** → DNS record not resolving yet; recheck the GoDaddy CNAME.
 - **All logins fail `invalid`** → wrong `WL_SUPA_URL/KEY`, or code's `demo` ≠ `WL_DEMO_SCOPE`.
 - **Admin `unauthorized`** → wrong admin secret (verified against `vail_admin` hash).
+- **`.vercel.app` redirects to `vercel.com/sso-api`** → Vercel deployment-protection is ON; `PATCH ssoProtection=null`. Your gate — not Vercel's — is the front door.
+- **`428 invalid_sso_protection`** when enabling protection → the Pro plan has no production Vercel-auth; you can't lock a production URL this way. Use the custom gate; for a stray public deploy, overwrite it with a retire page or delete the project.
+- **An old/duplicate project still serves the demo publicly** → on Pro it can't be locked; overwrite its production with a retire→`/login` page (static, `vercel.json {"framework":null}`, deploy to that project id) and delete it. Sweep `GET /v9/projects?search={slug}` after every deploy — exactly one gated URL.
 
 ## Files
 - `references/gate-files.md` — portable gate source (copy-paste).
