@@ -31,7 +31,7 @@ The skill executes a 7-step capture-and-synthesize routine:
 4. **Apply the 9-vector framework** to synthesize per-TF reads.
 5. **Output bias hypothesis** + archetype verdict + live/imminent setups.
 6. **Run R3/R5/R1 sanity checks** against current state.
-7. **Write the snapshot file** with chart-library frontmatter tagging.
+7. **Write the snapshot file** with chart-library frontmatter tagging — respecting the frontmatter budget HARD RULES in `references/output-template.md` (scalars only, ≤2,000 B, prose to body).
 
 Detailed step-by-step protocol with exact MCP tool calls: see [references/workflow.md](references/workflow.md).
 

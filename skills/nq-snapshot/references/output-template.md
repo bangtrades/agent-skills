@@ -241,3 +241,43 @@ A typical snapshot is 200-400 lines. Morning reviews can be 400-600. Anything ov
 ## Tone
 
 Direct, technical, no hedging. State what the data shows. Use "Reading:" / "Verdict:" / "Action:" headers to separate observation from interpretation from prescription.
+
+## Frontmatter budget — HARD RULES (added 2026-08-08)
+
+Historical failure: 61 files accumulated essay-length YAML (worst 40,339 B, 69% of
+file) because sessions inflated fields beyond this template. These rules are binding:
+
+1. **Scalars only.** No frontmatter value may exceed **200 characters**. Bias is an
+   enum (`long|short|neutral`), confidence is 0–100, archetype is a slug,
+   `key_observation` is genuinely ONE sentence.
+2. **Hard budget: rendered frontmatter ≤ 2,000 bytes** (2,500 absolute cap).
+   Omit any field not cleanly determinable — never pad, never fabricate.
+3. **All prose goes to body sections** — `## Session thesis`, `## Session bias`,
+   `## Bias & confidence`, `## Key observation`. Same depth, right place.
+4. **Single-use per-session data** (gamma flip strike, call/put walls, max pain,
+   P/C OI, IV rank, o/n range) goes to a `## Session metrics` table in the body —
+   NEVER into tags or frontmatter. Do not mint value-bearing tags
+   (`gamma-flip-706`, `iv-rank-43`).
+5. **Tags:** emoji lead + reusable taxonomy tags only (reusable = plausibly
+   recurs across ≥3 sessions), **≤ 8 total**.
+
+Morning-review body skeleton addition (after `## Headline`):
+
+```markdown
+## Session thesis
+[Full narrative thesis — this is where the old essay-title content lives.]
+
+## Session metrics
+| Metric | Value |
+|---|---|
+| Gamma flip (QQQ / NQ equiv) | ... |
+| Call wall / put wall | ... |
+| Max pain | ... |
+| P/C OI | ... |
+| IV rank | ... |
+| O/N range (O/H/L/last) | ... |
+```
+
+Acceptance: frontmatter parses with `yaml.safe_load`, ≤ 2,000 B, no value > 200
+chars, ≤ 8 tags. The 61 historical files were migrated 2026-08-08
+(`cortana-vault/scripts/migrations/migrate-frontmatter-bloat-2026-08.py`).
