@@ -19,3 +19,12 @@ node_modules/
 
 # harness sync log
 .sync.log
+
+# Export/backup artifacts — the registry holds ONE live copy of a skill.
+# A .zip or .bak beside a live SKILL.md is a second source that silently
+# goes stale (yt.zip shipped a .bak of a file it also contained). Git history
+# is the backup; packaged skills are built on demand, not stored.
+*.bak
+skills/*.zip
+*.zip
+*.bak
