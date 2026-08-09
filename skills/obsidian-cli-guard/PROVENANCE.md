@@ -1,0 +1,2 @@
+Upstream: https://github.com/jackal092927/obsidian-official-cli-skills (branch main, commit ab6533943454abd5fe554b5a1550c0244d569d98), skill `plugins/obsidian-cli/skills/obsidian-cli/SKILL.md`, staged 2026-08-08; frontmatter `name` changed obsidian-cli -> obsidian-cli-guard to avoid collision with kepano's obsidian-cli — body otherwise verbatim.
+- 2026-08-08: description rewritten to satisfy registry lint (trigger cues) + surface the 13-silent-failure purpose; body remains verbatim upstream.
