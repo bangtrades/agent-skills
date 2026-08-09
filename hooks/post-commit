@@ -1,2 +1,8 @@
 #!/usr/bin/env bash
-exec "$(dirname "$0")/_resync"
+# 1. resync local harnesses (codex/hermes/claude symlinks) — original behavior
+exec_dir="$(dirname "$0")"
+"$exec_dir/_resync"
+# 2. propagate downstream: push origin + sync/commit/push the WaiveLabs org mirror
+#    (added 2026-08-08; warn-only on network failure, state in .sync-state)
+ROOT="$(cd "$exec_dir/.." && pwd)"
+[ -x "$ROOT/bin/sync-downstream.sh" ] && "$ROOT/bin/sync-downstream.sh"
