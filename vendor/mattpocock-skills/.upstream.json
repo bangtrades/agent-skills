@@ -1,0 +1,14 @@
+{
+  "name": "mattpocock-skills",
+  "repo": "https://github.com/mattpocock/skills",
+  "tag": "v1.2.3",
+  "commit": "6acc160e4e0cd062dbbbd7a1b26ae92855edf07e",
+  "commit_date": "2026-08-06",
+  "license": "MIT",
+  "license_file": "vendor/mattpocock-skills/LICENSE",
+  "author": "Matt Pocock (https://www.aihero.dev)",
+  "vendored_at": "2026-08-10T22:23:27Z",
+  "namespace_prefix": "mp-",
+  "generated_into": "skills/mp-*",
+  "upstream_plugin_version": "1.2.3"
+}

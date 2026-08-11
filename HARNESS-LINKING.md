@@ -128,6 +128,18 @@ done
 Wrap that in a launchd agent to run at login if you want it always on. (Left
 opt-in — auto-push is a standing automation you should enable deliberately.)
 
+## Vendored skills ride the same wiring
+
+Vendored upstreams are generated into `skills/` as ordinary top-level directories
+(`skills/mp-*`), so every harness picks them up through the symlinks above with no
+extra configuration. They are real directories, not symlinks into `vendor/`, which
+matters because `lint-skill.sh` rejects symlinked skills and `sync-skills.sh`
+enumerates `skills/*/` one level deep.
+
+Upgrading an upstream regenerates those directories in place; the harness symlinks
+keep resolving and need no re-run — though `./sync-skills.sh` is safe and idempotent
+if an upgrade adds or removes skills. See [VENDOR.md](VENDOR.md).
+
 ## Updating skills later
 
 1. Edit / add skills in the canonical clone (`~/Cortana/cortana-skill-registry`).

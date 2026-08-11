@@ -28,3 +28,10 @@ node_modules/
 skills/*.zip
 *.zip
 *.bak
+.trash/
+
+# Vendored upstreams: vendor/<name>/src + .upstream.json + MANIFEST.json are
+# TRACKED on purpose — the pin and the payload are the reproducibility record.
+# Only transient clone scratch is ignored.
+vendor/**/.git/
+vendor/*/tmp/

@@ -1,0 +1,530 @@
+{
+  "vendor": "mattpocock-skills",
+  "repo": "https://github.com/mattpocock/skills",
+  "tag": "v1.2.3",
+  "commit": "6acc160e4e0cd062dbbbd7a1b26ae92855edf07e",
+  "commit_date": "2026-08-06",
+  "prefix": "mp-",
+  "skill_count": 35,
+  "user_invoked": 20,
+  "model_invoked": 15,
+  "promoted": 25,
+  "skills": [
+    {
+      "name": "mp-ask-matt",
+      "upstream_name": "ask-matt",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/ask-matt",
+      "files": [
+        "PHASE-BOUNDARIES.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "229a6e072e931ae01b4ea160ef4f911e82fcedb9a926d75e11c25f5e0832e660"
+    },
+    {
+      "name": "mp-claude-handoff",
+      "upstream_name": "claude-handoff",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/claude-handoff",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "7c3c22586e37dea0f55716cdb61c1d9d37df1729cb3d9005b86d974895d66d6f"
+    },
+    {
+      "name": "mp-code-review",
+      "upstream_name": "code-review",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/code-review",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "31af0d0ad80f5a7ff710f2caa23530926d6a0f0723c941443c8f5a8dba43876c"
+    },
+    {
+      "name": "mp-codebase-design",
+      "upstream_name": "codebase-design",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/codebase-design",
+      "files": [
+        "DEEPENING.md",
+        "DESIGN-IT-TWICE.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "47504e6c040b78f70cc2a6241be1e770cea785731f04d3f8fb9b6495a0c8a0a5"
+    },
+    {
+      "name": "mp-diagnosing-bugs",
+      "upstream_name": "diagnosing-bugs",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/diagnosing-bugs",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "scripts/hitl-loop.template.sh"
+      ],
+      "skill_md_sha256": "5d2bcc06c25b87f787ad844216c89f7f882d7932c36f61aa91d638bb179526fa"
+    },
+    {
+      "name": "mp-domain-modeling",
+      "upstream_name": "domain-modeling",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/domain-modeling",
+      "files": [
+        "ADR-FORMAT.md",
+        "CONTEXT-FORMAT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "8901f4384d7b298cfdf958ef644e62a39532bc8d5c0242daf79da6a6e756adaf"
+    },
+    {
+      "name": "mp-git-guardrails-claude-code",
+      "upstream_name": "git-guardrails-claude-code",
+      "bucket": "misc",
+      "promoted": false,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/misc/git-guardrails-claude-code",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "scripts/block-dangerous-git.sh"
+      ],
+      "skill_md_sha256": "ac82c11af7083ed423b81b5c7e2262542982c339bf02be980b022b2df613a844"
+    },
+    {
+      "name": "mp-grill-me",
+      "upstream_name": "grill-me",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/grill-me",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "529062a3d0cbd01dc01511a1f2c091b58dc79e02259e3d5f94c016ad6d561f83"
+    },
+    {
+      "name": "mp-grill-with-docs",
+      "upstream_name": "grill-with-docs",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/grill-with-docs",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "b020c8f1cb742d338360db95fb35fc36224b854ffd632757559f7599d803598b"
+    },
+    {
+      "name": "mp-grilling",
+      "upstream_name": "grilling",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/grilling",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "8922051b6d6c105a9a357db8b62a85e852d2fb7adb1e75a001134db53a01b811"
+    },
+    {
+      "name": "mp-handoff",
+      "upstream_name": "handoff",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/handoff",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "7dec5c83abd50f4fc8f877a3b2eec2ac89b37c089d66eab4a2063841340c57ee"
+    },
+    {
+      "name": "mp-implement",
+      "upstream_name": "implement",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/implement",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "3ffc7ff4507d4ada2a48d7c348047835801dba2aea9638b032f7c02adac0f003"
+    },
+    {
+      "name": "mp-improve-codebase-architecture",
+      "upstream_name": "improve-codebase-architecture",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/improve-codebase-architecture",
+      "files": [
+        "HTML-REPORT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "93e2db78038731ad24bc7525c8ea1534c2d8967ae8976dc06ff026295bb91a53"
+    },
+    {
+      "name": "mp-loop-me",
+      "upstream_name": "loop-me",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/loop-me",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "e16037c64b7fa2c65cbea770e52b7b364ef87fdec80b562be3d25bb5969699f1"
+    },
+    {
+      "name": "mp-migrate-to-shoehorn",
+      "upstream_name": "migrate-to-shoehorn",
+      "bucket": "misc",
+      "promoted": false,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/misc/migrate-to-shoehorn",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "ecdea48602332348d1e78312ff74219a68d0141f0bfa607448a3b71f0fdd5666"
+    },
+    {
+      "name": "mp-prototype",
+      "upstream_name": "prototype",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/prototype",
+      "files": [
+        "LOGIC.md",
+        "SKILL.md",
+        "UI.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "6bfa7b0ff256bdf3322e366cdfa713dc28f9044dfc95f0a232d9a699122b9656"
+    },
+    {
+      "name": "mp-research",
+      "upstream_name": "research",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/research",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "ad8a8b0de5af3f1cc2d96174b9313fcc537d45e43a907bdecbfc9e821ddd7465"
+    },
+    {
+      "name": "mp-resolving-merge-conflicts",
+      "upstream_name": "resolving-merge-conflicts",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/resolving-merge-conflicts",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "806b5c1207906eddfe3138de3bc88bb5bdab86ac5e179b5ee3222bf9a33e84a9"
+    },
+    {
+      "name": "mp-scaffold-exercises",
+      "upstream_name": "scaffold-exercises",
+      "bucket": "misc",
+      "promoted": false,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/misc/scaffold-exercises",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "42bdeff5914036db8351324371d8fbaea124e275fd45ed4445f105c9c7bb8ba6"
+    },
+    {
+      "name": "mp-setup-matt-pocock-skills",
+      "upstream_name": "setup-matt-pocock-skills",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/setup-matt-pocock-skills",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "domain.md",
+        "issue-tracker-github.md",
+        "issue-tracker-gitlab.md",
+        "issue-tracker-local.md",
+        "triage-labels.md"
+      ],
+      "skill_md_sha256": "6fdfb1a16ebb6a7c893de067dc84e388a25931262d4e8fbdbb4ef3af8f8245a0"
+    },
+    {
+      "name": "mp-setup-pre-commit",
+      "upstream_name": "setup-pre-commit",
+      "bucket": "misc",
+      "promoted": false,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/misc/setup-pre-commit",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "27e2a1a2af16d84ef3103073f7931693552ba34d8e591554dcb3e431e9bf61ba"
+    },
+    {
+      "name": "mp-setup-ts-deep-modules",
+      "upstream_name": "setup-ts-deep-modules",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/setup-ts-deep-modules",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "dependency-cruiser.config.cjs"
+      ],
+      "skill_md_sha256": "faf5747c77260fca9d521b68dd12791f198daf0d560fd6489bfff7f533b7d227"
+    },
+    {
+      "name": "mp-tdd",
+      "upstream_name": "tdd",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/tdd",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "mocking.md",
+        "tests.md"
+      ],
+      "skill_md_sha256": "ea7e6baf125379f47a081590c282c5891faf03538c20bfe7c01c258d8237da80"
+    },
+    {
+      "name": "mp-teach",
+      "upstream_name": "teach",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/teach",
+      "files": [
+        "GLOSSARY-FORMAT.md",
+        "LEARNING-RECORD-FORMAT.md",
+        "MISSION-FORMAT.md",
+        "RESOURCES-FORMAT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "fb44c67ee9d68f20ceeac538a24ff3fd568fd764186a5c01a9d91711e24fdf1b"
+    },
+    {
+      "name": "mp-to-questionnaire",
+      "upstream_name": "to-questionnaire",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/to-questionnaire",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "cbb65e006d88edecc66b9934cc9abe6d130228a8dabeafaf0f11231f3fbf62ee"
+    },
+    {
+      "name": "mp-to-spec",
+      "upstream_name": "to-spec",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/to-spec",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "d9f43c58aaf09b649488d77a693e45b4025c9c5136eb2d0bc833670cb9021d99"
+    },
+    {
+      "name": "mp-to-tickets",
+      "upstream_name": "to-tickets",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/to-tickets",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "e5340c3b0b90060d3de9e737d36357a65aff93fb6cb97ce089e0232108fdaa56"
+    },
+    {
+      "name": "mp-triage",
+      "upstream_name": "triage",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/triage",
+      "files": [
+        "AGENT-BRIEF.md",
+        "OUT-OF-SCOPE.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "17086e65e244492bd5eeede081e08134324fcb5aeaaa958d7db1ccabdbb6fd56"
+    },
+    {
+      "name": "mp-wait-what",
+      "upstream_name": "wait-what",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/wait-what",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "c011e629073b682ff9c5e8add14d7c43f6b8a3510809a27d48ef980c818d0a22"
+    },
+    {
+      "name": "mp-wayfinder",
+      "upstream_name": "wayfinder",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/wayfinder",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "1f61b26ebc5edc5fdb868fff972d46f925096bb0d45c16a3136f30cbd2daad5c"
+    },
+    {
+      "name": "mp-wizard",
+      "upstream_name": "wizard",
+      "bucket": "engineering",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/engineering/wizard",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "template.sh"
+      ],
+      "skill_md_sha256": "2adc2aed83c0a7b73b16dce246052533e339fcab5095e60ef210f020e548cf4f"
+    },
+    {
+      "name": "mp-writing-beats",
+      "upstream_name": "writing-beats",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/writing-beats",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "d0e19690d6128e5a3c8db33c2304ed1ea7abdc5a580ec99b8c4ab9233b75228f"
+    },
+    {
+      "name": "mp-writing-for-agents",
+      "upstream_name": "writing-for-agents",
+      "bucket": "productivity",
+      "promoted": true,
+      "invocation": "model",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/productivity/writing-for-agents",
+      "files": [
+        "SKILL-MECHANICS.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "9b1b70b80ae14bf452cdd6614dcc017269f7dab20b2d1086f73488a2326b2344"
+    },
+    {
+      "name": "mp-writing-fragments",
+      "upstream_name": "writing-fragments",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/writing-fragments",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "c9852312bca64df0b240721f9dbe469c56dcecc53975ac06443ccf26f1fb3f3c"
+    },
+    {
+      "name": "mp-writing-shape",
+      "upstream_name": "writing-shape",
+      "bucket": "in-progress",
+      "promoted": false,
+      "invocation": "user",
+      "has_codex_sidecar": true,
+      "upstream_path": "src/in-progress/writing-shape",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "skill_md_sha256": "bedd63a263585ef40b6ad9b5152250a29f3d13d4cd4fd7ae1b8411424ca4c582"
+    }
+  ]
+}
