@@ -1,12 +1,23 @@
 ---
-name: Self-Improving Agent
+name: self-improving
 slug: self-improving
-version: 1.1.0
+version: 1.1.1
 homepage: https://clawic.com/skills/self-improving
-description: Corrections become improvements. Memory that self-improves.
+description: Use when explicitly reviewing the legacy self-improving memory store. For Cortana operator corrections use memctl and the current vault memory contract.
 changelog: Added detection triggers, quick queries, memory stats, and example templates for easier setup.
-metadata: {"clawdbot":{"emoji":"🧠","requires":{"bins":[]},"os":["linux","darwin","win32"]}}
+metadata:
+  clawdbot:
+    emoji: 🧠
+    requires:
+      bins: []
+    os:
+    - linux
+    - darwin
+    - win32
 ---
+
+For Cortana tasks, read `cortana-vault/memories/start-here.md` and `memory-contract.md`; record explicit corrections with `memctl remember`. The legacy store below is an explicit import/review adapter and must not supersede accepted Cortana memory.
+
 
 ## When to Use
 
@@ -188,3 +199,7 @@ Install with `clawhub install <slug>` if user confirms:
 
 - If useful: `clawhub star self-improving`
 - Stay updated: `clawhub sync`
+
+## Changelog
+
+- 2026-09-05: Normalize manifest identity and route Cortana corrections to memctl; retain explicit legacy-store review.
