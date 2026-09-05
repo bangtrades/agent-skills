@@ -1,6 +1,7 @@
 ---
 name: yt
-description: Process a YouTube video into a Cortana vault wiki page. Use this skill whenever a user shares a YouTube URL (youtube.com, youtu.be), says "/youtube", mentions processing a video, or pastes a bare URL that looks like a YouTube link. Even without explicit instructions — if the message contains a YouTube URL, use this skill. Also trigger on "pull the transcript", "ingest this video", "watch this", or any reference to turning video content into vault knowledge. This skill handles the full pipeline: Firecrawl-first metadata, a four-rung transcript acquisition ladder (yt-dlp → Firecrawl → Chrome → paste), an opinionated wiki page with key takeaways and relevance analysis, source-integrity checking, raw transcript archival, index + MOC wiring, and a lint gate.
+description: Use when the user asks to ingest a YouTube video or transcript into Cortana. Retrieve metadata and transcript, preserve source integrity, produce a linked wiki note, update indexes, and validate. A bare URL alone does not establish a full ingestion request.
+version: 0.2.0
 ---
 
 # YT — YouTube → Cortana Vault
