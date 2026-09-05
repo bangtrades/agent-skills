@@ -1,7 +1,7 @@
 ---
 name: langgraph-triage
-description: Layered triage for self-hosted LangGraph Platform (langgraph-api) deployments — boot crashes, 502s, auth holes, silent graph failures, and model/provider errors. Trigger whenever a LangGraph deployment misbehaves on any host (Railway, Fly, Render, ECS, K8s, Docker): "langgraph crashed", "deploy is crash-looping", "502 from the langgraph server", "runs stay running forever", "agent never calls tools", "approvals never appear", "thread won't resume", "interrupt is stuck", KeyError Config missing, License verification failed, "no endpoints found for model", "relation thread_ttl does not exist", or any langgraph-api / langgraph-cp / control-plane deployment issue. Also trigger BEFORE a first LangGraph deploy to run the pre-flight checklist. Do NOT trigger for Paperclip/Cortana agent issues (paperclip-triage) or generic app debugging (systematic-debugging).
-version: 0.1.0
+version: 0.1.1
+description: 'Use when diagnosing a self-hosted LangGraph deployment: boot, persistence, networking, authentication, dispatch, interrupts, or model-provider failures. Use paperclip-triage for Paperclip and systematic-debugging for generic app bugs.'
 ---
 
 # LangGraph Triage
