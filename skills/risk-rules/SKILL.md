@@ -1,43 +1,22 @@
 ---
 name: risk-rules
-description: Use when sizing a position, checking risk before a trade, or enforcing drawdown / exposure limits — position sizing, stop placement, portfolio risk checks, and kill-switch logic. Trigger on "size this position", "what's my risk", "check drawdown", "enforce risk limits", or pre-trade risk gating.
+description: Use when calculating a proposed position’s risk or checking it against supplied account and exposure limits. Requires explicit current limits and instrument specifications; does not place trades.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Risk Rules
+# Position risk contract
 
-> **Stub skill.** The owning agent fills in `scripts/` and expands the workflow
-> as it masters the skill. The frontmatter above is the Paperclip-discoverable
-> manifest. This skill complements — does not replace — the platform-enforced
-> trading capability ladder (CO-1); registry skills advise, capability markers
-> enforce.
+Obtain account currency/equity, approved per-trade and portfolio limits, current exposure/drawdown, entry, stop, contract multiplier or point value, lot step, and fee/slippage assumptions. Retrieve current contract specifications and account rules from authoritative sources. Leave unknown inputs unknown; do not invent risk percentages.
 
-Position sizing, drawdown control, and pre-trade risk checks.
+1. Compute loss per unit from absolute entry-stop distance times point value, plus modeled fees/slippage. Convert currencies where needed using a dated rate.
+2. Compute the permitted risk budget from supplied policy and remaining limits. Divide by loss per unit and round down to the allowed lot step. Reject zero/negative distance or missing specifications.
+3. Recompute total modeled loss after rounding; compare aggregate, correlated, instrument, session, daily-loss, and drawdown exposure against actual policy.
+4. Explain sensitivity to gaps, liquidity, and stop execution. Loss-at-stop is a model, not a guaranteed maximum loss.
+5. Return inputs with source dates, formula, intermediate values, rounded size, limit checks, and missing inputs. Treat this as advisory evidence for an authorized decision.
 
-## When to use this skill
+Use `pre-trade-intel` for historical context. Capability controls and order permissions belong to the actual platform; this skill cannot enforce a kill switch or authorize execution.
 
-- Sizing a position from account risk and stop distance.
-- Checking a proposed trade against exposure and drawdown limits.
-- Defining or applying kill-switch / cooldown rules.
+## Runtime and maintenance
 
-## Usage
-
-1. **Inputs** — account equity, per-trade risk %, entry, stop, and current open
-   exposure.
-2. **Size** — compute position size so loss-at-stop equals the risk budget.
-   Never size from upside.
-3. **Check limits** — per-position, per-instrument, and portfolio drawdown
-   caps. Refuse trades that breach them.
-4. **Escalate** — when a kill-switch or cooldown condition triggers, surface it;
-   the platform capability ladder (CO-1) is the hard enforcement layer.
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): position-size
-calculator, drawdown monitor, limit checker.
-
-## Mastery notes
-
-This agent's accumulated preferences live in its vault at
-`skill-mastery/risk-rules.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
