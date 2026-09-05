@@ -1,13 +1,14 @@
 ---
 name: nq-eob
-description: Use when Nolan/bang is backtesting an NQ/MNQ Opening Range / EOB model via replay markup. PRIMARY method — Replay Markup Capture: bang marks T1–Tn long/short position tools on a 2m replay chart, says "pull the day", and Claude extracts all drawings via ui_evaluate, pulls candles, computes the OR + deterministic raw outcomes/MFE/MAE, and UPSERTS into the Journal-app Backtest Lab DB preserving bang's manual fields. VERIFY THE LIVE MODEL ID FIRST — the model roster changes (30m-or-eob was deleted 2026-07-05; 2m-kspan-eob is active). Also covers bars persistence + feature recompute, OR derivation from BT VWAP, day screenshots, vault raw archiving, and reversal-vs-continuation setup separation. Trigger on "nq-eob", "pull the trades", "pull this day", "capture the day", marked replay charts, or OR-EOB backtest logging.
+description: Use when capturing operator-marked NQ/MNQ historical replay trades into the Backtest Lab. Verify the live model ID and its current rules, preserve manual fields, and distinguish this from live chart analysis with nq-snapshot.
+version: 0.2.0
 ---
 
 # NQ EOB — OR + EOB Backtest Capture Skill
 
 ## Overview
 
-Backtesting/historical companion to `nq-snapshot`, for bang's **30-minute Opening Range + multi-timeframe EOB** model.
+Backtesting/historical companion to `nq-snapshot`. Read the live model record and current vault model rules before capture. The 30-minute OR description below is historical context, not the current model selection contract.
 
 The model uses:
 
