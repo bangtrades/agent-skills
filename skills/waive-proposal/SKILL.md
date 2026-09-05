@@ -1,6 +1,7 @@
 ---
 name: waive-proposal
-description: Produce a WaiveLabs client vendor proposal — a lean, branded PDF that maps a client's requirements to WaiveLabs' plan, timeline, and cost. Trigger aggressively whenever the user asks to draft, write, revise, or iterate a client/vendor/engagement proposal, respond to an RFP or "vendor requirements" document, scope a client engagement with commercial terms, or build a branded WaiveLabs proposal PDF. Also trigger on "proposal for <client>", "respond to their RFP", "put together a SOW/proposal", "make the WaiveLabs proposal", or a client requirements PDF handed over with intent to bid. Produces a branded PDF via the bundled ReportLab build system (Sora/Inter, Ocean-Blue/Sunset-Orange, "Ride the Waive."). Pairs with the client's brand skill (for any client-styled collateral) and with waivelabs-secure-demo (the demo that accompanies a proposal). Self-improving — appends a lesson to IMPROVEMENTS.md after every run. Do NOT use for non-WaiveLabs documents or for the demo build itself (that is waivelabs-secure-demo).
+description: Use when drafting a WaiveLabs client proposal, scope of work, or RFP response with requirements, plan, timeline, and commercial terms. Pair with brand-waive and the current approved client context; verify unresolved brand variants before output.
+version: 0.2.0
 ---
 
 # WaiveLabs Proposal
@@ -30,8 +31,7 @@ the section structure, the commercial patterns, and a working ReportLab build sy
   labeled and never presented as validated fact.
 - **WaiveLabs method, shown not told.** Prototype → agree spec → build from zero in the client's
   environment. Let the scope/ownership split carry this; don't write a meta-section about it.
-- **Brand:** Sora headings, Inter body, Ocean Blue `#317FF5` + Sunset Orange `#E65100`, slogan
-  **"Ride the Waive."** (never "Ride the AI wave").
+- **Brand:** read `brand-waive` and the current approved project brand source. This package previously used `#317FF5` and "Ride the Waive." while the registry brand guide carries `#3179F5` and "Ride the AI wave." Treat the discrepancy as unresolved until dated operator/project authority establishes the variant. Do not silently mix variants; inspect renderer constants and the final artifact.
 
 ## Workflow
 
@@ -68,7 +68,7 @@ mkdir -p /tmp/fonts && cp assets/fonts/* /tmp/fonts/      # wlstyle expects /tmp
 cp templates/wlstyle.py templates/build_proposal_template.py /build-dir/
 cd /build-dir && python3 build_proposal_template.py        # edit CONFIG + OUT first
 ```
-`pip install reportlab pypdf --break-system-packages` if needed.
+Use an isolated environment or the runtime’s bundled reportlab/pypdf dependencies.
 
 ## References
 - `references/proposal-playbook.md` — the canonical lean section structure, what each section
@@ -84,21 +84,10 @@ closure schedule. Source: `~/Projects/Summer Fridays/outputs/proposal_build/`.
 
 ---
 
-## Self-improvement protocol (run at the END of every use)
+## Self-improvement protocol
 
-This skill is meant to get better with each proposal. After delivering (or iterating) a proposal:
+Capture only reusable, evidence-backed lessons from the proposal. Stage changes to `IMPROVEMENTS.md`, the playbook, or the skill under `cortana-vault/_inbox/skills/waive-proposal/`, preserving other staged edits. Record source evidence and the proposed rule. Installed-package writability does not authorize editing it; the operator publishes reviewed changes. Keep old evidence through version history or reversible archival rather than deletion.
 
-1. **Reflect** on this run: What did the client/user push back on? What did you cut and why? What
-   wording landed? What was missing from the playbook or build system? Any new commercial pattern?
-2. **Append a dated entry to `IMPROVEMENTS.md`** (newest first) with: the engagement, what changed
-   or was learned, and the concrete rule to apply next time. Keep entries short and actionable.
-3. **Promote durable lessons** into the body: if a lesson will apply to every future proposal,
-   edit `references/proposal-playbook.md` (or this SKILL.md) so it becomes default behavior — don't
-   leave it buried in the log. Conversely, **delete or cut** any guidance a run proved wrong.
-4. **Keep the skill lean too.** If the playbook is bloating, trim it. The skill should practice
-   what it preaches. Note any structural change in the IMPROVEMENTS entry.
+## Changelog
 
-> [!warning] When this skill's source is a read-only cache
-> If you're running where the installed skill is read-only, write the IMPROVEMENTS entry into the
-> working copy and tell the user to fold it back into the source skill (Settings → Capabilities or
-> their skill repo). Never silently drop a lesson.
+- 2026-09-05: Expose tagline/palette discrepancy; resolve from dated approved brand evidence before rendering.
