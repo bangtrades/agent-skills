@@ -1,40 +1,21 @@
 ---
 name: backtest-run
-description: Use when running, analyzing, or validating a trading strategy backtest — preparing data, executing a backtest, and reading the results (returns, drawdown, Sharpe, win rate). Trigger on "backtest this strategy", "run a backtest", "analyze these results", "is this overfit", or "walk-forward test".
+description: Use when executing a reproducible strategy backtest or reviewing its outputs. Pair with backtest-expert for research validity and nq-eob for historical replay markup capture.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Backtest Run
+# Backtest execution and handoff
 
-> **Stub skill.** The owning agent (Quant / Backtesting) fills in `scripts/` and
-> expands the workflow as it masters the skill. The frontmatter above is the
-> Paperclip-discoverable manifest.
+Obtain strategy rules, instrument/session, sample window, data source, execution model, costs, risk constraints, and intended comparison. Read `backtest-expert` for methodology instead of duplicating it here.
 
-Run and critically analyze strategy backtests.
+1. Validate data through `data-fetch`; freeze data hash, code revision, parameters, seed, dependency versions, and test windows.
+2. Separate training, validation, and untouched test data. Account for lookahead, leakage, survivor bias, selection effects, and the number of parameter/strategy trials.
+3. Run the existing project engine. Model fees, slippage, fills, overnight/session boundaries, and realistic sizing. Do not claim an engine or helper exists until verified.
+4. Save config, trade ledger, equity series, metrics with definitions, and execution logs. Compare baseline, held-out performance, sensitivity, uncertainty, and regime dependence.
+5. Use `pso-optimizer` only within the training/validation process. Route marked TradingView replay capture to `nq-eob`; it has a distinct model-ID and manual-field preservation contract.
+6. Return a qualified research assessment to `strategy-report`, with unresolved implementation and data limits. A research result does not authorize live trading.
 
-## When to use this skill
+## Runtime and maintenance
 
-- Executing a backtest for a strategy or signal.
-- Reading backtest output and judging robustness.
-- Guarding against overfitting (walk-forward, out-of-sample splits).
-
-## Usage
-
-1. **Prepare** — clean data (via `data-fetch`), define the strategy rules, set
-   the test window, costs, and slippage. Reserve out-of-sample data.
-2. **Run** — execute the backtest deterministically; record the exact config.
-3. **Analyze** — returns, max drawdown, Sharpe/Sortino, win rate, exposure.
-   Compare in-sample vs out-of-sample.
-4. **Judge** — flag overfitting and regime dependence. A good-looking curve is
-   not a pass. Feed sizing constraints from `risk-rules`.
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): backtest
-runner, metrics report, walk-forward harness.
-
-## Mastery notes
-
-This agent's accumulated preferences live in its vault at
-`skill-mastery/backtest-run.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
