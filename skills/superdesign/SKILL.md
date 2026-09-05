@@ -1,7 +1,10 @@
 ---
-name: frontend-design
-description: Expert frontend design guidelines for creating beautiful, modern UIs. Use when building landing pages, dashboards, or any user interface.
-metadata: {"clawdbot":{"emoji":"🎨"}}
+name: superdesign
+description: Use when explicitly requesting SuperDesign theme examples or wireframe patterns. Use frontend-design as the general interface workflow; supplied brand tokens take precedence.
+metadata:
+  clawdbot:
+    emoji: 🎨
+version: 0.2.0
 ---
 
 # Frontend Design Skill
