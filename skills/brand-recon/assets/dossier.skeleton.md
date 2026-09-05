@@ -234,7 +234,7 @@ For DTC fashion: "Designer / Creative Authority"
 
 ## 13. Source-of-Truth Companion Files
 
-This dossier spawns:
-- `[[research/brand-recon/{slug}/{slug}-brand/SKILL.md|{ENTITY_NAME} Brand Skill]]` — the per-entity brand skill, invocable for any downstream deliverable
+When a reusable brand package was staged, link it here; otherwise record that none was requested:
+- `[[_inbox/skills/{slug}-brand/SKILL.md|{ENTITY_NAME} Brand Skill]]` — staged per-entity brand package, pending review and publication
 
 — End of dossier —

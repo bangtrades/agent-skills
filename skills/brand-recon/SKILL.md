@@ -1,14 +1,15 @@
 ---
 name: brand-recon
-description: Investigate a brand or company end-to-end and emit a structured dossier + a reusable per-entity brand skill into the Cortana Obsidian vault. Trigger aggressively whenever the user asks to research, audit, profile, recon, scope out, dig into, or deep-dive any company, brand, ticker, founder, or startup. Also trigger for "investigate X," "build a dossier on X," "find everything about X," "audit X's site + socials + financials," "pre-engagement research on X," "I'm meeting with X tomorrow," or a bare company URL with no other instruction. Use for DTC brands, SaaS, B2B services, consulting prospects, equity targets, and any entity bang is preparing to pitch, partner with, or invest in. Firecrawl by default; Chrome MCP fallback for Meta/Pinterest/LinkedIn. Self-improving — updates a playbook + source catalog after every run. Do NOT trigger for chart-only analysis (use nq-snapshot) or single-ticker BT Stock Reports (use bt-equity).
+description: Use when producing a sourced company or brand dossier and an optional reusable brand kit. For a compiler-enforced operating model use enterprise-knowledge-graph-research; for investment dossiers use bt-equity. A bare company URL alone does not request a full investigation.
+version: 0.2.0
 ---
 
 # brand-recon — End-to-End Brand & Company Investigation
 
-You are running bang's standardized brand-recon investigation. Every run produces two compounding artifacts:
+You are running bang's standardized brand-recon investigation. A dossier run produces the first artifact below. Produce the second only when reusable brand guidance is requested or needed for authorized downstream work:
 
 1. **A structured dossier** at `~/Cortana/cortana-vault/research/brand-recon/{slug}/dossier.md`
-2. **A reusable per-entity brand skill** at `~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/` — invocable from any future session to keep deliverables on-brand for that entity
+2. **A reusable per-entity brand skill** at `~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/` — invocable from any future session to keep deliverables on-brand for that entity
 
 And every run feeds **three self-improving knowledge files** at the brand-recon root:
 - `_playbook.md` — what worked, what didn't, lessons by source type
@@ -18,6 +19,10 @@ And every run feeds **three self-improving knowledge files** at the brand-recon 
 This skill exists because doing this work cold each time is wasteful. Codify the pattern, capture the learnings, get cumulatively smarter.
 
 ---
+
+## Artifact boundary
+
+Read the current Cortana schema before writing. Emit brand packages only into `_inbox/skills/<name>/`; link the dossier and staged manifest from the research run index. Skill packages use skill frontmatter, while dossiers use vault frontmatter. Never publish an emitted skill from inside a research run.
 
 ## What you MUST read before starting
 
@@ -112,9 +117,11 @@ The full workflow is in `references/investigation-workflow.md`. Here's the shape
 - Write to `~/Cortana/cortana-vault/research/brand-recon/{slug}/dossier.md` with Obsidian frontmatter (see `references/dossier-template.md`)
 - Cross-link with `[[wikilinks]]` to related vault pages (existing competitor dossiers, project pages, research topics)
 
-### Phase 13 — Per-entity brand skill emission
+### Phase 13 — Per-entity brand skill emission (when needed)
+
+Skip this phase when the dossier is the only requested artifact. Before emission, compare existing registry, project, and staged packages for this entity. Preserve any existing staged edits; merge a reviewed patch or record a conflict rather than overwriting the shared destination.
 - Open `references/brand-skill-template.md` and the skeleton files in `assets/`
-- Copy the brand-skill scaffold into `~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/`
+- Copy the brand-skill scaffold into `~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/`
 - Fill in: visual tokens (from Phase 1), voice rules (from Phase 1 + 12), product architecture (from Phase 4 + 8), copy archetypes (synthesized from observed site copy), positioning/claims discipline (synthesized from competitive + sentiment phases)
 - Emit `assets/{slug}-tokens.css` and `assets/{slug}-tokens.json` from the captured brand tokens
 - Validate: read back the SKILL.md frontmatter to make sure description triggers are pushy and specific
@@ -135,17 +142,17 @@ The full workflow is in `references/investigation-workflow.md`. Here's the shape
 
 ## Output destinations (exact paths)
 
-The vault root is `~/Cortana/cortana-vault/`. All outputs land under it:
+The Obsidian root is `~/Cortana`; governed notes live in `cortana-vault/`. Dossiers stay in research; emitted skill packages stage in `_inbox/skills/`:
 
 | Artifact | Path |
 |---|---|
 | Per-entity folder | `research/brand-recon/{slug}/` |
 | Main dossier | `research/brand-recon/{slug}/dossier.md` |
 | Raw scrapes (optional, for audit) | `research/brand-recon/{slug}/raw-scrapes/` |
-| Brand skill folder | `research/brand-recon/{slug}/{slug}-brand/` |
-| Brand skill entry | `research/brand-recon/{slug}/{slug}-brand/SKILL.md` |
-| Brand skill references | `research/brand-recon/{slug}/{slug}-brand/references/*.md` |
-| Brand skill assets | `research/brand-recon/{slug}/{slug}-brand/assets/{slug}-tokens.{css,json}` |
+| Brand skill folder | `_inbox/skills/{slug}-brand/` |
+| Brand skill entry | `_inbox/skills/{slug}-brand/SKILL.md` |
+| Brand skill references | `_inbox/skills/{slug}-brand/references/*.md` |
+| Brand skill assets | `_inbox/skills/{slug}-brand/assets/{slug}-tokens.{css,json}` |
 | Self-improvement playbook | `research/brand-recon/_playbook.md` |
 | Source quality catalog | `research/brand-recon/_sources.md` |
 | Run index | `research/brand-recon/_runs.md` |

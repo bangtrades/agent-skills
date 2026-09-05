@@ -84,7 +84,7 @@ Don't batch — one line per URL. The catalog becomes searchable: future runs ca
 `_runs.md` is a single markdown table. Append one row at the end:
 
 ```markdown
-| YYYY-MM-DD | {slug} | {Entity Name} | {primary_url} | [[research/brand-recon/{slug}/dossier.md\|dossier]] | [[research/brand-recon/{slug}/{slug}-brand/SKILL.md\|brand]] | {1-sentence headline finding} |
+| YYYY-MM-DD | {slug} | {Entity Name} | {primary_url} | [[research/brand-recon/{slug}/dossier.md\|dossier]] | [[_inbox/skills/{slug}-brand/SKILL.md\|brand]] | {1-sentence headline finding} |
 ```
 
 The table columns are: Date, Slug, Name, URL, Dossier link, Brand skill link, Headline.

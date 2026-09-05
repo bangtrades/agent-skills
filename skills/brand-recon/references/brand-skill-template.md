@@ -1,6 +1,6 @@
 # Per-Entity Brand Skill Template
 
-After the dossier is written, emit a fully populated `{slug}-brand` skill into `~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/`. This skill is the second compounding artifact — it's what makes every future deliverable for that entity stay on-brand without re-doing the research.
+After the dossier is written, emit a fully populated `{slug}-brand` skill into `~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/`. This skill is the second compounding artifact — it's what makes every future deliverable for that entity stay on-brand without re-doing the research.
 
 ## Structure to emit
 
@@ -68,20 +68,20 @@ This keeps token usage low across many deliverables and makes the brand skill ge
 Once the brand skill is written, append a one-line entry to `cortana-vault/index.md` under a "Brand Skills" section (create it if it doesn't exist):
 
 ```
-- [[research/brand-recon/{slug}/{slug}-brand/SKILL.md|{ENTITY_NAME} Brand]]
+- [[_inbox/skills/{slug}-brand/SKILL.md|{ENTITY_NAME} Brand]]
 ```
 
 This makes the skill discoverable from Obsidian's index page and surfaces it in graph view.
 
 ## Coordination with the obsidian skill
 
-The brand skill emission counts as a vault write — the obsidian skill's conventions apply. After writing the brand skill, append a log entry to `cortana-vault/log.md`:
+The dossier and indexes follow vault conventions; the staged skill package follows skill frontmatter. Emission is staging, not publication. After writing the brand skill, append a log entry to `cortana-vault/log.md`:
 
 ```
 ## [YYYY-MM-DD] brand-recon | {ENTITY_NAME} brand skill emitted
 
 - **type**: brand-skill-emission
 - **source**: brand-recon Phase 13
-- **details**: Emitted {slug}-brand skill into research/brand-recon/{slug}/{slug}-brand/. Sibling to dossier.
-- **pages touched**: [[research/brand-recon/{slug}/dossier.md]], [[research/brand-recon/{slug}/{slug}-brand/SKILL.md]]
+- **details**: Emitted {slug}-brand skill into _inbox/skills/{slug}-brand/. Staged separately and linked from the dossier/run index; publication pending.
+- **pages touched**: [[research/brand-recon/{slug}/dossier.md]], [[_inbox/skills/{slug}-brand/SKILL.md]]
 ```

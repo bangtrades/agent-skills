@@ -26,9 +26,9 @@ Goal: confirm the investigation target and create the working scaffold.
    ```
    ~/Cortana/cortana-vault/research/brand-recon/{slug}/
    ~/Cortana/cortana-vault/research/brand-recon/{slug}/raw-scrapes/
-   ~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/
-   ~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/references/
-   ~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/assets/
+   ~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/
+   ~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/references/
+   ~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/assets/
    ```
 4. Read the current `_playbook.md` and `_sources.md` to inherit prior learnings. If they don't exist yet, this is the bootstrap run — the seed playbook ships in this skill's `assets/playbook.seed.md`.
 5. Create the TaskList with 14 phase milestones so the user can watch progress.
@@ -381,7 +381,7 @@ Goal: emit a fully populated `{slug}-brand` skill that any future session can in
    - Copy archetypes extracted from real observed site copy
    - Positioning + claims discipline informed by the competitive + sentiment phases
 
-3. Write all files into `~/Cortana/cortana-vault/research/brand-recon/{slug}/{slug}-brand/`.
+3. Write all files into `~/Cortana/cortana-vault/_inbox/skills/{slug}-brand/`.
 
 4. The brand-skill SKILL.md frontmatter must have a *pushy, specific* description. Generic descriptions undertrigger. Lift the pattern from the CopperJoint brand skill that already exists.
 
