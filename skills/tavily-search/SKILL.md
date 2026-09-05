@@ -1,8 +1,17 @@
 ---
-name: tavily
-description: AI-optimized web search via Tavily API. Returns concise, relevant results for AI agents.
+name: tavily-search
+description: Use when retrieving web search evidence through an available Tavily API integration; it is a search adapter rather than a research methodology.
 homepage: https://tavily.com
-metadata: {"clawdbot":{"emoji":"🔍","requires":{"bins":["node"],"env":["TAVILY_API_KEY"]},"primaryEnv":"TAVILY_API_KEY"}}
+metadata:
+  clawdbot:
+    emoji: 🔍
+    requires:
+      bins:
+      - node
+      env:
+      - TAVILY_API_KEY
+    primaryEnv: TAVILY_API_KEY
+version: 0.2.0
 ---
 
 # Tavily Search
