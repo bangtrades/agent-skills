@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Auto-resync all harnesses after the repo content changes.
 # Resolve repo root regardless of where git invokes the hook from.
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 if [ -x "$ROOT/sync-skills.sh" ]; then
-  CANONICAL="$ROOT" "$ROOT/sync-skills.sh" >> "$ROOT/.sync.log" 2>&1 || true
+  if ! CANONICAL="$ROOT" "$ROOT/sync-skills.sh" >> "$ROOT/.sync.log" 2>&1; then
+    echo "Cortana skill synchronization failed; inspect $ROOT/.sync.log and run ./sync-skills.sh check" >&2
+    exit 1
+  fi
+else
+  echo "Cortana skill synchronization unavailable: $ROOT/sync-skills.sh" >&2
+  exit 1
 fi

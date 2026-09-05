@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 # 1. resync local harnesses (codex/hermes/claude symlinks) — original behavior
 exec_dir="$(dirname "$0")"
-"$exec_dir/_resync"
+"$exec_dir/_resync" || exit $?
+# An authorized batch can defer remote distribution until every skill commits.
+# Validation hooks and local link synchronization still run for each commit.
+if [ "${CORTANA_DEFER_DOWNSTREAM:-0}" = 1 ]; then
+  echo "[sync-downstream] deferred for publication batch; run bin/sync-downstream.sh afterward"
+  exit 0
+fi
 # 2. propagate downstream: push origin + sync/commit/push the WaiveLabs org mirror
 #    (added 2026-08-08; warn-only on network failure, state in .sync-state)
 ROOT="$(cd "$exec_dir/.." && pwd)"
