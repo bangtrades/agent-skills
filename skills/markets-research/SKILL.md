@@ -1,41 +1,22 @@
 ---
 name: markets-research
-description: Use when researching a market, ticker, sector, or trading signal — gathering news, sentiment, macro context, on-chain/order-flow signals, and synthesizing a research brief. Trigger on "research this market", "what's the signal on X", "analyze sentiment for", "build a thesis on", or pre-trade context gathering.
+description: Use when building a sourced market, sector, macro, or trading-signal brief. Use bt-equity for a full single-company investment dossier and nq-snapshot for live NQ chart analysis.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Markets Research
+# Markets research
 
-> **Stub skill.** The owning agent (Market Analyst) fills in `scripts/` and
-> expands the workflow as it masters the skill. The frontmatter above is the
-> Paperclip-discoverable manifest.
+Frame the instrument, horizon, as-of time, question, and decision. Retrieve existing relevant evidence before expanding research.
 
-Research a market or signal end-to-end and produce a decision-ready brief.
+1. Request data through `data-fetch` or an available provider. Record source, retrieval time, observation time, units, and limitations.
+2. Use current primary evidence for prices, economic releases, filings, calendars, and company statements. Keep facts, estimates, inference, and scenarios distinct.
+3. Build bull and bear cases, catalysts, disconfirming evidence, and explicit unknowns. Do not substitute sentiment for verified financial data.
+4. Route a company dossier to `bt-equity`, live NQ chart work to `nq-snapshot`, historical edge checks to `pre-trade-intel`, and sizing to `risk-rules`.
+5. Return the thesis, evidence table, invalidation conditions, horizon, and unanswered questions. A brief provides decision support, not an order.
 
-## When to use this skill
+Hand off reproducible hypotheses to `backtest-run`. Cite every material factual claim. If a feed is unavailable, qualify the answer rather than inventing observations.
 
-- Building a thesis on a ticker, pair, or sector before a trade.
-- Synthesizing news, sentiment, and macro context into one brief.
-- Evaluating a candidate signal (technical, on-chain, or order-flow).
+## Runtime and maintenance
 
-## Usage
-
-1. **Frame the question** — instrument, timeframe, and the decision the research
-   feeds (entry, sizing, hold/exit).
-2. **Gather** — news, sentiment, macro calendar, and any signal feeds available
-   via the `data-fetch` skill. Cite every source.
-3. **Synthesize** — bull case, bear case, key levels, catalysts, and the
-   confidence level. Separate fact from inference.
-4. **Hand off** — output a brief that `risk-rules` and `backtest-run` can consume
-   (proposed direction, invalidation level, time horizon).
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): signal-feed
-pullers, sentiment aggregation, brief templating.
-
-## Mastery notes
-
-This agent's accumulated preferences for this skill live in its vault at
-`skill-mastery/markets-research.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
