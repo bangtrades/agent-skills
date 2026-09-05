@@ -1,6 +1,7 @@
 ---
 name: backtest-expert
 description: Expert guidance for systematic backtesting of trading strategies. Use when developing, testing, stress-testing, or validating quantitative trading strategies. Covers "beating ideas to death" methodology, parameter robustness testing, slippage modeling, bias prevention, and interpreting backtest results. Applicable when user asks about backtesting, strategy validation, robustness testing, avoiding overfitting, or systematic trading development.
+version: 0.2.0
 ---
 
 # Backtest Expert
@@ -77,9 +78,8 @@ This is where 80% of testing time should be spent.
 - Test in different market regimes separately
 
 **Sample size**:
-- Absolute minimum: 30 trades
-- Preferred: 100+ trades
-- High confidence: 200+ trades
+- Report sample size, effect definition, uncertainty, serial dependence, regime coverage, and the number of strategies tried.
+- Estimate adequacy for the observed effect and dependence structure; a fixed trade count does not establish confidence.
 
 ### 5. Out-of-Sample Validation
 
@@ -104,7 +104,7 @@ This is where 80% of testing time should be spent.
 - Are results realistic, not "too good to be true"?
 
 **Decision criteria**:
-- ✅ **Deploy**: Survives all stress tests with acceptable performance
+- ✅ **Advance to further validation**: Survives the specified stress tests; live trading or deployment still requires separate authorization and operational validation.
 - 🔄 **Refine**: Core logic sound but needs parameter adjustment
 - ❌ **Abandon**: Fails stress tests or relies on fragile assumptions
 
@@ -193,7 +193,7 @@ See `references/failed_tests.md` for detailed examples and diagnostic framework.
 
 **Tool limitations**: Understand your backtesting platform's quirks (interpolation methods, handling of low liquidity, data alignment issues).
 
-**Statistical significance**: Small edges require large sample sizes to prove. 5% edge per trade needs 100+ trades to distinguish from luck.
+**Statistical uncertainty**: Define the effect and return distribution, account for serial dependence and multiple testing, and report appropriate intervals or resampling results. Do not infer significance from a fixed trade count.
 
 ## Discretionary vs Systematic Differences
 
