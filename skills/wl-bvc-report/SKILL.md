@@ -1,17 +1,7 @@
 ---
 name: wl-bvc-report
-description: >-
-  Generate a WaiveLabs-branded Build & Value Creation Report — the client-facing PDF that
-  summarizes what WaiveLabs built, how fast it was built versus a conventional design/dev team,
-  the AI agents delivered, estimated recurring time savings, and the tech stack. Use this skill
-  aggressively whenever bang asks for a "BVC report", "build report", "value creation report",
-  "build summary for a client/prospect", "show what we built and what it's worth", "ROI one-pager
-  for the build", or wants prospect-facing collateral quantifying a WaiveLabs engagement. Also
-  trigger after finishing any client build when bang wants materials to show prospective clients.
-  Produces a 4-page branded PDF via a bundled config-driven engine with a built-in client-safe
-  language lint (no client names, no "simulated data", no "prototype"). Pairs with brand-waive
-  (brand layer is baked into the engine). Do NOT use for pitch decks (client-pitch), proposals,
-  or single-client demo apps.
+description: Use when producing a WaiveLabs Build and Value Creation report from verified build facts. Keep client identities confidential, distinguish demos from production, disclose data provenance, and label value estimates.
+version: 0.2.0
 ---
 
 # WaiveLabs — Build & Value Creation Report (`wl-bvc-report`)
@@ -30,8 +20,7 @@ Work from the actual project on disk and the session history:
 
 - **Lines of code** — count real source only: exclude `node_modules`, `.next`, `.git`, lockfiles,
   and any `public/` copies that duplicate source. Round down to a clean "N+" figure.
-- **Build time** — elapsed working days from first file to deployed application (file mtimes and
-  session dates are your evidence).
+- **Build time** — cite dated session/build/deployment records. File mtimes alone do not establish work duration or a production deployment.
 - **Inventory** — workspaces/views, AI agents (list each with what it does), data tables/feeds and
   total rows, deployment surface, access-control features.
 - Read `references/report-spec.md` for how to derive the comparison estimate (conventional team
@@ -59,8 +48,7 @@ mirrors how an executive reads: outcome → substance → value → credibility)
    calendar link).
 
 Read `references/language.md` before writing a single sentence. The short version: the client is
-"a high-growth [category] brand", never named; it's an "application", never a "prototype"; it's
-"data", never "simulated/mock/synthetic data"; savings are always "estimated".
+"a high-growth [category] brand" unless naming is authorized. State whether the build is a prototype, demonstration, pilot, or production application; disclose simulated/synthetic data when used. Label projected savings as estimated and distinguish them from measured outcomes.
 
 ### 3. Render
 
@@ -73,7 +61,7 @@ copy; nothing renders). Add engagement-specific words to `client_terms` in the c
 client's brand name, hero products, retail partners, founders — so a stray mention can't slip
 through. Exit 2 means a block overflowed its page: the warning names the block and the overage in
 inches; trim that copy and re-run. Requires `reportlab` and `fonttools`
-(`pip install reportlab fonttools --break-system-packages`); fonts download once and cache.
+(use an isolated environment or the runtime’s bundled libraries); fonts download once and cache.
 
 ### 4. Verify before shipping
 

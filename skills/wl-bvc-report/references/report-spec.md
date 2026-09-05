@@ -1,5 +1,9 @@
 # BVC Report — Content Spec
 
+## Evidence precedence
+
+Treat every example below as a layout suggestion, never a factual claim. State maturity and data provenance; claim live integrations, approvals, security, or production use only with evidence. Use dated work/deployment records for elapsed time; file mtimes alone are insufficient. Label team-time and savings estimates with assumptions.
+
 ## Why each page exists
 
 An executive reads this in under three minutes. Page 1 must land the whole story alone (many
@@ -57,7 +61,7 @@ who forwards it to their technical advisor.
 
 - **LOC**: source only. Exclude vendored deps, build output, lockfiles, and duplicated
   `public/` copies. State as "N+" rounded down to the nearest hundred.
-- **Build time**: elapsed working days, evidenced by file mtimes / session logs. Don't shave it.
+- **Build time**: elapsed working days, evidenced by dated work and deployment records. Don't shave it.
 - **Conventional estimate**: sum per-discipline person-weeks, then convert to calendar weeks for
   the stated team size. Rules of thumb from real builds: a bespoke data-heavy workspace with
   custom visualization ≈ 1.5–2 senior-FE weeks; an LLM agent layer with structured tool-calling,

@@ -42,9 +42,9 @@ M = 1.0 * inch
 BOTTOM = 0.85 * inch          # nothing below this except the footer
 FONT_CACHE = '/tmp/wl-fonts'
 
-# Default lint list. Words that make prospects ask the wrong questions.
-DEFAULT_FORBIDDEN = ['simulat', 'prototype', 'mock', 'synthetic',
-                     'proof-of-concept', 'proof of concept', ' poc ', 'dummy']
+# Maturity and data-provenance disclosures are permitted. Confidential
+# engagement terms remain enforced through client_terms.
+DEFAULT_FORBIDDEN = []
 
 warnings = []
 
