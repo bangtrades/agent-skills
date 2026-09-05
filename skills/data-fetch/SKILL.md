@@ -1,43 +1,22 @@
 ---
 name: data-fetch
-description: Use when retrieving market data — OHLCV bars, quotes, fundamentals, or on-chain data from an exchange or data provider. Trigger on "fetch price data", "pull OHLCV", "get historical bars", "download market data", or when another skill needs clean data as input.
+description: Use when retrieving and validating market observations or historical datasets for research and backtests; specify source, instrument, time window, and adjustment policy.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Data Fetch
+# Market data retrieval contract
 
-> **Stub skill.** The owning agent fills in `scripts/` and expands the workflow
-> as it masters the skill. The frontmatter above is the Paperclip-discoverable
-> manifest.
+Capture provider, instrument and contract ID, venue, timezone, interval, date range, and requested fields before fetching. Distinguish spot, futures contracts, continuous series, and adjusted equities.
 
-Retrieve and normalize market data for downstream skills.
+1. Inspect the provider available in this runtime; use its documented pagination, limits, and retry behavior.
+2. Preserve raw observations in an authorized new destination and produce a separate normalized dataset. Never modify Cortana’s immutable archive.
+3. Record observation and retrieval timestamps, timezone/session calendar, currency, price units, corporate-action adjustments, and futures roll policy. Preserve economic-data vintages when relevant.
+4. Validate ordering, duplicate timestamps, missing sessions/bars, OHLC consistency, volume units, and implausible prices. Do not silently fill gaps or mix adjusted and unadjusted data.
+5. Return dataset location, source/query, schema, coverage, gap report, transformation log, and content hash. Distinguish unavailable fields from zeros.
 
-## When to use this skill
+Feed `markets-research` and `backtest-run`. Use `stock-market-pro` only when its data source and capabilities fit; credentials remain in the runtime, not notes or output.
 
-- Pulling OHLCV bars, quotes, or fundamentals for a symbol.
-- Fetching historical data for a backtest window.
-- Providing clean, normalized data to `markets-research` / `backtest-run`.
+## Runtime and maintenance
 
-## Usage
-
-1. **Specify** — symbol(s), interval, date range, and source.
-2. **Fetch** — call the provider; handle pagination, rate limits, and retries.
-3. **Normalize** — consistent schema (timestamp, OHLCV), UTC timestamps, gap
-   handling documented.
-4. **Validate** — check for missing bars, duplicates, and obvious bad ticks
-   before handing data on.
-
-> **Secrets:** API keys for data providers are supplied at runtime via the
-> agent's environment / capability markers — never commit credentials to this
-> registry.
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): provider
-clients, OHLCV normalizer, data-quality checks.
-
-## Mastery notes
-
-This agent's accumulated preferences live in its vault at
-`skill-mastery/data-fetch.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
