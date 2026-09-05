@@ -1,40 +1,22 @@
 ---
 name: indicator-build
-description: Use when building, porting, or debugging a trading indicator or charting study — Pine Script (TradingView), or indicator logic in Python/JS. Trigger on "build an indicator", "write a Pine Script", "port this study", "add an alert condition", or "debug my indicator".
+description: Use when specifying or porting a trading indicator across Pine, Python, or JavaScript. Use pine-script for Pine language implementation and pine-develop for a requested live compile loop.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Indicator Build
+# Indicator specification and portability
 
-> **Stub skill.** The owning agent fills in `scripts/` and expands the workflow
-> as it masters the skill. The frontmatter above is the Paperclip-discoverable
-> manifest.
+Define inputs, outputs, units, warmup behavior, session/timeframe semantics, alert timing, and repaint policy. Reuse `pine-script` for Pine implementation rather than loading a second language guide.
 
-Build and validate trading indicators / charting studies.
+1. Identify the authoritative source and destination. Preserve an editable source snapshot before changes.
+2. Implement parameters as inputs and make confirmed-bar versus intrabar behavior explicit.
+3. Compare known examples across warmup, gaps, session boundaries, missing volume, and timeframe changes. Verify lookahead and repaint behavior with evidence.
+4. Use `pine-develop` only when a live TradingView edit/compile is requested and the runtime exposes the required tools.
+5. Return source, input/output contract, checked examples, compile status, and any unverified chart behavior. Feed signal series to `backtest-run` when requested.
 
-## When to use this skill
+This small contract is a future merge candidate into indicator-development references; retain it until cross-language callers are migrated.
 
-- Authoring a new Pine Script indicator or strategy study.
-- Porting an indicator between Pine Script, Python, and JS.
-- Adding or debugging alert conditions and plot logic.
+## Runtime and maintenance
 
-## Usage
-
-1. **Specify** — the indicator's inputs, outputs (plots/signals), and timeframe
-   behavior. Note repainting risk explicitly.
-2. **Implement** — write the study; keep parameters as inputs, not hardcoded.
-3. **Validate** — confirm no lookahead/repainting, check edge cases (gaps, low
-   volume, session boundaries).
-4. **Hand off** — a signal-emitting indicator should produce series the
-   `backtest-run` skill can consume.
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): Pine templates,
-repaint checks, indicator-to-signal exporters.
-
-## Mastery notes
-
-This agent's accumulated preferences live in its vault at
-`skill-mastery/indicator-build.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
