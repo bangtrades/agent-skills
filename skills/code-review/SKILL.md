@@ -1,40 +1,22 @@
 ---
 name: code-review
-description: Use when reviewing a pull request, diff, or change set — checking correctness, security, style, and test coverage against the team's standards. Trigger on "review this PR", "review my changes", "check this diff", "is this ready to merge", or pre-merge quality gating.
+description: Use when reviewing a PR or change set for concrete correctness, security, regression, and maintainability issues. Return supported file-and-line findings and verification limits.
 required: false
-version: 0.1.0
+version: 0.1.1
 ---
 
-# Code Review
+# Evidence-based code review
 
-> **Stub skill.** The owning agent (dev / QA) fills in `scripts/` and expands the
-> checklist as it masters the skill. The frontmatter above is the
-> Paperclip-discoverable manifest.
+Read repository instructions, the change intent, the exact diff, surrounding implementations, and affected callers. Fix the comparison base before reviewing; preserve a dirty working tree and never use shared-repository stash as a baseline mechanism.
 
-Review changes against a consistent quality and security bar.
+1. Trace changed behavior to inputs, state, side effects, consumers, and error paths.
+2. Check correctness, authorization, data boundaries, compatibility, concurrency, migrations, and meaningful tests relevant to the change.
+3. Use actual project checks when appropriate. Do not equate tool completion or empty findings with a clean review. The older `code-reviewer` analyzers are scaffolds and provide no review evidence.
+4. Report each actionable finding with severity, exact file/line, triggering condition, consequence, and a specific correction. Distinguish confirmed defects from uncertain questions.
+5. Deduplicate findings and state checks run, checks omitted, and residual limits. Zero findings is valid; do not manufacture a quota.
 
-## When to use this skill
+Use `github-pr-workflow` for requested PR logistics or `github-code-review` for the GitHub-specific review procedure. Choose `mp-code-review` as an alternative when its standards workflow fits. Use independent `adversarial-reviewer` only when authorized or required by applicable instructions. Review never implies permission to post, approve, merge, or deploy.
 
-- Reviewing a PR or diff before merge.
-- Sanity-checking your own change set before requesting review.
-- Producing a structured review report.
+## Runtime and maintenance
 
-## Usage
-
-1. **Understand** — read the diff and the intent. Don't review code you don't
-   understand; ask or read the surrounding context first.
-2. **Checklist** — correctness, edge cases, security (injection, authz, secrets),
-   error handling at boundaries, test coverage, and clarity. Flag scope creep.
-3. **Prioritize** — separate blocking issues from nits. Lead with the blockers.
-4. **Report** — file-and-line references, a clear merge/no-merge call, and the
-   reasoning.
-
-## Scripts
-
-`scripts/` is a placeholder. Intended helpers (filled in later): diff summarizer,
-checklist runner, review-report templater.
-
-## Mastery notes
-
-This agent's accumulated preferences live in its vault at
-`skill-mastery/code-review.md` (STEP-49 §2.1), not in this file.
+Read the current project hub and applicable local instructions. Discover available tools and verify their input schema; skill names do not prove an API exists. Record what was executed, what was checked, and what remains unverified. Stage skill improvements in Cortana’s inbox; never rewrite the installed registry.
