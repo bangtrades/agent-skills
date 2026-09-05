@@ -1,15 +1,24 @@
 ---
-name: audiocraft-audio-generation
-description: "AudioCraft: MusicGen text-to-music, AudioGen text-to-sound."
-version: 1.0.0
+name: audiocraft
+description: Use when generating audio with the AudioCraft model stack; requires a configured local runtime and model assets.
+version: 1.0.1
 author: Orchestra Research
 license: MIT
-dependencies: [audiocraft, torch>=2.0.0, transformers>=4.30.0]
-platforms: [linux, macos]
+dependencies:
+- audiocraft
+- torch>=2.0.0
+- transformers>=4.30.0
+platforms:
+- linux
+- macos
 metadata:
   hermes:
-    tags: [Multimodal, Audio Generation, Text-to-Music, Text-to-Audio, MusicGen]
-
+    tags:
+    - Multimodal
+    - Audio Generation
+    - Text-to-Music
+    - Text-to-Audio
+    - MusicGen
 ---
 
 # AudioCraft: Audio Generation
