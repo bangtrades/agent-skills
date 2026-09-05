@@ -8,6 +8,9 @@ REG="$(cd "$(dirname "$0")/.." && pwd)"
 STATE="$REG/.sync-state"
 MIRROR="${SKILL_MIRROR:-}"
 if [ -z "$MIRROR" ]; then
+  MIRROR="$(git -C "$REG" config --get cortana.skillMirror || true)"
+fi
+if [ -z "$MIRROR" ]; then
   for c in "$HOME/Projects/agency/WaiveLabs/agent-skills" \
            "/sessions"/*/mnt/Projects/agency/WaiveLabs/agent-skills; do
     [ -d "$c/.git" ] && MIRROR="$c" && break
