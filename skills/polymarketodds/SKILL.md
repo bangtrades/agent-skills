@@ -1,14 +1,16 @@
 ---
-name: polymarket
-description: Query Polymarket prediction markets - check odds, trending markets, search events, track prices and momentum. Includes watchlist alerts, resolution calendar, momentum scanner, and paper trading (simulated, no real money).
+name: polymarketodds
+description: Use when managing Polymarket CLI watchlists, odds alerts, resolution calendars, or paper portfolios. Use polymarket for direct public API retrieval.
 homepage: https://polymarket.com
 user-invocable: true
 disable-model-invocation: true
 metadata:
   openclaw:
-    emoji: "📊"
+    emoji: 📊
     requires:
-      bins: [python3]
+      bins:
+      - python3
+version: 0.2.0
 ---
 
 # Polymarket
