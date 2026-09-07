@@ -5,6 +5,13 @@ description: "Use when the user asks to design multi-agent systems, create agent
 
 # Agent Designer - Multi-Agent System Architecture
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **MetaCortex factory or agent-system design** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Separate nondeterministic worker reasoning from deterministic host policy, identity, budget and effect controls. Design independent verification, scoped memory, recovery and a measurable user outcome; agent topology alone is not an accepted product.
+
+
 **Tier:** POWERFUL  
 **Category:** Engineering  
 **Tags:** AI agents, architecture, system design, orchestration, multi-agent systems
