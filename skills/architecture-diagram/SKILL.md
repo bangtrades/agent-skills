@@ -1,6 +1,6 @@
 ---
 name: architecture-diagram
-description: "Dark-themed SVG architecture/cloud/infra diagrams as HTML."
+description: "Use when creating software, cloud or infrastructure architecture diagrams as standalone HTML with inline SVG. Visualizes supplied or explicitly proposed architecture; use software-architecture for requirements, decisions and delivery planning."
 version: 1.0.0
 author: Cocoon AI (hello@cocoon-ai.com), ported by Hermes Agent
 license: MIT
@@ -13,6 +13,13 @@ metadata:
 ---
 
 # Architecture Diagram Skill
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **architecture and stack** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Use the approved or explicitly proposed architecture and its trust/data/deployment boundaries as diagram inputs. Link the diagram to its requirement and ADR versions; rendering a diagram does not approve the design.
+
 
 Generate professional, dark-themed technical architecture diagrams as standalone HTML files with inline SVG graphics. No external tools, no API keys, no rendering libraries — just write the HTML file and open it in a browser.
 
