@@ -5,6 +5,13 @@ description: Comprehensive frontend development skill for building modern, perfo
 
 # Senior Frontend
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **build and repository work** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Implement the promised workflow with real service integration, accessible input/focus/errors, loading/empty states, persistence and measured responsiveness. Verify the served candidate on declared devices; screenshots or isolated components do not establish usability.
+
+
 Complete toolkit for senior frontend with modern tools and best practices.
 
 ## Quick Start
