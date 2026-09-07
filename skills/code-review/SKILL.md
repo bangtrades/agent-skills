@@ -7,6 +7,13 @@ version: 0.1.1
 
 # Evidence-based code review
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **review and verification** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Check the affected requirement/ADR, real callers, data/trust boundaries and acceptance evidence. Report exact-candidate findings and verification limits; keep independent review separate from permission to merge, release or mark work accepted.
+
+
 Read repository instructions, the change intent, the exact diff, surrounding implementations, and affected callers. Fix the comparison base before reviewing; preserve a dirty working tree and never use shared-repository stash as a baseline mechanism.
 
 1. Trace changed behavior to inputs, state, side effects, consumers, and error paths.
