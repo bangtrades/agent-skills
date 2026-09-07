@@ -1,6 +1,6 @@
 ---
 name: github-pr-workflow
-description: "GitHub PR lifecycle: branch, commit, open, CI, merge."
+description: "Use when preparing or managing a GitHub pull request, its branch, checks, review and authorized merge workflow."
 version: 1.1.0
 author: Hermes Agent
 license: MIT
@@ -12,6 +12,13 @@ metadata:
 ---
 
 # GitHub Pull Request Workflow
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **release and operations** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Connect the PR to existing requirements/work and exact candidate checks. Reconcile branch/CI/artifact identity and required review under the repository policy; merging, deployment and user acceptance remain separate effects with separate evidence.
+
 
 Complete guide for managing the PR lifecycle. Each section shows the `gh` way first, then the `git` + `curl` fallback for machines without `gh`.
 
