@@ -5,6 +5,13 @@ description: Technology stack evaluation and comparison with TCO analysis, secur
 
 # Technology Stack Evaluator
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **architecture and stack** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Evaluate options against actual requirements, workload, operating cost and constraints. Record the chosen ADR and its validation plan. Example scores, forecasts and compliance checks are decision aids, not measured product evidence.
+
+
 Evaluate and compare technologies, frameworks, and cloud providers with data-driven analysis and actionable recommendations.
 
 ## Table of Contents
