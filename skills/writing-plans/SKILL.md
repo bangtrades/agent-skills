@@ -1,6 +1,6 @@
 ---
 name: writing-plans
-description: "Write implementation plans: bite-sized tasks, paths, code."
+description: "Use when drafting an implementation plan for a multi-step software change, with requirement traceability, owned integration seams and concrete verification."
 version: 1.1.0
 author: Hermes Agent (adapted from obra/superpowers)
 license: MIT
@@ -12,6 +12,13 @@ metadata:
 ---
 
 # Writing Implementation Plans
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **work breakdown and Linear** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Plan dependency-ordered vertical slices tied to requirement and ADR IDs. Include the real caller/integration owner, independent verification, release/recovery evidence and the usable-MVP feedback loop. Reuse an adequate existing plan; scale detail to the change.
+
 
 ## Overview
 
@@ -35,7 +42,7 @@ Assume the implementer is a skilled developer but knows almost nothing about the
 
 ## Bite-Sized Task Granularity
 
-**Each task = 2-5 minutes of focused work.**
+**Size tasks around a coherent, reviewable outcome and its evidence.** The 2–5 minute steps below are optional implementation detail, not a scheduling promise or a reason to split a control from its caller.
 
 Every step is one action:
 - "Write the failing test" — step
@@ -186,7 +193,7 @@ For each task, include:
 
 Check:
 - [ ] Tasks are sequential and logical
-- [ ] Each task is bite-sized (2-5 min)
+- [ ] Each task has bounded ownership, dependencies and observable acceptance
 - [ ] File paths are exact
 - [ ] Code examples are complete (copy-pasteable)
 - [ ] Commands are exact with expected output
@@ -274,7 +281,7 @@ git commit -m "type: description"
 
 After saving the plan, offer the execution approach:
 
-**"Plan complete and saved. Ready to execute using subagent-driven-development — I'll dispatch a fresh subagent per task with two-stage review (spec compliance then code quality). Shall I proceed?"**
+If execution is already authorized, continue within that scope using the appropriate runtime. If the user requested planning only, hand off the saved plan. Delegate only when authorized or required by applicable instructions; do not require a fresh approval simply because planning finished.
 
 When executing, use the `subagent-driven-development` skill:
 - Fresh `delegate_task` per task with full context
