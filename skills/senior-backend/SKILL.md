@@ -5,6 +5,13 @@ description: Comprehensive backend development skill for building scalable backe
 
 # Senior Backend
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **build and repository work** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Connect the change to its real caller and persistence path. Verify intended-role authorization, tenant isolation, idempotency/concurrency, migrations and workload budgets where relevant; record the exact candidate and integration evidence.
+
+
 Complete toolkit for senior backend with modern tools and best practices.
 
 ## Quick Start
