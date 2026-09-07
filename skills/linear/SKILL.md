@@ -1,6 +1,6 @@
 ---
 name: linear
-description: "Linear: manage issues, projects, teams via GraphQL + curl."
+description: "Use when reading or managing Linear issues, projects, dependencies and cycles. Apply Cortana delivery practices and use available connector tools or the bundled GraphQL adapter."
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -15,7 +15,14 @@ metadata:
 
 # Linear — Issue & Project Management
 
-Manage Linear issues, projects, and teams directly via the GraphQL API using `curl`. No MCP server, no OAuth flow, no extra dependencies.
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **work breakdown and Linear** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Reconcile existing issues, native dependencies, team states and cycle usage before changes. Link requirements/ADRs to work and exact verification/release evidence; board completion does not establish deployment or user acceptance. Read back each authorized mutation.
+
+
+Use an available purpose-built Linear connector when present; inspect its current schema. The GraphQL CLI below is a fallback for environments without that connector. Its API-key setup applies only to that fallback.
 
 ## Setup
 
@@ -362,7 +369,7 @@ Combine filters with `or: [...]` for OR logic (default is AND within a filter ob
 4. **Create issues** with team ID, title, description, priority
 5. **Update status** by setting `stateId` to the target workflow state
 6. **Add comments** to track progress
-7. **Mark complete** by setting `stateId` to the team's "completed" type state
+7. **Record the supported state** under the project's acceptance and authority rules. Mark complete only when that state's evidence obligations are met; otherwise retain the appropriate in-progress/review/blocked state. Verify by readback.
 
 ## Rate Limits
 
@@ -373,7 +380,7 @@ Combine filters with `or: [...]` for OR logic (default is AND within a filter ob
 
 ## Important Notes
 
-- Always use `terminal` tool with `curl` for API calls — do NOT use `web_extract` or `browser`
+- Prefer the available Linear connector. Use the bundled CLI or `curl` when the connector is unavailable or does not support the required operation; never expose credentials in output.
 - Always check the `errors` array in GraphQL responses — HTTP 200 can still contain errors
 - If `stateId` is omitted when creating issues, Linear defaults to the first backlog state
 - The `description` field supports Markdown
