@@ -1,6 +1,6 @@
 ---
 name: github-repo-management
-description: "Clone/create/fork repos; manage remotes, releases."
+description: "Use when inspecting or configuring GitHub repository settings, branch/review controls, ownership, dependencies and delivery workflows."
 version: 1.1.0
 author: Hermes Agent
 license: MIT
@@ -12,6 +12,13 @@ metadata:
 ---
 
 # GitHub Repository Management
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **build and repository work** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Use the repository standard for reproducible bootstrap, ownership, branch/review protections, dependency/secret controls and release evidence. Inspect actual repository capabilities and scope before authorized configuration changes; do not infer enforcement from a settings proposal.
+
 
 Create, clone, fork, configure, and manage GitHub repositories. Each section shows `gh` first, then the `git` + `curl` fallback.
 
