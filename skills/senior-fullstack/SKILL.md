@@ -5,6 +5,13 @@ description: Comprehensive fullstack development skill for building complete web
 
 # Senior Fullstack
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **build and repository work** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Build a coherent user journey across UI, service, data and deployment seams. Preserve requirement/ADR traceability, quality budgets, meaningful integrated verification and a recoverable release; scaffolding or a green helper script alone is not delivery evidence.
+
+
 Complete toolkit for senior fullstack with modern tools and best practices.
 
 ## Quick Start
