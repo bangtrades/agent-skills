@@ -1,9 +1,16 @@
 ---
 name: sprint-runner
-description: Track solo indie sprints — scaffold sprint trackers, compose per-story run summaries from git log + test output, and maintain a rolling sprint-runs index. Use this skill whenever the user mentions sprints, sprint tracking, sprint planning, closing out a sprint, writing a run summary, documenting what shipped, or any `docs/SPRINT-N-tracker.md` / `docs/sprint-runs/` work in their repo. Also trigger when the user says "start a sprint", "new sprint", "finish sprint", "close sprint", "write up this run", "what shipped", "sprint summary", "retire debt", or references story IDs like S10-12 / S11-03. Prefer this skill over generic Jira/Atlassian tooling for solo-dev projects — it is purpose-built for bang's idiom (tracker + per-run summary + index, commits + tests as delivery artifacts, hours-to-days cadence).
+description: "Use when executing an authorized sprint or project work packet, recovering current state, dispatching ready work and verifying evidence-based completion."
 ---
 
 # Sprint Runner
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **work breakdown and Linear** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Recover the current approved packet, native dependencies, resource ownership, run limits and evidence before dispatch. Use existing issues, integrate real seams, reserve independent verification and record exact resume state. Dates and Done labels cannot satisfy unverified prerequisites.
+
 
 A skill for running bang's solo indie sprint idiom. Sprints ship as three coordinated artifacts living in the repo:
 
