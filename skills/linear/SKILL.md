@@ -5,9 +5,6 @@ version: 1.0.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
-prerequisites:
-  env_vars: [LINEAR_API_KEY]
-  commands: [curl]
 metadata:
   hermes:
     tags: [Linear, Project Management, Issues, GraphQL, API, Productivity]
@@ -24,7 +21,9 @@ Reconcile existing issues, native dependencies, team states and cycle usage befo
 
 Use an available purpose-built Linear connector when present; inspect its current schema. The GraphQL CLI below is a fallback for environments without that connector. Its API-key setup applies only to that fallback.
 
-## Setup
+## CLI fallback setup
+
+These prerequisites apply only to the CLI fallback: `curl` (or the bundled Python helper) and `LINEAR_API_KEY`. An available authenticated connector does not require this local API-key setup.
 
 1. Get a personal API key from **Linear Settings > Account > Security & access > Personal API keys** (URL: https://linear.app/settings/account/security). Note: the org-level *Settings > API* page only shows OAuth apps and workspace-member keys, not personal keys.
 2. Set `LINEAR_API_KEY` in your environment (via `hermes setup` or your env config)
