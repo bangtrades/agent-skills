@@ -5,6 +5,13 @@ description: Comprehensive DevOps skill for CI/CD, infrastructure automation, co
 
 # Senior Devops
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **release and operations** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Bind pipeline, artifact, environment, policy and schema identities to the release. Apply the actual least-privilege and supply-chain requirements; prove migration/rollback/restore and monitoring before the corresponding promotion. Examples do not authorize infrastructure mutations.
+
+
 Complete toolkit for senior devops with modern tools and best practices.
 
 ## Quick Start
