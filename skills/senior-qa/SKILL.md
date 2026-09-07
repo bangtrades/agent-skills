@@ -5,6 +5,13 @@ description: Generates unit tests, integration tests, and E2E tests for React/Ne
 
 # Senior QA Engineer
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **review and verification** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Verify the exact candidate against versioned criteria through real roles, data and integration paths. Preserve negative controls, skips and failures, and include accessibility/usability/performance/recovery proportional to the product. Test counts are not product acceptance.
+
+
 Test automation, coverage analysis, and quality assurance patterns for React and Next.js applications.
 
 ---
