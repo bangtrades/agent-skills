@@ -1,6 +1,6 @@
 ---
 name: client-build-package
-description: >-
+description: "Use when preparing a client demo or software build package from an approved brief, with explicit scope, architecture, delivery and acceptance evidence."
   Orchestrate the full WaiveLabs client-build motion — take any brand or company
   from "new prospect showed interest" to "elite gated demo + executive pitch +
   proposal + legal set, ready to present" in one agentic loop, then through
@@ -18,6 +18,13 @@ description: >-
 ---
 
 # Client Build Package — the WaiveLabs engagement engine
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **requirements and MVP scope** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Tie the client promise and architecture to a small end-to-end usable workflow, explicit demo/synthetic boundaries, current acceptance criteria and deployment/recovery plans. Preserve contractual and client acceptance separately from technical or hosting success.
+
 
 You are running the WaiveLabs client-build motion. One loop, proven across four live
 engagements (Varian enterprise, Solugenix partner, Summer Fridays DTC, CopperJoint SMB):
