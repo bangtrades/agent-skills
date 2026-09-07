@@ -1,9 +1,16 @@
 ---
 name: "agent-workflow-designer"
-description: "Agent Workflow Designer"
+description: "Use when designing multi-step agent workflows, handoff contracts, verification loops, context/budget controls and bounded recovery."
 ---
 
 # Agent Workflow Designer
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **MetaCortex factory or agent-system design** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Bind each handoff to versioned inputs, explicit outputs, resource/authority boundaries, verification and bounded recovery. Use the fewest qualified workers the evidence supports and keep product acceptance distinct from workflow completion.
+
 
 **Tier:** POWERFUL  
 **Category:** Engineering  
