@@ -5,6 +5,13 @@ description: Senior Project Manager for enterprise software, SaaS, and digital t
 
 # Senior Project Management Expert
 
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **requirements and MVP scope** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Plan user outcomes and acceptance as well as capacity. Reconcile current boards and existing milestones, preserve source dates and denominators, and distinguish implementation, verification, release and product acceptance. Numeric examples below are not universal targets or mandatory stop thresholds.
+
+
 ## Overview
 
 Strategic project management for enterprise software, SaaS, and digital transformation initiatives. Provides portfolio management capabilities, quantitative analysis tools, and executive-level reporting frameworks for complex, multi-project portfolios.
