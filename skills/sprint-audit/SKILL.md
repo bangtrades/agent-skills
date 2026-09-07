@@ -1,10 +1,17 @@
 ---
 name: sprint-audit
-description: This skill should be used when the user asks to "run a sprint audit", "audit the sprint plan", "review agent slice work", "assess sprint progress", "check development reporting truth", "compare agent reports to the active sprint", "prepare a sprint status review", or asks what the team should do next based on current repo, issue, gate, test, or agent-slice evidence.
+description: "Use when auditing sprint acceptance, repository evidence and board state before closure or the next work packet."
 version: 0.1.0
 ---
 
 # Sprint Audit
+
+## Cortana SDLC and delivery playbooks
+
+For Cortana/WaiveLabs software work, read the **review and verification** route in `cortana-vault/projects/claude-skills/claude-skills--development-sdlc.md` from the accessible Cortana root (local default `~/Cortana`) or approved project export before making the corresponding decisions. It links the maintained SDLC starter and MetaCortex playbooks. If unavailable, name the missing context and proceed from supplied evidence only where the next decision does not depend on it.
+
+Audit criterion-level evidence against the current plan and exact candidate/release. Reconcile later fixes with historical failures, and report implementation, verification, release and user acceptance separately. Keep feedback and remaining owner decisions visible.
+
 
 Use this skill to perform an evidence-based sprint review for any software project in the current working context. The goal is to answer: what was planned, what agents or contributors claimed, what actually changed, what is verified, what is blocked, and what should happen next.
 
