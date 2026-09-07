@@ -1,20 +1,6 @@
 ---
 name: client-build-package
-description: "Use when preparing a client demo or software build package from an approved brief, with explicit scope, architecture, delivery and acceptance evidence."
-  Orchestrate the full WaiveLabs client-build motion — take any brand or company
-  from "new prospect showed interest" to "elite gated demo + executive pitch +
-  proposal + legal set, ready to present" in one agentic loop, then through
-  signature into delivery. Client-agnostic (DTC, enterprise, white-label).
-  Creates the Linear project, dispatches research agents (brand-recon → dossier
-  + brand skill), parallel demo agents, data-simulation agents, infra agents
-  (Supabase, Vercel, gated deploy), and document agents (pitch, proposal, legal)
-  — human gates ONLY on client-facing sends and legal/commercial approvals.
-  Trigger aggressively on "new client/prospect X", "we signed X", "launch X",
-  "run the machine on X", "kick off X", "client-build X", or any company named
-  with intent to pitch, demo, close, or onboard. Also for partial
-  runs: "build the demo for X", "prep the pitch package", "generate the legal
-  docs", "onboard X". SUPERSEDES client-launch. Not for pure research
-  (brand-recon) or WaiveLabs-internal product work.
+description: "Use when preparing a WaiveLabs client engagement from approved discovery through demo, pitch, proposal, legal/commercial handoff and delivery, or a bounded part of that workflow. Apply Cortana SDLC for software scope and preserve separate authority for client-facing sends and commercial/legal decisions. Use brand-recon for pure company research."
 ---
 
 # Client Build Package — the WaiveLabs engagement engine
