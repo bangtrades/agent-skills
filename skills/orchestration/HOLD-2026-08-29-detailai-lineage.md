@@ -1,19 +1,23 @@
 ---
-title: "HOLD — orchestration: do not publish until the six DetailAI retros are merged back"
+title: "Resolved lineage hold — orchestration historical retros restored"
 type: reference
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-09-06
 tags: [🔧, orchestration, skill-publish, hold, detailai, lineage, operator-action]
-status: active
+status: completed
 related:
   - "[[projects/cortana-platform/cortana-platform--registry-relocation-runbook-2026-08-29|Registry Relocation Runbook]]"
   - "[[research/brand-recon/detail-ai/dossier|DetailAI dossier]]"
   - "[[log|Activity Log]]"
 ---
 
-# HOLD — `orchestration` is not publishable as staged
+# Historical lineage hold — resolved in staging on September 6
 
 **Operator decision, 2026-08-29: hold. Recover the DetailAI retros first, then publish the union.**
+
+## Resolution — 2026-09-06 WAI-548 run
+
+The maintained `agency/WaiveLabs/agent-skills` origin/main source was recovered directly through Git. Six complete historical entries (five DetailAI entries and the July 28 BT Journal entry) are now restored in the staged SKILL.md. A byte-preservation check confirms the previous staged content was retained. This resolves the documented missing-entry hold in staging; registry publication has not occurred. Receipt: `/Users/nolan/Projects/DetailAI/.orchestration/wai548-20260906-01/orchestration-lineage-recovery.json`.
 
 ## The finding
 

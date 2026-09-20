@@ -1,0 +1,18 @@
+# ENTRY 2026-09-18 — Taste deep wave (lineage-safe changelog entry)
+
+Not appended to the staged `SKILL.md` (the staged copy may be newer than this session's loaded copy; per 08-19 and 09-05, entries stage as files for the merge). Program: `cortana-vault/research/taste/` — 5 Opus research slices + blind rater 2 + adversarial QA + fix round + re-gate; Fable orchestrator; ≈143 Firecrawl credits; E FAIL → PASS-with-defects; see `ACCEPTANCE-REPORT-2026-09-18.md`.
+
+## Additions (three)
+
+**(a) Law 12, reviewer-side corollary — a score that moves when the reviewer looks at less is grading the review, not the artifact.** The rubric slice introduced an "N/V" (not verified) state that removed a row from both numerator and denominator. Blind rater 2 verified *less* than rater 1 (no render → five Design rows N/V) and filed 93/100 on the same artifact rater 1 scored 78. The QA gate named the dodge; the fix round's rule — N/V scores 0 and keeps its full weight in the maximum, with coverage reported separately and the verdict capped Provisional — is the only shape that is monotone. Rule: any scoring instrument built by a wave gets an adversarial case where the reviewer withholds effort; if the number can rise, the instrument fails Law 12 from the other side. And the re-gate found the fix round had reopened the hole through the N/A applicability table (a reviewer-applied test decided N/A) — applicability must be a property of the artifact class, never of the review.
+
+**(b) Parallel slices that cite each other's pages by section number will be stale by assembly.** Slice A inserted a new §2 into the mechanisms page; slice B, running concurrently, cited "fluency (§2)", "Bourdieu (§5)" six times from the pre-wave numbering, and the drafts carried the error into the assembled canon. Rule: cross-page references in a parallel wave cite by heading text or anchor, never by ordinal; the orchestrator greps `§\d` across the assembled tree before the gate and fixes the section *drafts* in the same edit as the assembled file or the next assembly regresses.
+
+**(c) Retrieval cost is per-surface, not per-call — brief the expensive surfaces by name.** One `firecrawl_scrape` of an x.com post billed 30 credits (an x-twitter post-processor), 75 % of that slice's budget, while a Substack page embedding the same tweet verbatim with its timestamp costs 1. Also observed: `queryOptions.directQuote` failures still bill 5 credits each; screenshots return as signed URLs the agent cannot see, so "score from a render" was unfulfillable by every agent in the wave — say so in the brief rather than discovering it in the calibration set. Rule: the preflight capability probe records cost per surface alongside pass/fail, and briefs carry a per-call cost ceiling with the cheap corroboration route named.
+
+## Confirmations (no new rule)
+- Write-output-first + ~25-action budgets: all five slices and both gates returned with files on disk; zero timeouts.
+- Spending Opus on the gate paid again: every dev slice self-reported success with correct local evidence; only the fresh adversarial pass found the class (score inflation across all five calibration files).
+- Law 9 held: the fix agent reproduced all four P1s numerically before editing; none was refuted, and the reproduction is what exposed rater 2 as proof of the dodge.
+- Orchestrator micro-round after a narrow re-gate (one P1, eight P2) was the proportionate close; a third full gate was not run — verified by grep + YAML parse instead.
+- Environment: `rmdir`/`unlink` blocked on the mount (empty `_retrieved/` left for the operator); `SendMessage` not available in Cowork, so fix rounds go to fresh agents with the QA report as the findings file (confirms 09-05).

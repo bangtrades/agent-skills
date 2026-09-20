@@ -151,6 +151,64 @@ Tasks:
 5. Write report at <report path>.
 ```
 
+## Research Slice
+
+```text
+You are Agent N for <slice-id>.
+
+Context:
+<Question, frozen research contract (hash of thresholds/schema/reservations), and the
+ledger path every citation must join.>
+
+Goal:
+<One evidence deliverable: cards, graph nodes, a section draft.>
+
+Primary ownership:
+- <output folder or page paths>
+- NO-GO: the frozen contract, shared builders, other slices' pages.
+
+Retrieval:
+- Capability matrix result pasted in (search / scrape / map / parse / agent /
+  firecrawl_research_*), with cost per surface and the cheap corroboration route.
+- Per-call cost ceiling: <n credits>. Expensive surfaces by name: <x.com scrape, ...>.
+- Paper-class claims: yes/no. If yes: firecrawl_research_search_papers →
+  related_papers (≥1 expansion pass, pool size recorded) → read_paper for every
+  quoted number; cite arxiv:/pmid:/pmcid:/doi: with the operation class;
+  budget k ≤ 20 search · ≤ 6 read · ≤ 20 related.
+- Numeric thresholds carry their convention (<multi-day average / ±tolerance>).
+- Quote `column → value` pairs from wide tables; record each source's own caveat
+  sentence verbatim before scoring; distinguish full text from query extract.
+- Search forms: read field names and try one URL-constructed GET before filing
+  "undrivable".
+
+Vault page contract (when writing into cortana-vault):
+- Read `cortana-vault/scripts/vault-contract.json` first. `type:` is a declared
+  type (never a `legacy_types` value; under research/ it is almost always
+  `topic`); first `tags:` element is exactly one declared emoji, no other emoji;
+  `title`, `type`, `created`, `updated`, `tags`, `status` first. No fit → closest
+  declared value plus a `## Frontmatter note` line; never invent a value.
+- Any template you author is contract-checked before a page is written from it.
+- Cross-page references cite heading text or anchor, never a section number.
+- Every asserted timestamp traces to a machine-readable stamp inside a cited
+  document; mtime and headings are not evidence.
+
+Tasks:
+1. <retrieve> 2. <inspect originals> 3. <write output first, incrementally>
+4. Run `scripts/vault-lint.py` scoped to your folder (legacy-* warnings on your
+   pages are failures). 5. Write report at <report path>.
+
+Report must include:
+- Citations with ledger joins and operation class; suppressed candidates.
+- Contradictions with other slices' facts you noticed.
+- What could not be retrieved, per surface, and the fallback used.
+```
+
+Wave close (orchestrator, before declaring a research wave complete): append a
+`## <Wave title> — <YYYY-MM-DD>` section to `research/research-hub.md` in the house
+form (wikilink row: folder index · brief · QA gate; numbers produced; standing
+quoting caveat), add the hub to the wave folder index's `related:`, bump the hub's
+`updated:`.
+
 ## Slice Quality Checklist
 
 - The prompt is copy-ready.
