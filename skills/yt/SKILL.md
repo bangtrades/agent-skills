@@ -1,7 +1,7 @@
 ---
 name: yt
 description: Use when the user asks to ingest a YouTube video or transcript into Cortana. Retrieve metadata and transcript, preserve source integrity, produce a linked wiki note, update indexes, and validate. A bare URL alone does not establish a full ingestion request.
-version: 0.2.0
+version: 0.2.1
 ---
 
 # YT — YouTube → Cortana Vault
@@ -140,7 +140,7 @@ title: "Video Title"
 type: youtube
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-tags: [📺, <domain emoji>, 4-8 topical tags]
+tags: [📺, 4-8 topical tags]
 status: processed
 url: "full-youtube-url"
 channel: "Channel Name"
@@ -168,8 +168,11 @@ sources:
 
 ### Frontmatter rules (lint-enforced — get these right)
 
-- **`tags` must lead with an emoji category.** `📺` for every video, plus a domain emoji:
-  `🤖` AI/agents · `🎯` trading · `💼` WaiveLabs/consulting · `📚` research. The linter audits this.
+- **`tags` carries exactly ONE emoji category, first, and it is always `📺`.** Never add a
+  second emoji. The contract rule the linter enforces is *"tags must start with exactly one
+  declared emoji category and contain no other emoji tags"* — a `[📺, 🤖, …]` page is a
+  page-contract error, and the domain belongs in the text tags instead (`agentic-os`,
+  `nq-futures`, `waivelabs-playbook`, `research-methods`). See `references/vault-conventions.md`.
 - **`deployment:` is required.** Which lane does this knowledge serve?
   `personal` (bang's own tooling/trading) · `enterprise` (client-deliverable) · `both`.
   This is how the corpus stays queryable by lane — do not omit it.
@@ -263,6 +266,19 @@ grep -oE '\[\[[^]|]+' youtube/transcripts/<slug>.md | sed 's/\[\[//' | sort -u |
 
 Every target must resolve. Fix any `MISS` before reporting done.
 
+**Emoji-tag self-check (required).** The page must carry exactly one emoji category tag — `📺`,
+first. Run this on the page you just wrote; it exits 1 and prints the offending line if a second
+emoji slipped in:
+
+```bash
+awk '/^tags:/{n=gsub(/📺|🤖|🎯|💼|🔧|📚|📊/,"&"); if(n!=1){print FILENAME": "$0; bad=1} nextfile} END{exit bad?1:0}' \
+  youtube/transcripts/<slug>.md
+```
+
+A non-zero exit means a page-contract error (check code `tags`). Fix the frontmatter — drop
+the second emoji, move the domain into a text tag — before reporting done. Do not leave it for
+a later session to repair by hand.
+
 ---
 
 ## Step 8 — Report
@@ -283,3 +299,13 @@ Keep it tight — bang reads the page for details:
 - `references/vault-conventions.md` — frontmatter, emoji tags, deployment lanes, naming, link rules
 - `references/index-wiring.md` — anchor-drift-safe index/MOC update recipe
 - `references/quality-bar.md` — worked examples of good vs. bad takeaways and relevance sections
+
+---
+
+## Changelog
+
+- **2026-09-20 (0.2.1)** — Applied `PATCH-2026-09-19-single-emoji-tag.md`. The page template
+  and frontmatter rules now emit exactly ONE emoji category tag (`📺`, first); the second
+  "domain emoji" (`🤖`/`🎯`/`💼`/`📚`) is gone and the domain moves into text tags.
+  `references/vault-conventions.md` rewritten to match SCHEMA. Added the emoji-tag self-check to
+  Step 7. Fixes the emitter defect behind five manual transcript-page repairs (2026-09-13 → 09-18).

@@ -11,7 +11,7 @@ title: "Video Title"          # quoted; the real title, not the slug
 type: youtube                 # always
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-tags: [📺, 🤖, topical, tags] # emoji category FIRST — see below
+tags: [📺, topical, tags]     # exactly ONE emoji, always 📺, always first — see below
 status: processed             # or transcript-pending if no transcript was obtainable
 url: "https://www.youtube.com/watch?v=VIDEO_ID"
 channel: "Channel Name"
@@ -28,18 +28,23 @@ sources:
 
 ## Emoji category tags
 
-`vault-lint.py` audits for a missing emoji tag. Every video page starts with `📺`, then adds the
-domain emoji:
+**Exactly one, always `📺`, always first.** `vault-lint.py` does not merely audit for a
+*missing* emoji — the contract rule is *"tags must start with exactly one declared emoji
+category and contain no other emoji tags"*, and both halves are enforced under check code
+`tags`. A video page is a YouTube page; `📺` is its category and no second emoji is allowed.
 
-| Emoji | Domain |
+The domain is carried by the **text** tags that follow — 4–8 total, lowercase kebab-case:
+
+| Domain | Use text tags like |
 |---|---|
-| `📺` | YouTube source (always present on video pages) |
-| `🤖` | AI / agents / tooling |
-| `🎯` | Trading (NQ, futures, strategy, orderflow) |
-| `💼` | WaiveLabs / consulting / client work |
-| `📚` | Research, papers, curricula |
+| AI / agents / tooling | `agentic-os`, `agent-engineering`, `claude-skills`, `harness-engineering` |
+| Trading (NQ, futures, strategy, orderflow) | `nq-futures`, `orderflow`, `backtesting` |
+| WaiveLabs / consulting / client work | `waivelabs-playbook`, `client-delivery` |
+| Research, papers, curricula | `research-methods`, `evals`, `context-engineering` |
 
-A video can carry two (`[📺, 🤖, ...]`). Topical tags follow — 4–8 total, lowercase kebab-case.
+Do not write `🤖`, `🎯`, `💼` or `📚` into a transcript page's `tags:`. Between 2026-09-12
+and 2026-09-18 that instruction produced eight page-contract errors across five separate
+manual repairs.
 
 ## The `deployment:` lane
 
