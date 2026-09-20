@@ -1,0 +1,69 @@
+:root {
+  --jg-color-primary: #00539f;
+  --jg-color-primary-dark: #003d76;
+  --jg-color-primary-light: #badeff;
+  --jg-color-border: #a5aa8f;
+  --jg-color-muted: #6c757d;
+  --jg-color-ink: #000000;
+  --jg-color-canvas: #ffffff;
+  --jg-color-error: #a33a3a;
+
+  --jg-font-display: "Merriweather", Georgia, serif;
+  --jg-font-body: "Montserrat", Arial, sans-serif;
+  --jg-font-weight-regular: 400;
+  --jg-font-weight-bold: 700;
+  --jg-font-weight-display: 900;
+
+  --jg-space-1: 0.25rem;
+  --jg-space-2: 0.5rem;
+  --jg-space-3: 0.75rem;
+  --jg-space-4: 1rem;
+  --jg-space-6: 1.5rem;
+  --jg-space-8: 2rem;
+  --jg-space-12: 3rem;
+  --jg-space-16: 4rem;
+  --jg-space-24: 6rem;
+
+  --jg-radius-standard: 0.25rem;
+  --jg-radius-pill: 1.15625rem;
+  --jg-border-standard: 1px solid var(--jg-color-border);
+  --jg-content-max: 73.75rem;
+  --jg-reading-max: 45rem;
+}
+
+.jg-heading {
+  color: var(--jg-color-primary);
+  font-family: var(--jg-font-display);
+  font-weight: var(--jg-font-weight-display);
+  line-height: 1.15;
+}
+
+.jg-body {
+  color: var(--jg-color-ink);
+  font-family: var(--jg-font-body);
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.jg-button {
+  background: var(--jg-color-primary);
+  border: 2px solid var(--jg-color-primary);
+  border-radius: var(--jg-radius-standard);
+  color: var(--jg-color-canvas);
+  font-family: var(--jg-font-body);
+  font-weight: var(--jg-font-weight-bold);
+  padding: var(--jg-space-3) var(--jg-space-6);
+}
+
+.jg-button:hover,
+.jg-button:focus-visible {
+  background: var(--jg-color-primary-dark);
+  border-color: var(--jg-color-primary-dark);
+}
+
+.jg-panel-soft {
+  background: var(--jg-color-primary-light);
+  border-radius: var(--jg-radius-standard);
+  padding: var(--jg-space-8);
+}
+

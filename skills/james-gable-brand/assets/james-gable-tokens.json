@@ -1,0 +1,37 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "brand": "James & Gable",
+  "observed": "2026-08-29",
+  "color": {
+    "primary": { "$value": "#00539F", "$type": "color" },
+    "primaryDark": { "$value": "#003D76", "$type": "color" },
+    "primaryLight": { "$value": "#BADEFF", "$type": "color" },
+    "border": { "$value": "#A5AA8F", "$type": "color" },
+    "muted": { "$value": "#6C757D", "$type": "color" },
+    "ink": { "$value": "#000000", "$type": "color" },
+    "canvas": { "$value": "#FFFFFF", "$type": "color" },
+    "error": { "$value": "#A33A3A", "$type": "color" }
+  },
+  "font": {
+    "display": { "$value": "Merriweather, Georgia, serif", "$type": "fontFamily" },
+    "body": { "$value": "Montserrat, Arial, sans-serif", "$type": "fontFamily" },
+    "weightRegular": { "$value": 400, "$type": "fontWeight" },
+    "weightBold": { "$value": 700, "$type": "fontWeight" },
+    "weightDisplay": { "$value": 900, "$type": "fontWeight" }
+  },
+  "spacing": {
+    "base": { "$value": "4px", "$type": "dimension" },
+    "small": { "$value": "8px", "$type": "dimension" },
+    "medium": { "$value": "16px", "$type": "dimension" },
+    "large": { "$value": "32px", "$type": "dimension" },
+    "section": { "$value": "64px", "$type": "dimension" }
+  },
+  "radius": {
+    "standard": { "$value": "4px", "$type": "dimension" },
+    "pill": { "$value": "18.5px", "$type": "dimension" }
+  },
+  "layout": {
+    "contentMax": { "$value": "1180px", "$type": "dimension" },
+    "readingMax": { "$value": "720px", "$type": "dimension" }
+  }
+}
