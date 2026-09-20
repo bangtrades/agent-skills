@@ -2,6 +2,14 @@
 
 Editorial voice rules, signature phrases, and content templates for HBEF deliverables. Pair with `SKILL.md` for visual styling and the relevant format reference for file mechanics.
 
+## The official voice statement (HBEF Brand Guidelines 2026)
+
+> **Professional, community-focused, inspiring, and approachable.** Our communications should reflect the vibrant, supportive, and educational spirit of Hermosa Beach. Whether communicating with parents, local businesses, or community leaders, our tone should remain encouraging and deeply rooted in our commitment to education.
+
+That is the foundation's own wording — quote it verbatim when someone asks "what's our voice?" Everything below is the operating detail underneath it.
+
+**About us (official):** HBEF is dedicated to raising funds and awareness to support the educational programs and students of Hermosa Beach public schools.
+
 ## Voice in one paragraph
 
 HBEF is **parent-led**, **neighborhood-scaled**, and **earnest**. The voice should read like a smart, organized parent talking to other parents at a school pickup — warm, specific, slightly aspirational about what Hermosa kids deserve, and unembarrassed about asking for money because the math is just true. Never corporate. Never desperate. Never preachy. The brand has a polite confidence: "Hermosa is structurally underfunded, and *this* is how we close the gap."
@@ -27,6 +35,20 @@ HBEF is **parent-led**, **neighborhood-scaled**, and **earnest**. The voice shou
 - *"$1,000 per enrolled child"* — suggested family gift anchor (always frame as suggested, never required)
 - *"Bridging the gap of inadequate government funding."* — mission shorthand
 - *"~5% of HBCSD's operating budget"* — quantified scale statement
+
+## Official channels & references (write these exactly)
+
+| Item | Canonical form |
+|---|---|
+| Website | **hbef.org** |
+| Instagram | **@hbef90254** |
+| Facebook | **@hbef90254** |
+| Mailing address | 1645 Valley Drive, Hermosa Beach, CA 90254 |
+| Tagline | *Funding matters. Your donation, their future.* |
+| Tax line (mandatory on donor-facing copy) | HBEF is a registered 501(c)(3) non-profit organization. Contributions are tax-deductible to the extent allowed by law. Federal tax identification number (EIN): 33-0522270 |
+| Brand questions escalate to | Deni Mileski — text 310.748.7390, deni@denilampe.com |
+
+The handle is **identical on Instagram and Facebook** — write `@hbef90254` once and use it for both. Never invent a variant handle.
 
 ## What to avoid
 
@@ -146,7 +168,7 @@ With gratitude,
 [Tax language footer]
 ```
 
-For Investment Committee memos (the user's lane), drop the parent voice and use:
+For Investment Committee memos, drop the parent voice and use:
 
 ```
 MEMORANDUM
