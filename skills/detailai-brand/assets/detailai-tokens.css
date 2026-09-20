@@ -1,0 +1,39 @@
+/* DetailAI design tokens — extracted from detailai.ai 2026-08-10 (firecrawl branding, confidence 0.9) */
+:root {
+  /* Color */
+  --dai-black: #0A0A0A;        /* canvas; primary-button text */
+  --dai-cream: #F4EDE2;        /* primary text on dark; light-mode paper */
+  --dai-gold: #C9A36A;         /* accent — CTAs, ◆ bullets, key numerals. Keep scarce */
+  --dai-stone: #BEB7A9;        /* links, muted text */
+  --dai-input-bg: #111110;
+  --dai-input-border: #1D1914;
+  --dai-bronze: #564730;       /* secondary-button border */
+  --dai-success: #7BA05B;      /* app-UI extension */
+  --dai-warn: #C9A36A;
+  --dai-danger: #B05C4A;
+
+  /* Type */
+  --dai-font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --dai-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --dai-display-size: 60px;
+  --dai-display-leading: 1.05;
+  --dai-body-size: 20px;
+  --dai-eyebrow-tracking: 0.1em;
+
+  /* Space & shape */
+  --dai-space-unit: 4px;
+  --dai-radius-container: 0;
+  --dai-radius-card: 8px;
+  --dai-radius-pill: 9999px;
+  --dai-max-width: 1200px;
+  --dai-content-width: 800px;
+}
+
+body.dai { background: var(--dai-black); color: var(--dai-cream); font-family: var(--dai-font-body); }
+.dai-display { font-family: var(--dai-font-display); font-size: var(--dai-display-size); line-height: var(--dai-display-leading); font-weight: 500; }
+.dai-eyebrow { font-family: var(--dai-font-body); font-size: 13px; letter-spacing: var(--dai-eyebrow-tracking); text-transform: uppercase; color: var(--dai-stone); }
+.dai-btn-primary { background: var(--dai-gold); color: var(--dai-black); border-radius: var(--dai-radius-pill); border: none; box-shadow: none; }
+.dai-btn-secondary { background: var(--dai-black); color: var(--dai-cream); border: 1px solid var(--dai-bronze); border-radius: var(--dai-radius-pill); box-shadow: none; }
+.dai-card { background: var(--dai-input-bg); border: 1px solid var(--dai-input-border); border-radius: var(--dai-radius-card); }
+.dai-link { color: var(--dai-stone); }
+.dai-bullet::before { content: "◆ "; color: var(--dai-gold); }

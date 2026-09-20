@@ -1,0 +1,56 @@
+{
+  "$schema": "https://design-tokens.dev/schema",
+  "brand": "DetailAI",
+  "version": "1.0.0",
+  "extracted": "2026-08-10",
+  "source": "https://www.detailai.ai (Firecrawl branding analysis, confidence 0.9)",
+  "color": {
+    "primary": {
+      "background": { "value": "#0A0A0A", "role": "Canvas everywhere; primary-button text" },
+      "foreground": { "value": "#F4EDE2", "role": "Primary text on dark; light-mode paper" },
+      "accent":     { "value": "#C9A36A", "role": "Champagne gold — CTAs, diamond bullets, key numerals. Scarce (≤10% surface)" },
+      "muted":      { "value": "#BEB7A9", "role": "Links, secondary text" }
+    },
+    "support": {
+      "input-bg":     { "value": "#111110" },
+      "input-border": { "value": "#1D1914" },
+      "bronze":       { "value": "#564730", "role": "Secondary-button border" }
+    },
+    "text": {
+      "primary": { "value": "#F4EDE2" },
+      "inverse": { "value": "#0A0A0A" },
+      "muted":   { "value": "#BEB7A9" }
+    },
+    "functional": {
+      "success": { "value": "#7BA05B" },
+      "warn":    { "value": "#C9A36A" },
+      "danger":  { "value": "#B05C4A" }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "display": "Cormorant Garamond",
+      "displayStack": "Cormorant Garamond, Playfair Display, Georgia, serif",
+      "body": "Inter",
+      "bodyStack": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "scale": {
+      "display": { "size": "60px", "lineHeight": "63px", "weight": 500, "letterSpacing": "-0.01em" },
+      "h2":      { "size": "44px", "lineHeight": "48px", "weight": 500, "letterSpacing": "-0.01em" },
+      "h3":      { "size": "28px", "lineHeight": "34px", "weight": 500 },
+      "body":    { "size": "20px", "lineHeight": "30px", "weight": 400 },
+      "small":   { "size": "16px", "lineHeight": "24px", "weight": 400 },
+      "eyebrow": { "size": "13px", "lineHeight": "20px", "weight": 600, "letterSpacing": "0.1em", "transform": "uppercase" }
+    }
+  },
+  "spacing": { "base": 4, "scale": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 48, "8": 64, "9": 96 } },
+  "radii": { "container": "0px", "card": "8px", "pill": "9999px" },
+  "shadows": { "none": "none — depth via contrast and spacing only" },
+  "layout": { "maxWidth": "1200px", "contentWidth": "800px" },
+  "logo": {
+    "style": "wordmark-only, display serif",
+    "url": null,
+    "ogImage": "https://detailai.ai/og-image.png",
+    "color": { "onDark": "#F4EDE2", "onLight": "#0A0A0A" }
+  }
+}
