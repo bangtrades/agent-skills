@@ -1,3 +1,13 @@
+---
+title: "brand-recon — Source Catalog"
+type: source
+created: {DATE}
+updated: {DATE}
+tags: [🔧, brand-recon, sources, meta]
+status: active
+related: ["[[research/brand-recon/_playbook|Playbook]]", "[[research/brand-recon/_runs|Run Index]]"]
+---
+
 # Source Catalog — Live Ledger
 
 Per-URL access + yield data. Appended to by Phase 14 of every run.

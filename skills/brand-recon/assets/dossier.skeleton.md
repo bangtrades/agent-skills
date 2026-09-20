@@ -1,6 +1,6 @@
 ---
 title: "{ENTITY_NAME} — Brand & Company Intel Dossier"
-type: research
+type: topic
 created: {DATE}
 updated: {DATE}
 tags: [📚, brand-recon, dossier, {category}, {key-theme-1}, {key-theme-2}]
@@ -183,6 +183,14 @@ For DTC fashion: "Designer / Creative Authority"
 
 {Named, credentialed humans. Validate credentials independently. Surface the moat — or the lack of one.}
 
+### 9.1 Claims substantiation
+
+{Omit this subsection when Phase 5b did not run.}
+
+| Claim | Source id | Operation | Verdict |
+|---|---|---|---|
+| {claim as worded by the brand} | {pmid: / doi: / arxiv:} | {search_papers → read_paper → related_papers(citers)} | {supported / partial / unsupported / contradicted} |
+
 ---
 
 ## 10. AI / Tech Posture
@@ -236,5 +244,9 @@ For DTC fashion: "Designer / Creative Authority"
 
 When a reusable brand package was staged, link it here; otherwise record that none was requested:
 - `[[_inbox/skills/{slug}-brand/SKILL.md|{ENTITY_NAME} Brand Skill]]` — staged per-entity brand package, pending review and publication
+
+Raw evidence — wikilinks only, never backtick paths (drop the `raw-slices` line if no slice agents were dispatched):
+- Raw slices: [[research/brand-recon/{slug}/raw-slices/01-{slice-name}|01 {slice-name}]] · [[research/brand-recon/{slug}/raw-slices/02-{slice-name}|02 {slice-name}]] · {…}
+- Raw scrape index: [[research/brand-recon/{slug}/raw-scrapes/00-INDEX|Raw scrape capture index]]
 
 — End of dossier —

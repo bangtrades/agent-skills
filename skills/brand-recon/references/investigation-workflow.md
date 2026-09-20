@@ -4,7 +4,7 @@ This is the detailed playbook. SKILL.md gave you the shape; this file gives you 
 
 ## Conventions
 
-- All `firecrawl_*` calls refer to tools under `mcp__7a79858f-1e94-4bbd-a8dc-5a71900f68b5__firecrawl_*` (or whatever the firecrawl MCP server is namespaced as in the current session — load via ToolSearch if deferred).
+- All `firecrawl_*` calls refer to tools under `mcp__7a79858f-1e94-4bbd-a8dc-5a71900f68b5__firecrawl_*` (or whatever the firecrawl MCP server is namespaced as in the current session — load via ToolSearch if deferred). `firecrawl_research_*` (search_papers, inspect_paper, read_paper, related_papers) live under the same MCP prefix and may be deferred — load them in the same ToolSearch call as the scrape tools when Phase 5b will run.
 - `WebSearch` is the built-in search tool. Load via ToolSearch if deferred.
 - `mcp__Claude_in_Chrome__*` are the Chrome MCP tools. Load via ToolSearch if deferred. Use only when firecrawl is blocked — see `chrome-fallback-guide.md`.
 - `Read`, `Write`, `Edit` are filesystem tools — used to write the dossier, brand skill, and self-improvement files.
@@ -184,6 +184,12 @@ firecrawl_scrape({ url: "{specific_hero_asin_url}", formats: ["markdown"] })
 
 ---
 
+## Phase 5b — Claim verification (conditional)
+
+Runs only when the entity makes scientific, clinical, or technical claims (health/wellness/supplement/medtech/skincare; "clinically proven" / "study shows" copy captured in Phase 2; AI/ML vendors citing benchmarks). The tool sequence, verdict vocabulary and dossier placement are specified in SKILL.md Phase 5b; source routing is in `source-catalog.md` → "Phase 5b — Academic / clinical evidence". Load the `firecrawl_research_*` tools in the same ToolSearch call as the scrape tools (see Conventions).
+
+---
+
 ## Phase 6 — Customer sentiment
 
 Goal: what do real customers say? Both top-line aggregates (4.x stars on N reviews) and the topic-level themes.
@@ -338,11 +344,11 @@ Goal: write the final dossier markdown to the vault.
 1. Open `assets/dossier.skeleton.md` (skeleton with placeholders) and `references/dossier-template.md` (section-by-section guidance).
 2. Fill the 13 sections in order. Use specific numbers everywhere, link sources in the frontmatter `sources:` block, cross-link to vault peers with `[[wikilinks]]`.
 3. Write to `~/Cortana/cortana-vault/research/brand-recon/{slug}/dossier.md`.
-4. The dossier frontmatter must include the obsidian skill's required fields:
+4. The dossier frontmatter must include the obsidian skill's required fields. `type` is `topic` (`research` is a legacy alias that the linter re-flags on every pass). `slug`, `created`, `status` and `primary_url` are load-bearing — the research hub's Brand Recon roster is a dataview over them:
    ```yaml
    ---
    title: "{Entity Name} — Brand & Company Intel Dossier"
-   type: research
+   type: topic
    created: YYYY-MM-DD
    updated: YYYY-MM-DD
    tags: [📚, brand-recon, dossier, {category}, {key-themes}]
@@ -353,7 +359,63 @@ Goal: write the final dossier markdown to the vault.
    related: [vault pages this is cross-linked to]
    ---
    ```
-5. Verify the dossier passes the "6-month test": will bang find this useful in October when he has forgotten the details?
+5. Every other page the run writes under `research/brand-recon/{slug}/` follows the "Evidence page contracts" section of SKILL.md. These are the blocks agents copy — do not improvise frontmatter:
+
+   **Slice page** (`raw-slices/NN-slice-name.md`, when slice agents are dispatched):
+   ```yaml
+   ---
+   title: "<Entity> — <Slice topic>"
+   type: slice
+   created: <YYYY-MM-DD>
+   updated: <YYYY-MM-DD>
+   tags: [📚, brand-recon, <entity-slug>, research-slice, <2–3 topic tags>]
+   status: completed        # draft while in flight; completed on release. NEVER invent a value.
+   slice: <NN-slice-name>
+   entity: <Entity>
+   related:
+     - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+     - "[[research/brand-recon/_playbook|Brand-Recon Playbook]]"
+     - "[[research/brand-recon/_runs|Brand-Recon Run Index]]"
+   ---
+   ```
+
+   **Raw-scrape capture** (every `.md` file in `raw-scrapes/`):
+   ```yaml
+   ---
+   title: "<Entity> — raw capture: <source description>"
+   type: source
+   created: <YYYY-MM-DD>
+   updated: <YYYY-MM-DD>
+   tags: [📚, brand-recon, <entity-slug>, raw-scrape, evidence]
+   status: captured
+   captured: <YYYY-MM-DD>
+   slice_owner: <NN>
+   source_url: "<canonical page URL — the page, not a CDN asset>"
+   related:
+     - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+     - "[[research/brand-recon/_sources|Brand-Recon Source Catalog]]"
+   ---
+   ```
+   If the captured source carries its own YAML front matter (Hugging Face model cards, Jekyll/Hugo pages, `llms.txt` variants), the Cortana block goes first and the upstream YAML is reproduced verbatim inside a fenced ` ```yaml ` block in the body.
+
+   **Raw-scrape roll-up index** (`raw-scrapes/00-INDEX.md` — the only roll-up file name):
+   ```yaml
+   ---
+   title: "<Entity> — Raw Scrape Capture Index"
+   type: source
+   created: <YYYY-MM-DD>
+   updated: <YYYY-MM-DD>
+   tags: [📚, brand-recon, raw-scrapes, <entity-slug>, provenance, firecrawl]
+   status: captured
+   captured: <YYYY-MM-DD>
+   related:
+     - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+     - "[[research/brand-recon/_sources|Brand-Recon Source Ledger]]"
+   ---
+   ```
+
+   Common rules: canonical keys first in that order; exactly one emoji tag; `type`/`status` from `vault-contract.json`; quote any value containing `": "` or starting with `~ > | & * ! % @` or a backtick; `related:` always reaches the dossier. Section 13 of the dossier links `raw-slices/` pages and `raw-scrapes/00-INDEX` as wikilinks.
+6. Verify the dossier passes the "6-month test": will bang find this useful in October when he has forgotten the details?
 
 ---
 
@@ -399,9 +461,22 @@ Follow `references/self-improvement.md`. Concretely:
    - What was blocked or low-yield
    - Novel techniques or sources discovered
 2. Append per-URL entries to `_sources.md` with `quality: high|medium|low` and `access: firecrawl|chrome|search|paywall` tags
-3. Append one row to the index table in `_runs.md`
+3. Append one row to the index table in `_runs.md`. This is the **only** hub-facing write a run makes: the `research/research-hub.md` Brand Recon roster is a dataview generated from dossier frontmatter — never hand-edit it.
 
 This step is mandatory. Skipping it breaks the contract that makes the skill compounding.
+
+---
+
+## Phase 14b — Release gate
+
+Goal: prove the run's own evidence tree passes the vault contract before anyone reads it.
+
+From the Cortana root:
+```
+python cortana-vault/scripts/vault-lint.py
+```
+
+Do not proceed to Phase 15 on a non-zero finding under `research/brand-recon/{slug}/` — check `missing frontmatter`, `yaml parse failures`, `status offenders`, `missing emoji`, `legacy-type` warnings and `broken links`. Repair the generator's output in place, re-run, then hand back. The linter needs the pinned runtime (Python 3.14 + PyYAML 6.0.3); where that is absent, build it **outside** the vault and pass `CORTANA_VAULT_PYTHON`.
 
 ---
 
@@ -425,3 +500,4 @@ Goal: surface the highlights and offer the brand skill for install.
 - **Hallucinated stats.** If a number isn't sourced, mark it as "estimated" or "self-reported, unverified."
 - **Trying to break paywalls.** Don't. Capture what's visible on the public shell, move on.
 - **Forgetting the brand skill.** The dossier without the emitted `{slug}-brand` skill is half the value. Don't ship without both.
+- **Off-contract evidence pages.** A dossier on `type: research`, a `raw-scrapes/00-INDEX.md` with no frontmatter, a slice with an invented `status`, or evidence cited as backtick paths — each costs a hand-fix in the daily pass. Phase 14b exists so the run catches these itself.

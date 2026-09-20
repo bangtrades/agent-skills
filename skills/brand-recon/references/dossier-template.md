@@ -9,7 +9,7 @@ The dossier is the centerpiece deliverable. It should be useful to bang six mont
 ```yaml
 ---
 title: "{Entity Name} — Brand & Company Intel Dossier"
-type: research
+type: topic
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [📚, brand-recon, dossier, {category-tag}, {key-themes}]
@@ -29,7 +29,7 @@ related:
 ---
 ```
 
-The `tags` field must lead with the obsidian skill's category emoji. For dossiers it's `📚` (Research). The `primary_url`, `slug`, and entity metadata fields are non-standard but useful for dataview queries inside Obsidian later.
+The `tags` field must lead with the obsidian skill's category emoji — exactly one, no second emoji anywhere in the list. For dossiers it's `📚` (Research). `type` is `topic`: `research` is a legacy alias in `vault-contract.json` and every run that emitted it was normalized by hand. `status` is `active` (a declared status). The `primary_url`, `slug`, and entity metadata fields are non-standard but load-bearing: the `research/research-hub.md` Brand Recon roster is a dataview over `slug`, `created`, `status` and `primary_url`, so a dossier missing any of them silently drops out of the hub.
 
 The `sources` list must include **every URL** the investigation touched that the dossier's claims depend on. Don't bury sources in the body — they belong in frontmatter so they're queryable.
 
@@ -174,6 +174,16 @@ For investment-adjacent: "Track Record / Returns Authority"
 
 Whoever the named, credentialed humans behind the brand are, this is their section. Surface them prominently. The bar: by the end of this section, the reader should believe (or disbelieve) that the entity has a defensible authority moat.
 
+### 9.1 Claims substantiation (compliance / legal — only when Phase 5b ran)
+
+Omit this subsection entirely when Phase 5b did not run. When it did, one row per named scientific, clinical, or technical claim:
+
+| Claim | Source id | Operation | Verdict |
+|---|---|---|---|
+| {claim as the brand words it} | `pmid:` / `doi:` / `arxiv:` … | search_papers → read_paper → related_papers(citers) | supported / partial / unsupported / contradicted |
+
+Abstract-only confirmation is `unverified`, not `supported`. A claim-substantiation gap is both a legal flag for the client and an agent-opportunity vector for Section 11.
+
 ## Section 10 — AI / Tech Posture
 
 The under-rated section. Cover:
@@ -207,6 +217,13 @@ A bulleted list of things you couldn't close in this run. Live socials count, ex
 
 A short list pointing to:
 - The emitted `{slug}-brand` skill (location in the vault)
+- The run's raw evidence, **as wikilinks, never as backtick paths** — a code-span path creates no graph edge and leaves the evidence tree orphaned:
+  ```
+  - Raw evidence: [[research/brand-recon/{slug}/raw-slices/01-corporate-legal|01 corporate-legal]] ·
+    [[research/brand-recon/{slug}/raw-slices/02-leadership|02 leadership]] · …
+  - Raw scrape index: [[research/brand-recon/{slug}/raw-scrapes/00-INDEX|Raw scrape capture index]]
+  ```
+  (omit the `raw-slices/` line when no slice agents were dispatched; the `00-INDEX` link is always present when `raw-scrapes/` exists)
 - Optionally: planned downstream deliverables that would be derived from this dossier
 
 End with a single em-dash signature line: `— End of dossier —`

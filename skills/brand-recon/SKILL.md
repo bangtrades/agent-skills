@@ -1,7 +1,7 @@
 ---
 name: brand-recon
 description: Use when producing a sourced company or brand dossier and an optional reusable brand kit. For a compiler-enforced operating model use enterprise-knowledge-graph-research; for investment dossiers use bt-equity. A bare company URL alone does not request a full investigation.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # brand-recon — End-to-End Brand & Company Investigation
@@ -79,6 +79,14 @@ The full workflow is in `references/investigation-workflow.md`. Here's the shape
 - WebSearch: "{Entity} Glassdoor employees salary" (employee count proxy)
 - `firecrawl_scrape` any surfaced profile pages on Crunchbase / Owler / RocketReach / D&B / OpenCorporates / SEC EDGAR
 
+### Phase 5b — Claim verification (research-index lane; only when the entity makes scientific, clinical, or technical claims)
+- Trigger: health/wellness/supplement/medtech/skincare brands, any "clinically proven" / "study shows" copy captured in Phase 2, any AI/ML vendor citing benchmarks.
+- `firecrawl_research_search_papers` for each named claim (ingredient + outcome, device + indication, model + benchmark). `k: 10`.
+- `firecrawl_research_read_paper(id, question)` on the top hit to confirm the claim is actually in the body (dose, population, effect size). Abstract-only = unverified.
+- `firecrawl_research_related_papers(seed_ids, intent, mode: "citers")` once, to catch replication failures or contradicting evidence.
+- Record in the dossier "Claims & compliance" block: claim → source id (`pmid:` / `doi:` / `arxiv:`) → verdict (supported / partial / unsupported / contradicted). This is a selling point in the WaiveLabs pitch (claim-substantiation gap = agent opportunity) and a legal flag for the client.
+- Source routing for this lane is in `references/source-catalog.md` → "Phase 5b — Academic / clinical evidence". Canonical vault reference: `[[research/topics/firecrawl-research-index]]`.
+
 ### Phase 6 — Customer sentiment (web search lane)
 - WebSearch: "{Entity} reviews trustpilot reddit complaints"
 - WebSearch: "{Entity} BBB consumer reports"
@@ -114,8 +122,8 @@ The full workflow is in `references/investigation-workflow.md`. Here's the shape
 ### Phase 12 — Dossier synthesis
 - Open `references/dossier-template.md` and `assets/dossier.skeleton.md`
 - Fill the 13 sections in order: Executive Summary → Company Snapshot → Brand Identity → Product Catalog → Site/Content Architecture → Social Footprint → Marketplace Footprint → Customer Sentiment → Competitive Landscape → Medical/Clinical Authority (or equivalent) → AI/Tech Posture → Strategic Insights & Opportunity Vectors → Open Intel Gaps
-- Write to `~/Cortana/cortana-vault/research/brand-recon/{slug}/dossier.md` with Obsidian frontmatter (see `references/dossier-template.md`)
-- Cross-link with `[[wikilinks]]` to related vault pages (existing competitor dossiers, project pages, research topics)
+- Write to `~/Cortana/cortana-vault/research/brand-recon/{slug}/dossier.md` with Obsidian frontmatter (see `references/dossier-template.md`). The dossier is `type: topic` — never `type: research`, which is a legacy alias the linter re-flags on every pass. `slug`, `created`, `status` and `primary_url` are load-bearing (the research hub roster is a dataview over them) and must never be omitted.
+- Cross-link with `[[wikilinks]]` to related vault pages (existing competitor dossiers, project pages, research topics). Section 13 links the run's evidence (`raw-slices/`, `raw-scrapes/00-INDEX`) as wikilinks, never as code-span paths — see "Evidence page contracts" below.
 
 ### Phase 13 — Per-entity brand skill emission (when needed)
 
@@ -131,6 +139,16 @@ Skip this phase when the dossier is the only requested artifact. Before emission
 - Append to `_playbook.md` what worked, what was blocked, novel techniques learned
 - Append to `_sources.md` each URL touched with a `quality` rating (high/medium/low) and `firecrawl` vs `chrome` vs `search` access mode
 - Append to `_runs.md` a one-line index entry linking to the new dossier
+- The `research/research-hub.md` Brand Recon roster is generated from dossier frontmatter (a dataview over `research/brand-recon` filtered to `file.name = "dossier"`) — do not hand-edit it. Appending the run to `research/brand-recon/_runs.md` is the only hub-facing write a run makes. This is why the dossier's `slug`, `created`, `status` and `primary_url` fields are load-bearing and must never be omitted.
+
+### Phase 14b — Release gate (mandatory; immediately before hand-back)
+Run, from the Cortana root, and do not release on a non-zero finding in the entity's tree:
+
+```
+python cortana-vault/scripts/vault-lint.py
+```
+
+Check `missing frontmatter`, `yaml parse failures`, `status offenders`, `missing emoji`, `legacy-type` warnings and `broken links` for `research/brand-recon/{slug}/`. A run is not done when its own evidence tree fails the contract — repair the page the run wrote, re-lint, then hand back. The linter needs the pinned runtime (Python 3.14 + PyYAML 6.0.3); where that is absent, build it **outside** the vault and pass `CORTANA_VAULT_PYTHON`. Acceptance: `missing frontmatter: 0` and no `legacy-type` warning under the entity tree with **no hand edit in between**.
 
 ### Phase 15 — Hand back to the user
 - Present the dossier file via `present_files`
@@ -148,7 +166,9 @@ The Obsidian root is `~/Cortana`; governed notes live in `cortana-vault/`. Dossi
 |---|---|
 | Per-entity folder | `research/brand-recon/{slug}/` |
 | Main dossier | `research/brand-recon/{slug}/dossier.md` |
-| Raw scrapes (optional, for audit) | `research/brand-recon/{slug}/raw-scrapes/` |
+| Raw scrapes (optional, for audit) | `research/brand-recon/{slug}/raw-scrapes/` — every `.md` capture carries the raw-scrape frontmatter below |
+| Raw-scrape roll-up index | `research/brand-recon/{slug}/raw-scrapes/00-INDEX.md` — the ONE roll-up file name; never `README.md` / `capture-manifest.md` |
+| Slice pages (when slice agents are dispatched) | `research/brand-recon/{slug}/raw-slices/NN-slice-name.md` — every slice carries the slice frontmatter below |
 | Brand skill folder | `_inbox/skills/{slug}-brand/` |
 | Brand skill entry | `_inbox/skills/{slug}-brand/SKILL.md` |
 | Brand skill references | `_inbox/skills/{slug}-brand/references/*.md` |
@@ -158,6 +178,88 @@ The Obsidian root is `~/Cortana`; governed notes live in `cortana-vault/`. Dossi
 | Run index | `research/brand-recon/_runs.md` |
 
 If `~/Cortana/cortana-vault/` is not accessible (Cowork without that folder mounted), write to the working directory at `./research/brand-recon/{slug}/` and tell the user explicitly that they need to copy the folder into their vault. Never silently write to a different location.
+
+---
+
+## Evidence page contracts (non-negotiable)
+
+Every page a run writes under `research/brand-recon/{slug}/` is a vault page and must pass `vault-lint.py` without a hand edit afterwards. Six consecutive runs (2026-09-08 → 2026-09-17) shipped pages that failed this and were normalized by hand in the daily pass; these contracts repair the generator, not its output.
+
+Rules that apply to **every** page the run writes:
+
+- `tags` takes **exactly one** declared emoji category as its first item and no other emoji. `[📚, 🤖, …]` fails the contract. Brand-recon research pages (dossier, slices, raw scrapes, roll-up index) take `📚`.
+- `type` and `status` come from `cortana-vault/scripts/vault-contract.json` (`types` / `statuses`). `research` is a legacy type — use `topic`. `fixed-round-1`, `complete`, `done` are not statuses.
+- The six canonical keys (`title`, `type`, `created`, `updated`, `tags`, `status`) come **first, in that order**. Agent-specific keys (`researcher`, `tool_calls`, `fix_round`, `scope`, `confidence`, …) are welcome but go **after** them.
+- **Quote any value containing `": "`, or starting with `~`, `>`, `|`, `&`, `*`, `!`, `%`, `@`, or a backtick.** `fix_round: 1 (2026-09-11) — inputs: 07-qa-gate.md` must be written `fix_round: "1 (2026-09-11) — inputs: 07-qa-gate.md"`; the unquoted form makes PyYAML raise `ScannerError` and the page becomes invisible to every frontmatter-driven query.
+- `related:` is mandatory and must reach the dossier. Without it the page is a graph orphan and the evidence chain is unreachable.
+- The dossier cites its evidence pages as **wikilinks**, never as backtick paths — a code-span path creates no graph edge.
+
+### Slice page contract (every slice agent emits this exact frontmatter)
+
+Applies whenever the run dispatches slice agents (or an orchestrating skill dispatches them on brand-recon's behalf) and they write `raw-slices/NN-slice-name.md`:
+
+```yaml
+---
+title: "<Entity> — <Slice topic>"
+type: slice
+created: <YYYY-MM-DD>
+updated: <YYYY-MM-DD>
+tags: [📚, brand-recon, <entity-slug>, research-slice, <2–3 topic tags>]
+status: completed        # draft while in flight; completed on release. NEVER invent a value.
+slice: <NN-slice-name>
+entity: <Entity>
+related:
+  - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+  - "[[research/brand-recon/_playbook|Brand-Recon Playbook]]"
+  - "[[research/brand-recon/_runs|Brand-Recon Run Index]]"
+---
+```
+
+Fix-round state belongs in a `fix_round:` key, **not** in `status`.
+
+### Raw-scrape capture rule
+
+Every markdown file written to `raw-scrapes/` gets Cortana frontmatter before the captured body (non-markdown captures such as `01-homepage-branding.json` cannot carry frontmatter and are listed from the roll-up index instead):
+
+```yaml
+---
+title: "<Entity> — raw capture: <source description>"
+type: source
+created: <YYYY-MM-DD>
+updated: <YYYY-MM-DD>
+tags: [📚, brand-recon, <entity-slug>, raw-scrape, evidence]
+status: captured
+captured: <YYYY-MM-DD>
+slice_owner: <NN>
+source_url: "<canonical page URL — the page, not a CDN asset>"
+related:
+  - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+  - "[[research/brand-recon/_sources|Brand-Recon Source Catalog]]"
+---
+```
+
+**When the captured source has its own YAML front matter** (Hugging Face model cards, Jekyll/Hugo pages, `llms.txt` variants): do not leave it at the top of the file, where it becomes the page's frontmatter. Write the Cortana block above, then reproduce the upstream YAML inside a fenced ` ```yaml ` block in the body under an "Upstream front matter (verbatim capture)" heading. Source fidelity is preserved and the page still parses as a vault page.
+
+### Raw-scrape roll-up index (`raw-scrapes/00-INDEX.md`)
+
+The roll-up has no single `source_url` or `slice_owner`, so it takes this shape instead. It is always named `00-INDEX.md` — the library previously split three ways (`README.md` as `source`/`archived`, `capture-manifest.md` as `reference`/`captured`, or nothing at all); one name, one shape:
+
+```yaml
+---
+title: "<Entity> — Raw Scrape Capture Index"
+type: source
+created: <YYYY-MM-DD>
+updated: <YYYY-MM-DD>
+tags: [📚, brand-recon, raw-scrapes, <entity-slug>, provenance, firecrawl]
+status: captured
+captured: <YYYY-MM-DD>
+related:
+  - "[[research/brand-recon/<entity-slug>/dossier|<Entity> dossier]]"
+  - "[[research/brand-recon/_sources|Brand-Recon Source Ledger]]"
+---
+```
+
+The dossier's Section 13 must link this index as a wikilink (`[[research/brand-recon/<entity-slug>/raw-scrapes/00-INDEX|Raw scrape index]]`), not a code-span path.
 
 ---
 
@@ -189,7 +291,7 @@ The dossier should be useful to bang six months from now when he's forgotten the
 
 ## Coordination with other skills
 
-- **`obsidian`** — brand-recon is a writer into the vault. The obsidian skill's vault conventions (frontmatter, emoji tags, naming, cross-linking) apply. Use the `📚` emoji tag for dossiers (research) and `🤖` for the per-entity brand skill (AI/tooling). After writing the dossier, append a log entry to `cortana-vault/log.md` following the obsidian skill's log format.
+- **`obsidian`** — brand-recon is a writer into the vault. The obsidian skill's vault conventions (frontmatter, emoji tags, naming, cross-linking) apply. Use the `📚` emoji tag for dossiers, slices and raw scrapes (research) and `🤖` for the per-entity brand skill (AI/tooling) — exactly one emoji per page, never both. After writing the dossier, append a log entry to `cortana-vault/log.md` following the obsidian skill's log format. Do not touch `research/research-hub.md`; its Brand Recon roster is derived from dossier frontmatter.
 - **`bt-equity`** — when investigating a single ticker for a BT Stock Report, brand-recon can be invoked first to capture the brand intelligence layer that bt-equity then synthesizes into the published PDF. The dossier becomes a research input for bt-equity.
 - **`yt`** — if the entity has a founder/CEO/medical-advisor with substantive YouTube content, optionally invoke the yt skill on 1–2 hero videos and link the resulting transcript pages from the dossier.
 - **`canvas-design` / `frontend-design` / `pptx` / `docx`** — these are format skills that the *emitted* `{slug}-brand` skill pairs with downstream. brand-recon itself does not invoke them.
@@ -211,3 +313,18 @@ Each entry is a small payment into the bank. Over 20 investigations, this skill 
 ## Final reminder
 
 Run the full sweep every time unless the user explicitly says "lean pass" or "quick look." Bang chose full-sweep as the default for a reason — partial dossiers create more open questions than they answer. If a phase produces no useful signal, document the negative result in `_sources.md` and move on. Negative results are also data.
+
+---
+
+## Changelog
+
+### 2026-09-20 — v0.3.0 — four staged patches applied
+
+| Patch | Effect |
+|---|---|
+| `PATCH-2026-09-10-firecrawl-research-index.md` | New Phase 5b claim-verification lane (`firecrawl_research_*`); `research-index` route + "Phase 5b — Academic / clinical evidence" block in `references/source-catalog.md`; tool-namespace note in `references/investigation-workflow.md`; "Claims substantiation" table in the dossier template/skeleton. |
+| `PATCH-2026-09-12-evidence-frontmatter-contract.md` | New "Evidence page contracts" section (slice page contract, raw-scrape capture rule, key-order/quoting/one-emoji rules); Phase 14b `vault-lint.py` release gate; dossier `type: research` → `type: topic` in `references/dossier-template.md`, `assets/dossier.skeleton.md`, `references/investigation-workflow.md`; dossier §13 cites evidence as wikilinks, not code-span paths. |
+| `PATCH-2026-09-18-dossier-type-and-raw-scrape-frontmatter.md` | Superseded stub (`type: redirect`) — folded into the hub-roster patch; nothing applied. |
+| `PATCH-2026-09-18-hub-roster-is-derived-not-hand-kept.md` | Amends 09-12 §2: one roll-up file (`raw-scrapes/00-INDEX.md`, `type: source` / `status: captured`) with its own frontmatter shape, wikilinked from dossier §13; the skill gains NO write step to `research/research-hub.md` — `_runs.md` is the only hub-facing write, and dossier `slug`/`created`/`status`/`primary_url` are load-bearing. |
+
+Also in this release: the `_playbook.md` / `_sources.md` / `_runs.md` seed templates now carry the same vault frontmatter as the live ledgers (`🔧`, `type: source`/`index`, `status: active`), so a bootstrap run cannot emit a frontmatter-less ledger page.

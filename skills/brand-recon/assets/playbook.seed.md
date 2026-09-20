@@ -1,3 +1,13 @@
+---
+title: "brand-recon — Playbook"
+type: source
+created: {DATE}
+updated: {DATE}
+tags: [🔧, brand-recon, playbook, meta]
+status: active
+related: ["[[research/brand-recon/_runs|Run Index]]", "[[research/brand-recon/_sources|Source Catalog]]"]
+---
+
 # brand-recon Playbook
 
 Lessons accumulated across every investigation. Append-only.

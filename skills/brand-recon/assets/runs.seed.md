@@ -1,3 +1,13 @@
+---
+title: "brand-recon — Run Index"
+type: index
+created: {DATE}
+updated: {DATE}
+tags: [🔧, brand-recon, index, meta]
+status: active
+related: ["[[research/brand-recon/_playbook|Playbook]]", "[[research/brand-recon/_sources|Source Catalog]]"]
+---
+
 # brand-recon Run Index
 
 | Date | Slug | Name | URL | Dossier | Brand Skill | Headline |

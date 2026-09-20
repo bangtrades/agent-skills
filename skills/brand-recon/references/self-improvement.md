@@ -89,6 +89,8 @@ Don't batch — one line per URL. The catalog becomes searchable: future runs ca
 
 The table columns are: Date, Slug, Name, URL, Dossier link, Brand skill link, Headline.
 
+**This is the only hub-facing write a run makes.** The `research/research-hub.md` Brand Recon roster is generated from dossier frontmatter (a dataview over `research/brand-recon` filtered to `file.name = "dossier"`) — do not hand-edit it, and do not add a step that does. `_runs.md` stays canonical for the prose headline read, which dataview cannot reproduce. This is why the dossier's `slug`, `created`, `status` and `primary_url` fields are load-bearing and must never be omitted.
+
 ### Step 5 — Update the run summary section in `_playbook.md`
 
 At the top of `_playbook.md` there's a small summary section. Update the counter:
@@ -109,11 +111,21 @@ That's it. The skill is now smarter than it was before the run.
 
 ## Seed templates
 
-Bootstrap any missing file with these templates on the first run.
+Bootstrap any missing file with these templates on the first run. The three ledgers are vault pages: they carry the same frontmatter as the live files (`🔧` category, `type: source` / `index`, `status: active`) so a bootstrap run never emits a frontmatter-less page.
 
 ### `_playbook.md` seed
 
 ```markdown
+---
+title: "brand-recon — Playbook"
+type: source
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [🔧, brand-recon, playbook, meta]
+status: active
+related: ["[[research/brand-recon/_runs|Run Index]]", "[[research/brand-recon/_sources|Source Catalog]]"]
+---
+
 # brand-recon Playbook
 
 Lessons accumulated across every investigation. Append-only.
@@ -133,6 +145,16 @@ Lessons accumulated across every investigation. Append-only.
 ### `_sources.md` seed
 
 ```markdown
+---
+title: "brand-recon — Source Catalog"
+type: source
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [🔧, brand-recon, sources, meta]
+status: active
+related: ["[[research/brand-recon/_playbook|Playbook]]", "[[research/brand-recon/_runs|Run Index]]"]
+---
+
 # Source Catalog — Live Ledger
 
 Per-URL access + yield data. Appended to by Phase 14 of every run.
@@ -150,6 +172,16 @@ The canonical category catalog (which sources to hit per phase) lives in the bra
 ### `_runs.md` seed
 
 ```markdown
+---
+title: "brand-recon — Run Index"
+type: index
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: [🔧, brand-recon, index, meta]
+status: active
+related: ["[[research/brand-recon/_playbook|Playbook]]", "[[research/brand-recon/_sources|Source Catalog]]"]
+---
+
 # brand-recon Run Index
 
 | Date | Slug | Name | URL | Dossier | Brand Skill | Headline |

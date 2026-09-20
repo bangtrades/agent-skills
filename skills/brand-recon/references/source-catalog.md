@@ -15,6 +15,7 @@ Each source has three properties that determine how to access it:
 | `chrome` | Firecrawl blocked. Use Claude in Chrome MCP. |
 | `search-only` | Only accessible via WebSearch summarization (no direct scrape). |
 | `paywall` | Public shell only — capture what's visible, don't break paywalls. |
+| `research-index` | Firecrawl Research Index (`firecrawl_research_*` tools) — a paper index (PubMed, bioRxiv, medRxiv, arXiv), not the web. Phase 5b only. |
 
 Each source also gets a `yield` rating set per-run by Phase 14:
 
@@ -182,6 +183,18 @@ Each source also gets a `yield` rating set per-run by Phase 14:
 | BuiltWith profile | search-only | medium | Public tier shows tech stack |
 | Wappalyzer browser data | search-only | medium | Similar to BuiltWith |
 | Page source inspection via firecrawl | firecrawl | high | Read the homepage source for Klaviyo / Recharge / Smile.io / Judge.me / Intercom signatures |
+
+---
+
+## Phase 5b — Academic / clinical evidence
+
+Only when the entity makes scientific, clinical, or technical claims (see SKILL.md Phase 5b). Canonical vault reference: `[[research/topics/firecrawl-research-index]]`.
+
+| Source | Route | Value | Notes |
+|---|---|---|---|
+| Firecrawl Research Index (PubMed, bioRxiv, medRxiv, arXiv) | `research-index` | high when claims exist | Paper index, not web. Search → read passages → expand by citers. Cite source ids (`pmid:` / `doi:` / `arxiv:`). |
+| PubMed MCP (bio-research plugin) | fallback | medium | Same corpus, no citation expansion or passage reads |
+| `firecrawl_search` `categories: ["research"]` | fallback | low | Returns academic web pages, not paper records — do not confuse with the index |
 
 ---
 
