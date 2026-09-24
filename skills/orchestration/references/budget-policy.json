@@ -11,6 +11,6 @@
   "warn_context_growth_tokens": 18000,
   "target_controller_share": 0.15,
   "controller_input_warning_tokens": 80000,
-  "worker_check_every_operations": 4,
-  "default_excerpt_chars": 8000
+  "default_excerpt_chars": 8000,
+  "context_checkpoints": false
 }

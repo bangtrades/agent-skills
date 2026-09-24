@@ -74,6 +74,21 @@ def measure(paths, root_turn, since, until):
 def gate(metrics, policy, root_turn, action, now=None, retired_workers=()):
     now = now or dt.datetime.now(dt.timezone.utc)
     reasons = []
+    # Reject malformed counters before arithmetic/comparison can admit a command.
+    for value in (metrics['responses'], metrics['totals']['total_tokens'], metrics['totals']['output_tokens']):
+        if type(value) is not int or value < 0:
+            raise ValueError('nonnegative integer metrics required')
+    if metrics['totals']['output_tokens'] > metrics['totals']['total_tokens']:
+        raise ValueError('output exceeds processed tokens')
+    for key in ('max_processed_tokens', 'max_output_tokens', 'max_responses', 'max_elapsed_minutes', 'max_snapshot_age_seconds'):
+        value = policy[key]
+        if type(value) not in (int, float) or not __import__('math').isfinite(value) or value <= 0:
+            raise ValueError('finite positive policy required: '+key)
+    for agent in metrics['agents'].values():
+        if type(agent['root']) is not bool or type(agent['responses']) is not int or agent['responses'] < 0:
+            raise ValueError('malformed agent metrics')
+    if stamp(metrics['since']) > now or stamp(metrics['since']) > stamp(metrics['observed_at']):
+        reasons.append('invalid_observation_interval')
     if metrics['root_turn_id'] != root_turn:
         reasons.append('wrong_run')
     age = (now - stamp(metrics['observed_at'])).total_seconds()
@@ -96,7 +111,7 @@ def gate(metrics, policy, root_turn, action, now=None, retired_workers=()):
         reasons.append('unknown_retired_worker')
     if any(metrics['agents'].get(i, {}).get('root') for i in retired_workers):
         reasons.append('cannot_retire_current_root')
-    if action in ('dispatch', 'repair'):
+    if action in ('dispatch', 'repair') and policy.get('context_checkpoints', True):
         for ident, a in metrics['agents'].items():
             if not a['root'] and ident in retired_workers:
                 continue

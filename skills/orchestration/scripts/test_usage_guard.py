@@ -13,6 +13,7 @@ spec = importlib.util.spec_from_file_location('guard', HERE/'usage_guard.py')
 g = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(g)
 POLICY = json.loads((HERE.parent/'references/budget-policy.json').read_text())
+POLICY['context_checkpoints'] = True
 NOW = dt.datetime(2026,9,23,10,tzinfo=dt.timezone.utc)
 START = '2026-09-23T09:59:00Z'
 END = NOW.isoformat()

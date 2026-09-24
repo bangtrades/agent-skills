@@ -40,7 +40,7 @@ Before review, set producer_self_check to `passed`, candidate to frozen commit/t
 
 The gate checks hash freshness, required fields and forecast fit, not the truth of the assertions or the candidate's source bytes. Root verifies those. For integration, supply an independently produced QA receipt of the same form in `independent_qa`. A known incomplete candidate cannot enter acceptance QA. A targeted diagnostic review has a separate diagnostic contract and must not be represented as acceptance.
 
-Producer brief: target 400 words. Include caller/base/paths, one outcome, all constraints, assertions/commands, assigned token allowance and native usage path/thread/root-turn/start identity. Copy the worker-check command from usage.md and require it within existing tool batches every four operations. No separate LLM turn is needed just to check a script result. If the host cannot expose these identities, report that before expensive work and use the documented telemetry fallback.
+Producer brief: target 400 words. Include actual caller/base/owned paths, one outcome, constraints, assertions, exact tested verification launcher and assigned planning allowance. Workers report evidence events only; controller collects usage from explicit files. Do not send monitoring scripts or telemetry repair work to workers.
 
 Return packet: target 150 words. Verdict, frozen identity, changed paths, exact checks/counts/skips, gaps, log references and next decision. On renewal, include only unresolved assertions, exact failing command/error and evidence references. Never send old transcripts or complete prior briefs.
 

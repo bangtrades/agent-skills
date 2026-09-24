@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from usage_guard import gate
+from run_bounded import run
 
 PHASES = ('implementation', 'qa', 'repair', 'integration')
 
@@ -101,14 +102,29 @@ def main():
         p.add_argument('--'+arg, required=True)
     p.add_argument('--action', choices=('dispatch', 'repair', 'review', 'integrate'), required=True)
     p.add_argument('--retired-worker', action='append', default=[])
+    p.add_argument('--log')
+    p.add_argument('--timeout', type=float, default=120)
+    p.add_argument('--max-chars', type=int, default=2000)
+    p.add_argument('--execute', nargs=argparse.REMAINDER)
     a = p.parse_args()
     try:
         contract, metrics, policy = [json.loads(Path(f).read_text()) for f in (a.contract, a.metrics, a.policy)]
         usage = gate(metrics, policy, a.root_turn, a.action, retired_workers=a.retired_worker)
         workflow = contract_check(contract, a.action, metrics, policy)
         result = {'admit': usage['admit'] and workflow['admit'], 'usage': usage, 'workflow': workflow}
+        if not result['admit']:
+            print(json.dumps(result))
+            return 2
+        if a.execute is not None:
+            if not a.execute or not a.log:
+                raise ValueError('--execute requires command and --log')
+            execution = run(a.execute, a.log, a.max_chars, a.timeout)
+            result['execution'] = execution
+            print(json.dumps(result))
+            code = execution['exit_code']
+            return code if code >= 0 else 128-code
         print(json.dumps(result))
-        return 0 if result['admit'] else 2
+        return 0
     except (ValueError, KeyError, TypeError, OSError, AttributeError) as error:
         print(json.dumps({'admit': False, 'error': str(error)}))
         return 2

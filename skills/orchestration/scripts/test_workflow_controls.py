@@ -14,6 +14,7 @@ import workflow_gate as wg
 
 HERE = Path(__file__).parent
 POLICY = json.loads((HERE.parent/'references/budget-policy.json').read_text())
+POLICY['context_checkpoints'] = True
 NOW = dt.datetime.now(dt.timezone.utc)
 
 
