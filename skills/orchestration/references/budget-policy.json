@@ -7,5 +7,10 @@
   "max_root_responses": 24,
   "max_worker_responses": 60,
   "max_context_growth_tokens": 24000,
-  "max_snapshot_age_seconds": 120
+  "max_snapshot_age_seconds": 120,
+  "warn_context_growth_tokens": 18000,
+  "target_controller_share": 0.15,
+  "controller_input_warning_tokens": 80000,
+  "worker_check_every_operations": 4,
+  "default_excerpt_chars": 8000
 }

@@ -29,3 +29,15 @@ Aim for at least 50% lower processed tokens per comparable accepted outcome; 70â
 This skill change did not resume the stopped development run, deploy DetailAI, or prove live application accuracy. It installs a different workflow plus a tested admission tool. True host-enforced limits require runtime support; the script cannot intercept tool calls.
 
 Local provenance: `/Users/nolan/Projects/DetailAI/audits/run-postmortem-20260923/postmortem.md`; measurements and reproducible benchmark: `/Users/nolan/Projects/DetailAI/audits/orchestration-optimization-20260923/benchmark.json` and `benchmark.py`.
+
+## September 24 follow-up: admission was insufficient
+
+The resumed run snapshot recorded17,155,151 processed tokens/181 responses and zero accepted parent tickets. Root consumed6,346,867 (37.0%), four Luna contexts8,653,041 (50.4%), SOL QA2,155,243 (12.6%). Workers started around35.6K input and ended82.7Kâ€“123.1K; all five exceeded +24K. Tool results returned1,204,969 characters, not tokens. This exposed late root-only monitoring, large evidence ingestion, overly broad parent-ticket scope, premature acceptance QA and treating an advisory threshold as a completion boundary.
+
+The follow-up installs one-outcome contracts, explicit four-phase completion forecasts/controller tax, a worker-local check, bounded command capture and a producer-completion/receipt gate for independent QA. Peak context now survives a later smaller response. The skill adapter follows the same controller. No parent acceptance is waived, user limits remain binding, and host-enforced interruption remains unavailable.
+
+Replay of the five recorded worker traces detects a checkpoint condition at responses12,5,9,11,6 respectively; checking every fourth response would observe it at12,8,12,12,8 instead of allowing the actual31,32,23,30,23-response contexts to finish unchecked. This proves detection only. The replay's illustrative2M worker allowance is not a new universal limit, and response cadence only approximates the required operation cadence.
+
+Keeping recorded response/output counts while hypothetically capping root input at60K and worker input at initial+24K gives10,307,134 tokens (39.92% below that snapshot). Renewal costs and equivalent-quality delivery are unproven. Fewer responses could improve this, but only tokens per independently accepted comparable outcome can validate savings. Proven controls are reported separately from future productivity targets.
+
+Artifacts: DetailAI `audits/resume-20260924/efficiency-review.{md,json}` and `audits/orchestration-outcomes-20260924/` (tests, replay, independent QA, publication identities).
