@@ -1,0 +1,11 @@
+{
+  "max_processed_tokens": 5000000,
+  "max_output_tokens": 100000,
+  "max_responses": 120,
+  "max_elapsed_minutes": 60,
+  "reserve_fraction": 0.2,
+  "max_root_responses": 24,
+  "max_worker_responses": 60,
+  "max_context_growth_tokens": 24000,
+  "max_snapshot_age_seconds": 120
+}
